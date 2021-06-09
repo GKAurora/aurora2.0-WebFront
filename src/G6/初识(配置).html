@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tutorial Demo</title>
+</head>
+<style>
+  #graph{
+    width: 100%;
+    height: 100%;
+  }
+</style>
+<body>
+  <div id="graph"></div>
+  <script src="https://gw.alipayobjects.com/os/antv/pkg/_antv.g6-3.7.1/dist/g6.min.js"></script>
+  <script>
+    window.onload=function(){
+      const graph=new G6.Graph({         //实例化
+        container:document.getElementById('graph'),   //绑定DOM
+        width:window.innerWidth,             //渲染的宽
+        height:window.innerHeight,           //渲染的高
+        layout:{                          //布局
+          type:'dagre'
+        },
+        defaultNode:{           //节点配置(针对所有节点的配置)（针对单个节点的配置看data里面的）
+          type:'rect',
+          style:{
+            radius:4,          //圆度
+            lineWidth:2,
+            fill:'#EDF5FF',      //背景色
+            stroke:'#1890ff',       //边框颜色
+            shadowColor:'#1890ff',      //阴影
+            shadowBlur:20,         
+            shadowOffserX:0,        //阴影偏移位置
+            shadowOffserY:0,
+            cursor:'move',         //鼠标移动到此节点的样式
+          },
+          labelCfg:{                 //字体样式设置
+            style:{ 
+              fontSize:14,
+              fill:'#1890ff',
+              cursor:'move'
+            }
+          }
+        }, 
+        defaultEdge:{          //边配置
+          type:'polyline'
+        },
+        fitView:true               //
+      });
+      const data={              //渲染数据
+        nodes:[       //节点
+          {
+            id:'1',
+            label:'圆',
+            type:'circle',           //圆
+            style:{
+              r:40,
+              stroke:'#1890ff',
+              lineWidth:3
+            }
+          },
+          {
+            id:'2',
+            label:'矩形',
+            type:'rect',       //矩形
+            style:{
+              width:100,
+              height:40,
+              radius:6,
+              lineWidth:2
+            }
+          },
+          {
+            id:'3',
+            label:'椭圆',
+            type:'ellipse',
+            style:{              //椭圆形
+              rx:50,
+              ry:30,
+            }
+          },
+          {
+            id:'4',
+            label:'菱形',
+            type:'diamond',         //菱形
+            style:{
+              lineWidth:2,
+            },
+            size:[100,50]
+          },
+          {
+            id:'5',
+            label:'sql_file5'
+          },
+          {
+            id:'6',
+            label:'feature_etl_1'
+          },
+          {
+            id:'7',
+            label:'feature_etl_2'
+          },
+          {
+            id:'8',
+            label:'alps_file8'
+          },
+        ],
+        edges:[      //边
+          {
+            source:'1',
+            target:'2',
+            type:'line',
+            label:'直线'
+          },
+          {
+            source:'1',
+            target:'3',
+            type:'polyline',
+            label:'折线'
+          },
+          {
+            source:'2',
+            target:'4',
+            type:'arc',
+            label:'单向曲线'
+          },
+          {
+            source:'3',
+            target:'4',
+            type:'cubic',
+            label:'双向曲线'
+          },
+          {
+            source:'4',
+            target:'5',
+          },
+          {
+            source:'5',
+            target:'6',
+          },
+          {
+            source:'6',
+            target:'7',
+          },
+          {
+            source:'6',
+            target:'8',
+          },
+        ]
+      }; 
+      graph.read(data)       //读取数据
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tutorial Demo</title>
+</head>
+<style>
+  #graph{
+    width: 100%;
+    height: 100%;
+  }
+</style>
+<body>
+  <div id="graph"></div>
+  <script src="https://gw.alipayobjects.com/os/antv/pkg/_antv.g6-3.7.1/dist/g6.min.js"></script>
+  <script>
+    window.onload=function(){
+      const graph=new G6.Graph({         //实例化
+        container:document.getElementById('graph'),   //绑定DOM
+        width:window.innerWidth,             //渲染的宽
+        height:window.innerHeight,           //渲染的高
+        layout:{                          //布局
+          type:'dagre'
+        },
+        defaultNode:{           //节点配置(针对所有节点的配置)（针对单个节点的配置看data里面的）
+          type:'rect',
+          style:{
+            radius:4,          //圆度
+            lineWidth:2,
+            fill:'#EDF5FF',      //背景色
+            stroke:'#1890ff',       //边框颜色
+            cursor:'move',         //鼠标移动到此节点的样式
+          },
+          labelCfg:{                 //字体样式设置
+            style:{ 
+              fontSize:14,
+              fill:'#1890ff',
+              cursor:'move'
+            }
+          }
+        }, 
+        defaultEdge:{          //边配置
+          type:'polyline'
+        },
+        modes:{               //交互
+          /*  
+          拖动画布  zoom-canvas
+          缩放画布  drag-canvas
+          拖动节点  drag-node
+          操作多个节点  brush-select   需按住Shirt
+          */
+          default:['zoom-canvas','drag-node','drag-canvas','brush-select']
+        },
+        nodeStateStyles:{       //点击节点的反馈（需于下面的事件一起使用）
+          //鼠标hover到节点上，hover状态为启用
+          hover:{
+            fill:'lightsteelblue'
+          },
+          //鼠标点击节点，click状态为启用
+          click:{
+            stroke:'steelblue',
+            lineWidth:3
+          }
+        }
+      });
+      const data={              //渲染数据
+        nodes:[       //节点
+          {
+            id:'1',
+            label:'node1',
+            type:'circle',      
+            style:{
+              r:40,
+              stroke:'#1890ff',
+              lineWidth:3
+            }
+          },
+          {
+            id:'2',
+            label:'node2',
+            type:'circle',        
+            style:{
+              r:40,
+              stroke:'#1890ff',
+              lineWidth:3
+            }
+          },
+          {
+            id:'3',
+            label:'node3',
+            type:'circle',       
+            style:{
+              r:40,
+              stroke:'#1890ff',
+              lineWidth:3
+            }
+          },
+          {
+            id:'4',
+            label:'node4',
+            type:'circle',      
+            style:{
+              r:40,
+              stroke:'#1890ff',
+              lineWidth:3
+            }
+          }
+        ],
+        edges:[      //边
+          {
+            source:'1',
+            target:'2',
+            type:'line',
+          },
+          {
+            source:'1',
+            target:'3',
+            type:'line',
+          },
+          {
+            source:'2',
+            target:'4',
+            type:'line',
+          },
+          {
+            source:'3',
+            target:'4',
+            type:'line',
+          }
+        ]
+      }; 
+      this.graph=graph
+      graph.read(data)       //读取数据
+      //元素：事件
+      //点击画布
+      this.graph.on('canvas:click',event=>{
+        const node=this.graph.findAllByState('node','click')
+        node.forEach(node=>{
+          this.graph.setItemState(node,'click',false)
+        })
+      })
+      //点击节点
+      this.graph.on('node:click',event=>{
+        const node=this.graph.findAllByState('node','click')  //点击节点时先清除其他节点的样式
+        node.forEach(node=>{
+          this.graph.setItemState(node,'click',false)
+        })
+        this.graph.setItemState(event.item,'click',true)
+      })
+      //鼠标移入节点
+      this.graph.on('node:mouseenter',event=>{
+        this.graph.setItemState(event.item,'hover',true)
+      })
+      //鼠标移出节点
+      this.graph.on('node:mouseleave',event=>{
+        this.graph.setItemState(event.item,'hover',false)
+      })
+    }
+  </script>
+</body>
+</html>
