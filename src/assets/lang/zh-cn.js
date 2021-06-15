@@ -28,6 +28,7 @@ export default {
     cancel: '已取消！'
   },
   menu: {
+    test:'测试',
     home: '首页',
     table: '表格',
     form: '表单',

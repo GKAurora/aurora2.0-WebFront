@@ -28,6 +28,7 @@ export default {
     cancel: 'Cancel!'
   },
   menu: {
+    test:'test',
     home: 'Home',
     table: 'Table',
     form: 'Form',

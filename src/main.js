@@ -53,7 +53,6 @@ import enLocale from 'element-ui/lib/locale/lang/en'
 import zhLocale from 'element-ui/lib/locale/lang/zh-CN'
 import ElementLocale from 'element-ui/lib/locale'
 import G6 from '@antv/g6'
-import naotu from './G6/naotu'
 Vue.config.productionTip = false
 
 // 按需引入element-ui
@@ -96,7 +95,6 @@ Vue.use(Tag)
 Vue.use(TimePicker)
 Vue.use(Transfer)
 Vue.use(Upload)
-Vue.use(naotu)
 Vue.prototype.$message = Message
 Vue.prototype.$echarts = echarts
 // 根据环境变量决定是否引入mock，引入后端时要注释掉

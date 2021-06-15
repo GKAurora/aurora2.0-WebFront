@@ -27,6 +27,12 @@ const staticRouter = [
         icon: 'el-icon-s-home',
         // component: () => import('../G6/test')
         component: () => import('../views/pages/PageHome')
+      },{
+        path:'/test',
+        name:'index',
+        title:'menu.test',
+        icon:'el-icon-loading',
+        component:() => import('../views/index/test')
       }
     ]
   },
