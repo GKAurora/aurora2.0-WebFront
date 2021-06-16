@@ -24,6 +24,9 @@ const staticRouter = [
         path: '/index',
         menu:true,
         name: 'index',
+        // meta:{
+        //   title:'设备管理'
+        // },
         title: 'menu.equipment',
         icon: 'el-icon-s-home',
         // component: () => import('../G6/test')
@@ -32,12 +35,18 @@ const staticRouter = [
           {
             path: '/',
             name:'index',
+            meta:{
+              title: '设备详情',
+            },
             title: 'menu.overview',
             icon:'el-icon-s-platform',
             // component:() => import('../views/index/test')
           },{
             path: '/test1',
             name:'index',
+            meta:{
+              title:'流量分析'
+            },
             title: 'menu.flow',
             icon:'el-icon-s-platform',
             // component:() => import('../views/index/test')
@@ -46,6 +55,9 @@ const staticRouter = [
       },{
         path:'/user',
         name:'index',
+        meta:{
+          title:'用户管理'
+        },
         title:'menu.user',
         icon:'el-icon-s-custom',
         component:() => import('../views/user/Users')

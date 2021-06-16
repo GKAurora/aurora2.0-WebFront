@@ -1,39 +1,59 @@
 <template>
   <el-row class="page">
-    <el-col :span="24" style="position: absolute;">
+    <el-col :span="24" style="position: absolute">
       <the-header :open-nav="openNav" @toggle-open="toggleOpen"></the-header>
     </el-col>
     <el-col :span="24" class="page-main">
       <the-sidebar :open-nav="openNav"></the-sidebar>
-      <section class="page-content" :class="{'page-content-hide-aside': !openNav}">
-        <the-main></the-main>
-      </section>
+      <!--标签栏-->
+      <div class="content-box" :class="{ 'content-collapse': collapse }">
+        <the-tags></the-tags>
+        <div class="content">
+          <router-view v-slot="{ Component }">
+            <transition name="move" mode="out-in">
+              <keep-alive :include="tagsList">
+                <component :is="Component" />
+              </keep-alive>
+            </transition>
+          </router-view>
+        </div>
+      </div>
     </el-col>
   </el-row>
 </template>
 
 <script>
-import TheLayoutHeader from './TheLayoutHeader'
-import TheLayoutSidebar from './TheLayoutSidebar'
-import TheLayoutMain from './TheLayoutMain'
+import TheLayoutHeader from "./TheLayoutHeader";
+import TheLayoutSidebar from "./TheLayoutSidebar";
+import TheLayoutMain from "./TheLayoutMain";
+import TheLayoutTags from "./TheLayoutTags.vue";
 export default {
-  name: 'TheLayout',
-  data () {
+  name: "TheLayout",
+  data() {
     return {
-      openNav: true
-    }
+      openNav: true,
+    };
   },
   methods: {
-    toggleOpen () {
-      this.openNav = !this.openNav
-    }
+    toggleOpen() {
+      this.openNav = !this.openNav;
+    },
   },
   components: {
-    'the-header': TheLayoutHeader,
-    'the-sidebar': TheLayoutSidebar,
-    'the-main': TheLayoutMain
-  }
-}
+    "the-header": TheLayoutHeader,
+    "the-sidebar": TheLayoutSidebar,
+    "the-main": TheLayoutMain,
+    "the-tags": TheLayoutTags,
+  },
+  computed: {
+    tagsList() {
+      return this.$store.state.tagsList.map((item) => item.name);
+    },
+    collapse() {
+      return this.$store.state.collapse;
+    },
+  },
+};
 </script>
 
 <style scoped lang="scss">
@@ -53,7 +73,7 @@ export default {
       overflow: auto;
       margin-left: 240px;
       height: 100%;
-      background-color: #EBEEF5;
+      background-color: #ebeef5;
     }
 
     .page-content-hide-aside {

@@ -128,8 +128,9 @@
               highlight-current-row
             >
               <el-table-column type="index"> </el-table-column>
+              <!--v-for="(v, i) in master_user.columns"  由于i没有使用到，会报错-->
               <el-table-column
-                v-for="(v, i) in master_user.columns"
+                v-for="(v) in master_user.columns"
                 :key="v.label"
                 :prop="v.field"
                 :label="v.title"
@@ -537,16 +538,15 @@ export default {
 };
 </script>
 <style lang="css" scoped>
-
 .el-table-add-row {
-    margin-top: 10px;
-    width: 100%;
-    height: 34px;
-    border: 1px dashed #c1c1cd;
-    border-radius: 3px;
-    cursor: pointer;
-    justify-content: center;
-    display: flex;
-    line-height: 34px;
+  margin-top: 10px;
+  width: 100%;
+  height: 34px;
+  border: 1px dashed #c1c1cd;
+  border-radius: 3px;
+  cursor: pointer;
+  justify-content: center;
+  display: flex;
+  line-height: 34px;
 }
 </style>
