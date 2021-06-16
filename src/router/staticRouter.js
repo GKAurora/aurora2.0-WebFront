@@ -22,17 +22,33 @@ const staticRouter = [
     children: [
       {
         path: '/index',
+        menu:true,
         name: 'index',
-        title: 'menu.home',
+        title: 'menu.equipment',
         icon: 'el-icon-s-home',
         // component: () => import('../G6/test')
-        component: () => import('../views/pages/PageHome')
+        component: () => import('../views/index/index'),
+        children:[
+          {
+            path: '/',
+            name:'index',
+            title: 'menu.overview',
+            icon:'el-icon-s-platform',
+            // component:() => import('../views/index/test')
+          },{
+            path: '/test1',
+            name:'index',
+            title: 'menu.flow',
+            icon:'el-icon-s-platform',
+            // component:() => import('../views/index/test')
+          }
+        ]
       },{
-        path:'/test',
+        path:'/user',
         name:'index',
-        title:'menu.test',
-        icon:'el-icon-loading',
-        component:() => import('../views/index/test')
+        title:'menu.user',
+        icon:'el-icon-s-custom',
+        component:() => import('../views/user/Users')
       }
     ]
   },

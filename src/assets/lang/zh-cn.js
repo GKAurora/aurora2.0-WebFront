@@ -28,6 +28,10 @@ export default {
     cancel: '已取消！'
   },
   menu: {
+    equipment:'设备管理',
+    overview:'设备概览',
+    flow:'流量控制',
+    user:'用户管理',
     test:'测试',
     home: '首页',
     table: '表格',
