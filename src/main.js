@@ -3,6 +3,8 @@ import App from './App.vue'
 import router from './router/index'
 import store from './store/index'
 import * as echarts from 'echarts'
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css'
 import {
   Badge,
   Button,
@@ -115,6 +117,27 @@ const i18n = new VueI18n({
   messages
 })
 ElementLocale.i18n((key, value) => i18n.t(key, value))
+
+NProgress.configure({
+  easing:'ease',   //动画方式
+  speed:300,       //递增进度条的速度
+  showSpinner:false,    //是否显示加载ico
+  trickleSpeed:200,  //自动递增的间隔
+  minimum:0.3    //初始化时最小的百分比
+})
+
+//路由进入前
+router.beforeEach((to,from,next)=>{
+  //每次切换页面，调用进度条
+  NProgress.start()
+  //放行
+  next()
+})
+//路由进入后，关闭进度条
+router.afterEach(()=>{
+  //在即将进入新的页面组件前，关掉进度条
+  NProgress.done()
+})
 
 new Vue({
   router,
