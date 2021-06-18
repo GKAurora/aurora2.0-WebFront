@@ -102,13 +102,22 @@ export default {
     const lang = localStorage.getItem('user-language') || 'zh-cn'
     return {
       langDrop: false,
-      lang: lang
+      lang: lang,
+      dark:false
     }
   },
   computed: {
     ...mapState(['user'])
   },
   methods: {
+    modelBrn(){
+      this.dark = !this.dark;
+      if(this.dark){
+        window.document.documentElement.setAttribute( "data-theme", 'dark' );
+      }else{
+         window.document.documentElement.setAttribute( "data-theme", 'light' );
+      }
+    },
     navOpenToggle () {
       this.$emit('toggle-open')
     },
@@ -130,6 +139,9 @@ export default {
       }
       this.langDrop = !this.langDrop
     }
+  },
+  mounted(){
+    window.document.documentElement.setAttribute( "data-theme", 'light' );
   }
 }
 </script>
@@ -234,5 +246,5 @@ export default {
   .min-right {
     display: inline-block !important;
   }
-}
+} 
 </style>

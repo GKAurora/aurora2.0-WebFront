@@ -25,7 +25,8 @@ const staticRouter = [
         menu:true,
         name: 'index',
         // meta:{
-        //   title:'设备管理'
+        //   //title:'设备管理',
+        //   tree:4
         // },
         title: 'menu.equipment',
         icon: 'el-icon-s-home',
@@ -36,11 +37,11 @@ const staticRouter = [
             path: '/',
             name:'index',
             meta:{
-              title: '设备详情',
+              title: '设备详情'
             },
             title: 'menu.overview',
             icon:'el-icon-s-platform',
-            // component:() => import('../views/index/test')
+            //component:() => import('../views/pages/PageHome')
           },{
             path: '/test1',
             name:'index',
@@ -78,5 +79,4 @@ const staticRouter = [
     component: () => import('@/views/error/AppError404')
   }
 ]
-
 export default staticRouter

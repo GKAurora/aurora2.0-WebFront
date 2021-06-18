@@ -44,7 +44,6 @@ export default {
   height: 100%;
   border-right: 1px solid #e6e6e6;
   overflow: auto;
-
   .sidebar-menu {
     border: none;
     height: 100%;
