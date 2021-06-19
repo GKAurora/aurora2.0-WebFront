@@ -22,7 +22,7 @@ const staticRouter = [
     children: [
       {
         path: '/index',
-        menu:true,
+        menu: true,
         name: 'index',
         // meta:{
         //   title:'设备管理'
@@ -31,36 +31,45 @@ const staticRouter = [
         icon: 'el-icon-s-home',
         // component: () => import('../G6/test')
         component: () => import('../views/index/index'),
-        children:[
+        children: [
           {
             path: '/',
-            name:'index',
-            meta:{
-              title: '设备详情',
+            name: 'index',
+            meta: {
+              title: '设备详情'
             },
             title: 'menu.overview',
-            icon:'el-icon-s-platform',
+            icon: 'el-icon-s-platform'
             // component:() => import('../views/index/test')
-          },{
+          }, {
             path: '/test1',
-            name:'index',
-            meta:{
-              title:'流量分析'
+            name: 'test1',
+            meta: {
+              title: '流量分析'
             },
             title: 'menu.flow',
-            icon:'el-icon-s-platform',
+            icon: 'el-icon-s-platform'
             // component:() => import('../views/index/test')
           }
         ]
-      },{
-        path:'/user',
-        name:'index',
-        meta:{
-          title:'用户管理'
+      }, {
+        path: '/user',
+        name: 'user',
+        meta: {
+          title: '用户管理'
         },
-        title:'menu.user',
-        icon:'el-icon-s-custom',
-        component:() => import('../views/user/Users')
+        title: 'menu.user',
+        icon: 'el-icon-s-custom',
+        component: () => import('../views/user/Users')
+      }, {
+        path: '/map',
+        name: 'Map',
+        meta: {
+          title: '位置地图'
+        },
+        title: 'menu.map',
+        icon: 'el-icon-location',
+        component: () => import('../views/Map/main')
       }
     ]
   },
