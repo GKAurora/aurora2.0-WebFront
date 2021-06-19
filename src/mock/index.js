@@ -24,9 +24,9 @@ export default {
       'roles': ['admin'],
       'permissions': [
         { name: 'index' },
-        { name: 'table' },
-        { name: 'formsBase' },
-        { name: 'formsEdit' },
+        { name: 'Map' },
+        { name: 'user' },
+        { name: 'test1' },
         { name: 'charts' },
         { name: 'errorDemo403' },
         { name: 'errorDemo404' },
