@@ -28,11 +28,12 @@ export default {
     cancel: 'Cancel!'
   },
   menu: {
-    equipment:'equipment',      //设备
-    overview:'overview',        //设备概览
-    flow:'flow',                //流量控制
-    user:'user',                //用户管理
-    test:'test',
+    equipment: 'equipment', // 设备
+    overview: 'overview', // 设备概览
+    flow: 'flow', // 流量控制
+    user: 'user', // 用户管理
+    map: 'Map', // 位置地图
+    test: 'test',
     home: 'Home',
     table: 'Table',
     form: 'Form',
