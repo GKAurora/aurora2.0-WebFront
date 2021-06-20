@@ -37,7 +37,7 @@ const staticRouter = [
             path: '/',
             name: 'index',
             meta: {
-              title: '设备详情'
+              title: '设备概览'
             },
             title: 'menu.overview',
             icon: 'el-icon-s-platform'
@@ -52,17 +52,18 @@ const staticRouter = [
             icon: 'el-icon-s-platform'
             // component:() => import('../views/index/test')
           }
+          , {
+            path: '/test2',
+            name: 'index',
+            meta: {
+              title: '设备详情'
+            },
+            title: 'menu.details',
+            icon: 'el-icon-s-platform'
+            // component:() => import('../views/index/test')
+          }
         ]
-      }, {
-        path: '/user',
-        name: 'user',
-        meta: {
-          title: '用户管理'
-        },
-        title: 'menu.user',
-        icon: 'el-icon-s-custom',
-        component: () => import('../views/user/Userstest')
-      }, {
+      },{
         path: '/map',
         name: 'Map',
         meta: {
@@ -71,7 +72,25 @@ const staticRouter = [
         title: 'menu.map',
         icon: 'el-icon-location',
         component: () => import('../views/Map/main')
-      }
+      } ,{
+        path: '/Log',
+        name: 'index',
+        meta: {
+          title: '日志分析'
+        },
+        title: 'menu.log',
+        icon: 'el-icon-notebook-2',
+        component: () => import('../views/index/index')
+      },{
+        path: '/user',
+        name: 'user',
+        meta: {
+          title: '用户管理'
+        },
+        title: 'menu.user',
+        icon: 'el-icon-s-custom',
+        component: () => import('../views/user/Userstest')
+      }, 
     ]
   },
   {

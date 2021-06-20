@@ -30,9 +30,11 @@ export default {
   menu: {
     equipment: '设备管理',
     overview: '设备概览',
-    flow: '流量控制',
+    details:'设备详情',
+    flow: '流量分析',
     user: '用户管理',
     map: '位置地图',
+    log:'日志分析',
     test: '测试',
     home: '首页',
     table: '表格',
