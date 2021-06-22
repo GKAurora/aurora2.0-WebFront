@@ -102,7 +102,7 @@ export default {
         ],
         series: [
           {
-            name: "雷达图",
+            name: "设备健康度",
             type: "radar",
             Symbol: "circle",
             symbolSize: 5,
