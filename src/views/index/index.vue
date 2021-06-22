@@ -1,11 +1,11 @@
 <template>
   <div class="bg">
     <!--上部分-->
-    <el-card>
-      <el-row>
+    <el-card style="height:430px" id="bar">
+      <el-row >
         <!--设备概览-->
-        <el-col :span="10">
-          <span style="font-weight: 700">设备状态概览</span>
+        <el-col :span="10" class="Biankuang">
+          <span style="font-weight: 700;">设备状态概览</span>
           <hr />
           <br />
           <div class="grid-content bg-purple text">
@@ -50,13 +50,12 @@
             </el-row></div
         ></el-col>
         <!--仪表盘-->
-        <el-col :span="14">
+        <el-col :span="14" style="padding-left: 50px">
           <div
             class="grid-content bg-purple-light"
             style="width: 900px; height: 400px"
           >
             <el-row>
-              
               <el-col :span="8"
                 ><div
                   class="grid-content bg-purple"
@@ -70,17 +69,9 @@
                   <p>最后轮转时间：2021-06-18 11:56:32</p>
                 </div>
               </el-col>
-              <el-col :span="8"
-                ><div
-                  class="grid-content bg-purple-light"
-                  style="border: 2px solid blue"
-                ></div
-              ></el-col>
-              <el-col :span="8"
-                ><div
-                  class="grid-content bg-purple"
-                  style="border: 2px solid pink"
-                ></div
+              <el-col :span="16"
+                ><div class="grid-content bg-purple-light">
+                  <the-Radarmap></the-Radarmap></div
               ></el-col>
             </el-row>
           </div>
@@ -89,33 +80,27 @@
     </el-card>
     <br />
     <!--下部分-->
-    <el-card>
-      <el-row :gutter="5">
-        <el-col :span="8"
+    <el-card id="bar">
+      <el-row>
+        <el-col :span="24"
           ><div
             class="grid-content bg-purple"
-            style="border: 1px solid blue; width: 400px; height: 300px"
-            id="zhu"
-          ></div
-        ></el-col>
-        <el-col :span="8"
-          ><div
-            class="grid-content bg-purple"
-            style="border: 1px solid red; width: 400px; height: 300px"
-          ></div
-        ></el-col>
-        <el-col :span="8"
-          ><div
-            class="grid-content bg-purple"
-            style="border: 1px solid green; width: 400px; height: 300px"
-          ></div
+          >
+          <the-Accrsssuccess></the-Accrsssuccess>
+          </div
         ></el-col>
       </el-row>
     </el-card>
   </div>
 </template>
 <script>
+import Radarmap from "./RadarMap";
+import Accrsssuccess from "./AccrssSuccess.vue"
 export default {
+  components: {
+    "the-Radarmap": Radarmap,
+    "the-Accrsssuccess":Accrsssuccess
+  },
   name: "page",
   mounted() {
     this.echartsInit();
@@ -172,15 +157,25 @@ export default {
           ],
         }),
         this.$echarts.init(document.getElementById("YiBiao")).setOption({
+          title: {
+            text: "CPU利用率",
+            textStyle: {
+              color: "#212222",
+              fontSize: 16,
+            },
+            left: "center",
+          },
+          
           series: [
             {
               type: "gauge",
+              center:['50%','60%'],
               axisLine: {
                 lineStyle: {
                   width: 15, // 宽度
                   color: [
                     // 颜色区域划分
-                    [0.3, "#67e0e3"],
+                    [0.3, "darkseagreen"],
                     [0.7, "#37a2da"],
                     [1, "#fd666d"],
                   ],
@@ -246,6 +241,7 @@ export default {
   width: 169px;
   border-radius: 10px;
   background-color: darkseagreen;
+
   height: 138px;
   text-align: center;
 }
@@ -272,5 +268,12 @@ export default {
 }
 .Ziti {
   color: darkgrey;
+}
+#bar{
+   background-color:#c2f2fd; 
+}
+.Biankuang {
+  padding-left: 5px;
+  padding-right: 5px;
 }
 </style>

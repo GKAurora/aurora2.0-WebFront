@@ -109,7 +109,8 @@ export default {
     overflow: hidden;
     background: #fff;
     padding-right: 120px;
-    box-shadow: 0 5px 10px #ddd;
+    /* box-shadow: 0 5px 10px #ddd; */
+    /* background-color: #13C2C2; */
 }
 
 .tags ul {

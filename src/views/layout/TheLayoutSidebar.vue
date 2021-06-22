@@ -47,6 +47,7 @@ export default {
   .sidebar-menu {
     border: none;
     height: 100%;
+    // background-color:#1e174c ;
   }
 }
 
