@@ -64,6 +64,15 @@ const staticRouter = [
           }
         ]
       },{
+        path: '/topology',
+        name: 'Map',
+        meta: {
+          title: '网络拓扑'
+        },
+        title: 'menu.topology',
+        icon: 'el-icon-share',
+        component: () => import('../views/topology/Topo')
+      },{
         path: '/map',
         name: 'Map',
         meta: {

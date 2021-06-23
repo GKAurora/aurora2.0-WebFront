@@ -110,6 +110,16 @@ export default {
     ...mapState(['user'])
   },
   methods: {
+    switchChange() {
+      this.checked = !this.checked
+      this.theme = this.checked ? 'dark' : 'default'
+      updateTheme(this.theme)
+    },
+    updateValue(e) {
+      const color = e.hex
+      window.localStorage.setItem('themeColor', color)
+      updateTheme(this.theme)
+    },
     modelBrn(){
       this.dark = !this.dark;
       if(this.dark){
@@ -147,6 +157,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.warpper {
+  display: flex;
+}
 .header {
   color: #ffffff;
   line-height: 60px;

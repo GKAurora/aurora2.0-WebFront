@@ -32,6 +32,7 @@ export default {
     overview: '设备概览',
     details:'设备详情',
     flow: '流量分析',
+    topology:'网络拓扑',
     user: '用户管理',
     map: '位置地图',
     log:'日志分析',
