@@ -1,0 +1,82 @@
+<template>
+  <div id="Dashboard" style="width: 300px; height: 300px;"></div>
+</template>
+<script>
+export default {
+  name: "page",
+  mounted() {
+    this.getDash();
+  },
+  methods: {
+    getDash() {
+      this.$echarts.init(document.getElementById("Dashboard")).setOption({
+        title: {
+          text: "CPU利用率",
+          textStyle: {
+            color: "#212222",
+            fontSize: 16,
+          },
+          left: "center",
+        },
+
+        series: [
+          {
+            type: "gauge",
+            center: ["50%", "60%"],
+            axisLine: {
+              lineStyle: {
+                width: 15, // 宽度
+                color: [
+                  // 颜色区域划分
+                  [0.3, "darkseagreen"],
+                  [0.7, "#37a2da"],
+                  [1, "#fd666d"],
+                ],
+              },
+            },
+            pointer: {
+              itemStyle: {
+                color: "auto",
+              },
+            },
+            axisTick: {
+              distance: -20, // 刻度位置
+              length: 5,
+              lineStyle: {
+                color: "#fff",
+                width: 1,
+              },
+            },
+            splitLine: {
+              distance: -30, // 刻度值位置
+              length: 30,
+              lineStyle: {
+                color: "#fff",
+                width: 2,
+              },
+            },
+            axisLabel: {
+              color: "auto", // 刻度值位置
+              distance: -10,
+              fontSize: 16,
+            },
+            detail: {
+              fontSize: 25,
+              valueAnimation: true,
+              formatter: "{value} %",
+              color: "auto",
+            },
+            data: [
+              {
+                value: 40,
+              },
+            ],
+          },
+        ],
+      });
+    },
+  },
+};
+</script>
+<style lang="scss" scoped>
+</style>

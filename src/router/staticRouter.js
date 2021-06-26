@@ -20,15 +20,6 @@ const staticRouter = [
     name: 'layout',
     component: () => import('@/views/layout/TheLayout'),
     children: [
-      // {
-      //   path: '/index',
-      //   menu: true,
-      //   name: 'index',
-      //   title: 'menu.equipment',
-      //   icon: 'el-icon-s-home',
-      //   // component: () => import('../G6/test')
-      //   // component: () => import('../views/index/index'),
-      //   children: [  
       {
         path: '/index',
         name: 'index',
@@ -46,7 +37,7 @@ const staticRouter = [
         },
         title: 'menu.flow',
         icon: 'el-icon-odometer',
-        component:() => import('../views/index/device/Devicedetails')
+        component:() => import('../views/device/Devicedetails')
       }
       , {
         path: '/test2',
@@ -56,8 +47,7 @@ const staticRouter = [
         },
         title: 'menu.details',
         icon: 'el-icon-mobile-phone',
-        component:() => import('../views/index/flow/FlowMonitoring')
-        // component:() => import('../views/index/test')
+        component:() => import('../views/flow/FlowMonitoring')
       },
       {
         path: '/topology',
@@ -86,6 +76,7 @@ const staticRouter = [
         title: 'menu.log',
         icon: 'el-icon-notebook-2',
         component: () => import('../views/log/EquLog')
+        // component:() => import('../views/index/Annular')
       },{
         path: '/user',
         name: 'user',
