@@ -1,6 +1,8 @@
 <template>
   <!-- canvas 挂载节点 -->
-  <div id="graph"></div>
+  <div id="graph">
+    <img src="../../assets/img/equipment/AP.png" hidden>
+  </div>
 </template>
 
 <script>
@@ -44,7 +46,7 @@ export default {
         groupByTypes: false,
         container: document.getElementById("graph"),
         width: 1450,
-        height: 750,
+        height: 950,
         fitView: true,
         fitViewPadding: [50],
         layout: {
@@ -114,7 +116,7 @@ export default {
         nodes: [
           {
             id: "0",
-            img: "data:image/png;base64,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",
+            img: "./AP.png",
             size: [300, 250],
             type: "image",
             label: "ISP",

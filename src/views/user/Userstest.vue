@@ -49,6 +49,7 @@
           <template slot-scope="scope">
             <!--修改  scope.row.id：是拿到修改行的id，通过查询，把原始数据渲染到表单中-->
             <el-button
+              style="margin-right:1px;"
               type="primary"
               icon="el-icon-edit"
               size="mini"
@@ -56,6 +57,7 @@
             ></el-button>
             <!--删除-->
             <el-button
+              style="margin-right:8px;"
               type="danger"
               icon="el-icon-delete"
               size="mini"
@@ -248,7 +250,23 @@ export default {
         pagesize: 2, //每一页的数据总数
       },
       //列表数据
-      UserList: [],
+      UserList: [{
+          index: "1",
+          username: "小屋",
+          password: "123456",
+          mobile:'15766329736',
+          email: "2420674058@qq.com",
+          role_name: "超级管理员",
+          state: "true",
+        },{
+          index: "2",
+          username: "小九",
+          password: "123456",
+          mobile:'15766329736',
+          email: "2420674058@qq.com",
+          role_name: "管理员",
+          state: "true",
+        },],
       //数据总条数
       total: 0,
       //控制添加用户对话框的显示与隐藏
@@ -295,15 +313,15 @@ export default {
       },
       //添加用户表单数据
       // tableData: [
-      //   {
-      //     index: "1",
-      //     username: "小屋",
-      //     password: "123456",
-      //     phone:'15766329736',
-      //     email: "2420674058@qq.com",
-      //     role: "超级管理员",
-      //     state: "true",
-      //   },
+        // {
+        //   index: "1",
+        //   username: "小屋",
+        //   password: "123456",
+        //   phone:'15766329736',
+        //   email: "2420674058@qq.com",
+        //   role: "超级管理员",
+        //   state: "true",
+        // },
       // ],
       master_user: {
         sel: null, //选中行
@@ -393,6 +411,7 @@ export default {
       if (row.isSet) {
         //项目是模拟请求操作(function中的this.master_user.sel读取不到master_user导致无法保存)
         //函数自调用
+        console.log(this.master_user)
         (function () {
           let data = JSON.parse(JSON.stringify(this.master_user.sel));
           for (let k in data) row[k] = data[k];
@@ -499,7 +518,7 @@ export default {
   },
 };
 </script>
-<style lang="css" scoped>
+<style lang="scss" scoped>
 .el-table-add-row {
   margin-top: 10px;
   width: 100%;

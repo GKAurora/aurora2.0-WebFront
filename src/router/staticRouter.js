@@ -24,14 +24,10 @@ const staticRouter = [
         path: '/index',
         menu: true,
         name: 'index',
-        // meta:{
-        //   //title:'设备管理',
-        //   tree:4
-        // },
         title: 'menu.equipment',
         icon: 'el-icon-s-home',
         // component: () => import('../G6/test')
-        component: () => import('../views/index/index'),
+        // component: () => import('../views/index/index'),
         children: [
           {
             path: '/',
@@ -40,17 +36,17 @@ const staticRouter = [
               title: '设备概览'
             },
             title: 'menu.overview',
-            icon: 'el-icon-s-platform'
-            // component:() => import('../views/index/test')
+            icon: 'el-icon-s-platform',
+            component:() => import('../views/index/index')
           }, {
             path: '/test1',
-            name: 'test1',
+            name: 'index',
             meta: {
-              title: '流量分析'
+              title: '流量监控'
             },
             title: 'menu.flow',
-            icon: 'el-icon-s-platform'
-            // component:() => import('../views/index/test')
+            icon: 'el-icon-s-platform',
+            component:() => import('../views/log/EquLog')
           }
           , {
             path: '/test2',
@@ -59,7 +55,8 @@ const staticRouter = [
               title: '设备详情'
             },
             title: 'menu.details',
-            icon: 'el-icon-s-platform'
+            icon: 'el-icon-s-platform',
+            component:() => import('../views/log/EquLog')
             // component:() => import('../views/index/test')
           }
         ]
@@ -89,7 +86,7 @@ const staticRouter = [
         },
         title: 'menu.log',
         icon: 'el-icon-notebook-2',
-        component: () => import('../views/index/index')
+        component: () => import('../views/log/EquLog')
       },{
         path: '/user',
         name: 'user',
@@ -99,6 +96,16 @@ const staticRouter = [
         title: 'menu.user',
         icon: 'el-icon-s-custom',
         component: () => import('../views/user/Userstest')
+      }, 
+      {
+        path: '/test',
+        name: 'user',
+        meta: {
+          title: '测试'
+        },
+        title: 'menu.test',
+        icon: 'el-icon-loading',
+        component: () => import('../views/index/device/Devicedetails')
       }, 
     ]
   },
