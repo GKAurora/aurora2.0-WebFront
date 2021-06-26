@@ -20,47 +20,46 @@ const staticRouter = [
     name: 'layout',
     component: () => import('@/views/layout/TheLayout'),
     children: [
+      // {
+      //   path: '/index',
+      //   menu: true,
+      //   name: 'index',
+      //   title: 'menu.equipment',
+      //   icon: 'el-icon-s-home',
+      //   // component: () => import('../G6/test')
+      //   // component: () => import('../views/index/index'),
+      //   children: [  
       {
         path: '/index',
-        menu: true,
         name: 'index',
-        title: 'menu.equipment',
-        icon: 'el-icon-s-home',
-        // component: () => import('../G6/test')
-        // component: () => import('../views/index/index'),
-        children: [
-          {
-            path: '/',
-            name: 'index',
-            meta: {
-              title: '设备概览'
-            },
-            title: 'menu.overview',
-            icon: 'el-icon-s-platform',
-            component:() => import('../views/index/index')
-          }, {
-            path: '/test1',
-            name: 'index',
-            meta: {
-              title: '流量监控'
-            },
-            title: 'menu.flow',
-            icon: 'el-icon-s-platform',
-            component:() => import('../views/log/EquLog')
-          }
-          , {
-            path: '/test2',
-            name: 'index',
-            meta: {
-              title: '设备详情'
-            },
-            title: 'menu.details',
-            icon: 'el-icon-s-platform',
-            component:() => import('../views/log/EquLog')
-            // component:() => import('../views/index/test')
-          }
-        ]
+        meta: {
+          title: '设备概览'
+        },
+        title: 'menu.overview',
+        icon: 'el-icon-s-platform',
+        component:() => import('../views/index/index')
       }, {
+        path: '/test1',
+        name: 'index',
+        meta: {
+          title: '流量监控'
+        },
+        title: 'menu.flow',
+        icon: 'el-icon-odometer',
+        component:() => import('../views/index/device/Devicedetails')
+      }
+      , {
+        path: '/test2',
+        name: 'index',
+        meta: {
+          title: '设备详情'
+        },
+        title: 'menu.details',
+        icon: 'el-icon-mobile-phone',
+        component:() => import('../views/index/flow/FlowMonitoring')
+        // component:() => import('../views/index/test')
+      },
+      {
         path: '/topology',
         name: 'Map',
         meta: {
@@ -86,13 +85,8 @@ const staticRouter = [
         },
         title: 'menu.log',
         icon: 'el-icon-notebook-2',
-<<<<<<< HEAD
         component: () => import('../views/log/EquLog')
       },{
-=======
-        component: () => import('../views/index/index')
-      }, {
->>>>>>> 107fe8abee526843880598623225e104e0d9d2c1
         path: '/user',
         name: 'user',
         meta: {
@@ -101,21 +95,7 @@ const staticRouter = [
         title: 'menu.user',
         icon: 'el-icon-s-custom',
         component: () => import('../views/user/Userstest')
-<<<<<<< HEAD
-      }, 
-      {
-        path: '/test',
-        name: 'user',
-        meta: {
-          title: '测试'
-        },
-        title: 'menu.test',
-        icon: 'el-icon-loading',
-        component: () => import('../views/index/device/Devicedetails')
-      }, 
-=======
       }
->>>>>>> 107fe8abee526843880598623225e104e0d9d2c1
     ]
   },
   {

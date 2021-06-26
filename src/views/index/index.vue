@@ -241,7 +241,6 @@ export default {
   width: 169px;
   border-radius: 10px;
   background-color: darkseagreen;
-
   height: 138px;
   text-align: center;
 }
