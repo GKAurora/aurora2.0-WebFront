@@ -51,8 +51,8 @@ const staticRouter = [
             title: 'menu.flow',
             icon: 'el-icon-s-platform'
             // component:() => import('../views/index/test')
-          }
-          , {
+          },
+          {
             path: '/test2',
             name: 'index',
             meta: {
@@ -63,7 +63,7 @@ const staticRouter = [
             // component:() => import('../views/index/test')
           }
         ]
-      },{
+      }, {
         path: '/topology',
         name: 'Map',
         meta: {
@@ -72,7 +72,7 @@ const staticRouter = [
         title: 'menu.topology',
         icon: 'el-icon-share',
         component: () => import('../views/topology/Topo')
-      },{
+      }, {
         path: '/map',
         name: 'Map',
         meta: {
@@ -80,8 +80,8 @@ const staticRouter = [
         },
         title: 'menu.map',
         icon: 'el-icon-location',
-        component: () => import('../views/Map/main')
-      } ,{
+        component: () => import('../views/ESMap/esmap1')
+      }, {
         path: '/Log',
         name: 'index',
         meta: {
@@ -90,7 +90,7 @@ const staticRouter = [
         title: 'menu.log',
         icon: 'el-icon-notebook-2',
         component: () => import('../views/index/index')
-      },{
+      }, {
         path: '/user',
         name: 'user',
         meta: {
@@ -99,7 +99,7 @@ const staticRouter = [
         title: 'menu.user',
         icon: 'el-icon-s-custom',
         component: () => import('../views/user/Userstest')
-      }, 
+      }
     ]
   },
   {
