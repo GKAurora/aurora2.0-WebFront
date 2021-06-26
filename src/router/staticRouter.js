@@ -60,7 +60,7 @@ const staticRouter = [
             // component:() => import('../views/index/test')
           }
         ]
-      },{
+      }, {
         path: '/topology',
         name: 'Map',
         meta: {
@@ -69,7 +69,7 @@ const staticRouter = [
         title: 'menu.topology',
         icon: 'el-icon-share',
         component: () => import('../views/topology/Topo')
-      },{
+      }, {
         path: '/map',
         name: 'Map',
         meta: {
@@ -77,8 +77,8 @@ const staticRouter = [
         },
         title: 'menu.map',
         icon: 'el-icon-location',
-        component: () => import('../views/Map/main')
-      } ,{
+        component: () => import('../views/ESMap/esmap1')
+      }, {
         path: '/Log',
         name: 'index',
         meta: {
@@ -86,8 +86,13 @@ const staticRouter = [
         },
         title: 'menu.log',
         icon: 'el-icon-notebook-2',
+<<<<<<< HEAD
         component: () => import('../views/log/EquLog')
       },{
+=======
+        component: () => import('../views/index/index')
+      }, {
+>>>>>>> 107fe8abee526843880598623225e104e0d9d2c1
         path: '/user',
         name: 'user',
         meta: {
@@ -96,6 +101,7 @@ const staticRouter = [
         title: 'menu.user',
         icon: 'el-icon-s-custom',
         component: () => import('../views/user/Userstest')
+<<<<<<< HEAD
       }, 
       {
         path: '/test',
@@ -107,6 +113,9 @@ const staticRouter = [
         icon: 'el-icon-loading',
         component: () => import('../views/index/device/Devicedetails')
       }, 
+=======
+      }
+>>>>>>> 107fe8abee526843880598623225e104e0d9d2c1
     ]
   },
   {

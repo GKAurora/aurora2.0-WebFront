@@ -15,6 +15,7 @@
     "echarts": "^4.9.0",
     "element-ui": "^2.8.2",
     "gsap": "^2.1.2",
+    "heatmap.js": "^2.0.5",
     "hq": "0.0.4",
     "jquery": "^3.6.0",
     "less-loader": "^10.0.0",
