@@ -45,7 +45,8 @@ import {
   Tag,
   TimePicker,
   Transfer,
-  Upload
+  Upload,
+  Divider
 } from 'element-ui'
 import './assets/css/common.scss'
 import VueI18n from 'vue-i18n'
@@ -97,6 +98,7 @@ Vue.use(Tag)
 Vue.use(TimePicker)
 Vue.use(Transfer)
 Vue.use(Upload)
+Vue.use(Divider)
 Vue.prototype.$message = Message
 Vue.prototype.$echarts = echarts
 // 根据环境变量决定是否引入mock，引入后端时要注释掉
@@ -119,23 +121,23 @@ const i18n = new VueI18n({
 ElementLocale.i18n((key, value) => i18n.t(key, value))
 
 NProgress.configure({
-  easing:'ease',   //动画方式
-  speed:300,       //递增进度条的速度
-  showSpinner:false,    //是否显示加载ico
-  trickleSpeed:200,  //自动递增的间隔
-  minimum:0.3    //初始化时最小的百分比
+  easing: 'ease', // 动画方式
+  speed: 300, // 递增进度条的速度
+  showSpinner: false, // 是否显示加载ico
+  trickleSpeed: 200, // 自动递增的间隔
+  minimum: 0.3 // 初始化时最小的百分比
 })
 
-//路由进入前
-router.beforeEach((to,from,next)=>{
-  //每次切换页面，调用进度条
+// 路由进入前
+router.beforeEach((to, from, next) => {
+  // 每次切换页面，调用进度条
   NProgress.start()
-  //放行
+  // 放行
   next()
 })
-//路由进入后，关闭进度条
-router.afterEach(()=>{
-  //在即将进入新的页面组件前，关掉进度条
+// 路由进入后，关闭进度条
+router.afterEach(() => {
+  // 在即将进入新的页面组件前，关掉进度条
   NProgress.done()
 })
 
