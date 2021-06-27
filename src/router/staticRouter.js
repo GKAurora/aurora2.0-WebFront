@@ -75,8 +75,8 @@ const staticRouter = [
         },
         title: 'menu.log',
         icon: 'el-icon-notebook-2',
-        component: () => import('../views/log/EquLog')
-        // component:() => import('../views/index/Annular')
+        // component: () => import('../views/log/EquLog')
+        component:() => import('../views/index/AccessSuccess/AccessSuccess_line')
       },{
         path: '/user',
         name: 'user',

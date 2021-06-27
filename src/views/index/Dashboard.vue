@@ -41,15 +41,15 @@ export default {
             },
             axisTick: {
               distance: -20, // 刻度位置
-              length: 5,
+              length: 0,
               lineStyle: {
                 color: "#fff",
                 width: 1,
               },
             },
             splitLine: {
-              distance: -30, // 刻度值位置
-              length: 30,
+              distance: -10, // 刻度值位置
+              length: 0,
               lineStyle: {
                 color: "#fff",
                 width: 2,
@@ -57,8 +57,8 @@ export default {
             },
             axisLabel: {
               color: "auto", // 刻度值位置
-              distance: -10,
-              fontSize: 16,
+              distance: -20,
+              fontSize: 0,
             },
             detail: {
               fontSize: 25,

@@ -82,8 +82,8 @@ export default {
             },
             splitArea: {
               areaStyle: {
-                color: ["#A0D911", "#FEB5B5", "#F89797", "#F77B7B"], //四个环样式
-                shadowColor: "rgba(255, 0, 0, 0)", //透明度
+                color: ["#afd8ed", "#9dc9e0", "#88b7ce", "#74a4bc"], //四个环样式
+                shadowColor: "rgba(160, 206, 229, 0.9)", //透明度
                 shadowBlur: 10,
               },
             },
@@ -116,9 +116,9 @@ export default {
                 value: [90, 88, 50, 50, 40, 70],
                 itemStyle: {
                   normal: {
-                    color: "rgba(255,225,0,.6)",
+                    color: "rgba(255,255,255,.6)",
                     lineStyle: {
-                      color: "rgba(255,225,0,.6)",
+                      color: "rgba(255,255,255,.6)",
                     },
                   },
                 },
@@ -127,11 +127,11 @@ export default {
                   color: this.$echarts.graphic.RadialGradient(0.1, 0.6, 1, [
                     //颜色遮盖
                     {
-                      color: "rgba(255, 145, 124, 0.9)",
+                      color: "rgba(179, 192, 198, 0.9)",
                       offset: 0,
                     },
                     {
-                      color: "rgba(255, 145, 124, 0.9)",
+                      color: "rgba(179, 192, 198, 0.9)",
                       offset: 1,
                     },
                   ]),
