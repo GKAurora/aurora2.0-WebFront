@@ -5,10 +5,6 @@
         <img src="../../assets/img/about/拓扑.png" alt="" style="width:100%; height: auto">
       </div>
   </div>
-  <div style="width:100%; height:40px">
-    <!-- <el-button type="primary" id="heatmap_1">新冠感染区域</el-button> -->
-    <el-button type="primary" id="start">感染者运动轨迹</el-button>
-  </div>
 </div>
 </template>
 
@@ -28,17 +24,21 @@ export default {
     getRectValue () {
       this.cavWidth = document.getElementById('heatmap').clientWidth
       this.cavHeight = document.getElementById('heatmap').clientHeight
-      console.log(this.cavWidth, this.cavHeight)
+      // console.log(this.cavWidth, this.cavHeight)
     },
     // 初始化获取数据（模拟的展示数据）
     initValue () {
       var len = 30
       while (len--) {
         var val = Math.floor(Math.random() * 100)
-        // max = Math.max(max, val) 
+        // max = Math.max(max, val)
         var point = {
-          x: Math.floor(Math.random() * 1120),
-          y: Math.floor(Math.random() * 629),
+          // x: Math.floor(Math.random() * 1118),
+          // y: Math.floor(Math.random() * 532),
+          // x: Math.floor(288 * 800 / 1681),
+          // y: Math.floor(108 * 800 / 1681),
+          x: Math.floor(288 * 901 / 1900),
+          y: Math.floor(108 * 901 / 1900),
           value: val
         }
         this.points.push(point)
