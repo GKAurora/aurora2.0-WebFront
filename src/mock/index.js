@@ -21,21 +21,21 @@ export default {
       'code': 1,
       'id': '100001',
       'name': 'admin',
-      'roles': ['admin'],
-      'permissions': [
-        { name: 'index' },
-        { name: 'Map' },
-        { name: 'user' },
-        { name: 'test1' },
-        { name: 'charts' },
-        { name: 'errorDemo403' },
-        { name: 'errorDemo404' },
-        { name: 'errorDemo500' },
-        { name: 'drag' },
-        { name: 'userPassword' },
-        { name: 'userPermissions' },
-        { name: 'about' }
-      ]
+      'roles': ['admin']
+      // 'permissions': [
+      //   { name: 'index' },
+      //   { name: 'Map' },
+      //   { name: 'user' },
+      //   { name: 'test1' },
+      //   { name: 'charts' },
+      //   { name: 'errorDemo403' },
+      //   { name: 'errorDemo404' },
+      //   { name: 'errorDemo500' },
+      //   { name: 'drag' },
+      //   { name: 'userPassword' },
+      //   { name: 'userPermissions' },
+      //   { name: 'about' }
+      // ]
     })
     Mock.mock('/api/user/changePassword', {
       'code': 1,
