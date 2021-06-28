@@ -1,30 +1,30 @@
 <template>
-  <div id="AccessSuccess_line" style="width: 950px; height: 250px"></div>
+  <div id="RoamDefence" style="width: 950px; height: 250px"></div>
 </template>
 <script>
 var data = [
-  ["00:00", 86],
-  ["01:00", 85],
-  ["02:00", 68],
-  ["03:00", 86],
-  ["04:00", 73],
-  ["05:00", 85],
-  ["06:00", 73],
-  ["07:00", 68],
+  ["00:00", 34],
+  ["01:00", 56],
+  ["02:00", 98],
+  ["03:00", 12],
+  ["04:00", 43],
+  ["05:00", 43],
+  ["06:00", 86],
+  ["07:00", 27],
   ["08:00", 92],
   ["09:00", 30],
   ["10:00", 45],
-  ["11:00", 39],
+  ["11:00", 75],
   ["12:00", 15],
-  ["13:00", 11],
-  ["14:00", 9],
-  ["15:00", 6],
+  ["13:00", 97],
+  ["14:00", 63],
+  ["15:00", 21],
   ["16:00", 37],
-  ["17:00", 28],
-  ["18:00", 85],
+  ["17:00", 35],
+  ["18:00", 27],
   ["19:00", 94],
   ["20:00", 71],
-  ["21:00", 6],
+  ["21:00", 78],
   ["22:00", 84],
   ["23:00", 93],
 ];
@@ -44,7 +44,7 @@ export default {
   methods: {
     getAccessSuccess() {
       this.$echarts
-        .init(document.getElementById("AccessSuccess_line"))
+        .init(document.getElementById("RoamDefence"))
         .setOption({
           // Make gradient line here
           visualMap: [
@@ -62,15 +62,12 @@ export default {
           title: [
             {
               left: "8%",
-              text: "接入成功率",
+              text: "漫游达标率",
               textStyle: {
                 color: "#fff",
               },
             },
           ],
-          tooltip: {
-            trigger: "axis",
-          },
           toolbox: {
             feature: {
               saveAsImage: {}, //这样子就具备了下载图片功能
@@ -81,12 +78,16 @@ export default {
               },
             },
           },
+          tooltip: {
+            trigger: "axis",
+          },
           xAxis: [
             {
               data: dateList,
             },
           ],
-          yAxis: [{}],
+          yAxis: [{}
+          ],
           grid: [
             {
               show: true,
@@ -113,11 +114,11 @@ export default {
                   colorStops: [
                     {
                       offset: 0,
-                      color: "rgba(157,163,179,.8)", // 0% 处的颜色
+                      color: 'rgba(157,163,179,.8)', // 0% 处的颜色
                     },
                     {
                       offset: 1,
-                      color: "rgba(157,163,179,.2)", // 100% 处的颜色
+                      color: 'rgba(157,163,179,.2)', // 100% 处的颜色
                     },
                   ],
                   global: false, // 缺省为 false

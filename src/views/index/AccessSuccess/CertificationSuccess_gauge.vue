@@ -1,7 +1,7 @@
 <template>
   <div
     id="CertificationSuccess"
-    style="width: 150px; height: 340px;"
+    style="width: 150px; height: 250px;"
   ></div>
 </template>
 <script>
@@ -27,14 +27,16 @@ export default {
               show: true,
               overlap: false,
               roundCap: true,
-              // itemStyle: {         //边框
-              //   borderWidth: 1,
-              //   borderColor: "#464646",
-              // },
+              itemStyle: {         //边框
+                borderWidth: 1,
+                color:'#7DD652',              //进度条颜色
+                // borderColor: "#464646",
+              },
             },
             axisLine: {
               lineStyle: {
                 width: 7, //宽度
+                color:[[1,"#fff"]]     //圆环背景颜色
               },
             },
             splitLine: {
@@ -61,6 +63,7 @@ export default {
             title: {
               //标题样式
               fontSize: 16,
+              color:'#fff'
             },
             detail: {
               //数值样式
@@ -68,6 +71,8 @@ export default {
               color: "auto",
               borderColor: "auto",
               formatter: "{value}%",
+              color:'#fff',
+              valueAnimation:true    //数值动态渲染
             },
           },
         ],

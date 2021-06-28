@@ -1,7 +1,7 @@
 <template>
   <div
     id="AccessSuccess_guape"
-    style="width: 150px; height: 340px;"
+    style="width: 150px; height: 250px;"
   ></div>
 </template>
 <script>
@@ -27,15 +27,20 @@ export default {
               show: true,
               overlap: false,
               roundCap: true,
-              // itemStyle: {         //边框
-              //   borderWidth: 1,
-              //   borderColor: "#464646",
-              // },
+              itemStyle: {         //边框
+                borderWidth: 1,
+                // borderColor: "blue",      //边框颜色
+                color:'#7DD652',              //进度条颜色
+                shadowColor:'#000'
+              },
             },
             axisLine: {
               lineStyle: {
                 width: 7, //宽度
+                // color:'#fff'
+                color:[[1,"#fff"]]     //圆环背景颜色
               },
+              
             },
             splitLine: {
               show: false, //刻度
@@ -61,6 +66,7 @@ export default {
             title: {
               //标题样式
               fontSize: 16,
+              color:'#fff'
             },
             detail: {
               //数值样式
@@ -68,6 +74,8 @@ export default {
               color: "auto",
               borderColor: "auto",
               formatter: "{value}%",
+              color:'#fff',    //数值颜色
+              valueAnimation:true    //数值动态渲染
             },
           },
         ],

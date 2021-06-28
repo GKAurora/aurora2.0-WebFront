@@ -1,25 +1,24 @@
 <template>
-  <div
-    id="DhcpSuccess"
-    style="width: 150px; height: 250px;"
-  ></div>
+  <div id="RoamTime" style="width: 225px; height: 225px"></div>
 </template>
 <script>
 export default {
   name: "page",
   mounted() {
-    this.getDhcpSuccess();
+    this.getAccessSuccess();
   },
   methods: {
-    getDhcpSuccess() {
-      this.$echarts.init(document.getElementById("DhcpSuccess")).setOption({
+    getAccessSuccess() {
+      this.$echarts.init(document.getElementById("RoamTime")).setOption({
         series: [
           {
             type: "gauge",
-            radius: "80%", //大小
+            radius: "55%", //大小
             center: ["50%", "45%"], //显示位置
             startAngle: 90,
             endAngle: -270,
+            min: 0, //控制整个圆环数值范围
+            max: 400,
             pointer: {
               show: false,
             },
@@ -27,16 +26,17 @@ export default {
               show: true,
               overlap: false,
               roundCap: true,
-              itemStyle: {         //边框
+              itemStyle: {
+                //边框
                 borderWidth: 1,
                 // borderColor: "#464646",
-                color:'#7DD652',              //进度条颜色
+                color: "#7DD652", //进度条颜色
               },
             },
             axisLine: {
               lineStyle: {
                 width: 7, //宽度
-                color:[[1,"#fff"]]     //圆环背景颜色
+                color: [[1, "#fff"]], //圆环背景颜色
               },
             },
             splitLine: {
@@ -50,8 +50,8 @@ export default {
             },
             data: [
               {
-                value: 75,
-                name: "DHCP成功率",
+                value: 187,
+                name: "漫游耗时",
                 title: {
                   offsetCenter: ["0%", "150%"], //标题显示位置
                 },
@@ -63,16 +63,16 @@ export default {
             title: {
               //标题样式
               fontSize: 16,
-              color:'#fff'
+              color: "#fff",
             },
             detail: {
               //数值样式
-              fontSize: 24,
+              fontSize: 22,
               color: "auto",
               borderColor: "auto",
-              formatter: "{value}%",
+              formatter: "{value}ms",
               color:'#fff',
-              valueAnimation:true    //数值动态渲染
+              valueAnimation: true, //数值动态渲染
             },
           },
         ],

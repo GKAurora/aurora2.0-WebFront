@@ -48,7 +48,7 @@ export default {
         title: {
           text: "设备健康度",
           textStyle: {
-            color: "#212222",
+            color: "#fff",
             fontSize: 16,
           },
           left:'33%',
@@ -77,7 +77,7 @@ export default {
               //字体样式
               formatter: "{value}",
               textStyle: {
-                color: "#000",
+                color: "#darkgray",
               },
             },
             splitArea: {
@@ -103,6 +103,9 @@ export default {
         series: [
           {
             name: "设备健康度",
+            textStyle:{
+              color:'#fff'
+            },
             type: "radar",
             Symbol: "circle",
             symbolSize: 5,

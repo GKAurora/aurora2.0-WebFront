@@ -13,7 +13,7 @@ export default {
         title: {
           text: "CPU利用率",
           textStyle: {
-            color: "#212222",
+            color: "#fff",
             fontSize: 16,
           },
           left: "center",
@@ -57,8 +57,8 @@ export default {
             },
             axisLabel: {
               color: "auto", // 刻度值位置
-              distance: -20,
-              fontSize: 0,
+              distance: -10,
+              fontSize: 14,
             },
             detail: {
               fontSize: 25,

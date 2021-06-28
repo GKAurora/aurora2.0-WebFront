@@ -23,6 +23,8 @@ export default {
           },
         },
         legend: {
+          orient: "vertical",
+          left: "center",
           data: [
             "接入成功率",
             "接入耗时",
@@ -91,7 +93,7 @@ export default {
             emphasis: {
               focus: "series",
             },
-            data:  [60, 50, 30, 80, 52,60, 85],
+            data: [60, 50, 30, 80, 52, 60, 85],
           },
           {
             name: "信号和干扰",
@@ -102,7 +104,7 @@ export default {
             emphasis: {
               focus: "series",
             },
-            data:  [57, 60, 89, 40, 60, 39, 85]
+            data: [57, 60, 89, 40, 60, 39, 85],
           },
           {
             name: "容量健康度",
@@ -113,7 +115,7 @@ export default {
             emphasis: {
               focus: "series",
             },
-            data:  [40, 50, 60, 70, 90, 80, 85]
+            data: [40, 50, 60, 70, 90, 80, 85],
           },
           {
             name: "吞吐达标率",
@@ -128,7 +130,7 @@ export default {
             emphasis: {
               focus: "series",
             },
-            data: [40, 50, 60, 70, 90, 80, 85]
+            data: [40, 50, 60, 70, 90, 80, 85],
           },
         ],
       });
