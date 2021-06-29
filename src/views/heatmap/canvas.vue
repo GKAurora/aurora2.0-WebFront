@@ -30,9 +30,7 @@ let area_id2 = {
   'area_3': {},
   'area_1': {},
   'area_5': {},
-  'area_9': {},
-  'area_7': {},
-  'area_8': {}
+  'area_9': {}
 }
 export default {
   data () {
@@ -53,18 +51,64 @@ export default {
       img = document.getElementById('scream')
       ctx = canvas.getContext('2d')
       img.onload = function () {
-        for (const key in area_id2) {
-          b_key = key
-          b = area_id2[key]
-          for (const key1 in area_id) {
-            a_key = key1
-            a = area_id[key1]
+        for (const key in area_id) {
+          a_key = key
+          a = area_id[key]
+          for (const key1 in area_id2) {
+            b_key = key1
+            b = area_id2[key1]
             if (b_key === a_key) {
               b = a
               area_id2[key1] = b
             }
           }
         }
+
+        // var keys = Object.keys(area_id2)
+        // var sum = []
+        // for (let i = 0; i < keys.length; i++) {
+        //   sum.push(keys[i])
+        //   console.log(sum[0])
+        //   let values = area_id2[keys[i]]
+        //   let oldvalues
+        //   let oldx
+        //   let oldy
+        //   let x = values.x * R
+        //   let y = values.y * R
+        //   let w = values.w * R
+        //   let h = values.h * R
+        //   if (i == 0) {
+        //     ctx.beginPath()
+        //     ctx.fillStyle = 'green'
+        //     ctx.fillRect(x, y, w, h)
+        //     ctx.closePath()
+        //     ctx.beginPath()
+        //     ctx.fillStyle = '#ffffff'
+        //     ctx.font = '10px Verdana'
+        //     ctx.fillText(sum[0], x - 20, y + 15)
+        //     ctx.closePath()
+        //   } else if (i > 1) {
+        //     oldvalues = area_id2[keys[i - 1]]
+        //     oldx = oldvalues.x * R
+        //     oldy = oldvalues.y * R
+        //     ctx.beginPath()
+        //     ctx.globalCompositeOperation = 'destination-over'
+        //     ctx.strokeStyle = 'rgba(255 ,165, 0, 1.0)'
+        //     ctx.moveTo(oldx, oldy)
+        //     ctx.lineTo(x, y)
+        //     ctx.stroke()
+        //     ctx.closePath()
+        //     ctx.beginPath()
+        //     ctx.fillStyle = 'red'
+        //     ctx.fillRect(x, y, w, h)
+        //     ctx.closePath()
+        //     ctx.beginPath()
+        //     ctx.fillStyle = '#ffffff'
+        //     ctx.font = '10px Verdana'
+        //     ctx.fillText(sum[i], x - 20, y + 15)
+        //     ctx.closePath()
+        //   }
+
         var keys = Object.keys(area_id2)
         var sum = []
         for (let i = 0; i < keys.length; i++) {
@@ -80,7 +124,7 @@ export default {
           let h = values.h * R
           if (i == 0) {
             ctx.beginPath()
-            ctx.fillStyle = 'red'
+            ctx.fillStyle = 'green'
             ctx.fillRect(x, y, w, h)
             ctx.closePath()
             ctx.beginPath()
@@ -88,15 +132,18 @@ export default {
             ctx.font = '10px Verdana'
             ctx.fillText(sum[0], x - 20, y + 15)
             ctx.closePath()
-          } else if (i > 0) {
+          } else if (i == 1) {
             oldvalues = area_id2[keys[i - 1]]
             oldx = oldvalues.x * R
             oldy = oldvalues.y * R
             ctx.beginPath()
             ctx.globalCompositeOperation = 'destination-over'
-            ctx.strokeStyle = 'rgba(255 ,165, 0, 0.7)'
+            ctx.strokeStyle = 'rgba(255 ,165, 0, 1.0)'
             ctx.moveTo(oldx, oldy)
-            ctx.lineTo(x, y)
+            ctx.lineTo(oldx, oldy-12)
+            ctx.lineTo(x,oldy-12)
+            ctx.lineTo(x,y)
+            // ctx.quadraticCurveTo(oldx, oldy - 20, x, y)
             ctx.stroke()
             ctx.closePath()
             ctx.beginPath()
@@ -108,7 +155,85 @@ export default {
             ctx.font = '10px Verdana'
             ctx.fillText(sum[i], x - 20, y + 15)
             ctx.closePath()
-          }
+          } else if (i == 2) {
+            oldvalues = area_id2[keys[i - 1]]
+            oldx = oldvalues.x * R
+            oldy = oldvalues.y * R
+            ctx.beginPath()
+            ctx.globalCompositeOperation = 'destination-over'
+            ctx.strokeStyle = 'rgba(255 ,165, 0, 1.0)'
+            ctx.moveTo(oldx+5, oldy)
+            ctx.lineTo(oldx+5, oldy-17)
+            ctx.lineTo(x,oldy-17)
+            ctx.lineTo(x,y)
+            // ctx.arcTo(x,y+30,x+10,y+30,10)
+            // ctx.lineTo(x+30,y+30)
+            // ctx.arcTo(oldx,y+30,oldx,oldy,10)
+            // ctx.lineTo(oldx+2,oldy)
+            // ctx.quadraticCurveTo(x-10, y + 30, oldx, oldy)
+            ctx.stroke()
+            ctx.closePath()
+            ctx.beginPath()
+            ctx.fillStyle = 'red'
+            ctx.fillRect(x, y, w, h)
+            ctx.closePath()
+            ctx.beginPath()
+            ctx.fillStyle = '#ffffff'
+            ctx.font = '10px Verdana'
+            ctx.fillText(sum[i], x - 20, y + 15)
+            ctx.closePath()
+          } else if (i == 3) {
+            oldvalues = area_id2[keys[i - 1]]
+            oldx = oldvalues.x * R
+            oldy = oldvalues.y * R
+            ctx.beginPath()
+            ctx.globalCompositeOperation = 'destination-over'
+            ctx.strokeStyle = 'rgba(255 ,165, 0, 1.0)'
+            ctx.moveTo(oldx, oldy)
+            ctx.lineTo(oldx+50, oldy)
+            ctx.lineTo(oldx+50,oldy+20)
+            ctx.lineTo(oldx+60,oldy+20)
+            ctx.lineTo(oldx+60,oldy+35)
+            ctx.lineTo(x,oldy+35)
+            ctx.lineTo(x,y)
+            ctx.stroke()
+            ctx.closePath()
+            ctx.beginPath()
+            ctx.fillStyle = 'red'
+            ctx.fillRect(x, y, w, h)
+            ctx.closePath()
+            ctx.beginPath()
+            ctx.fillStyle = '#ffffff'
+            ctx.font = '10px Verdana'
+            ctx.fillText(sum[i], x - 20, y + 15)
+            ctx.closePath()
+          } else if (i == 4) {
+            oldvalues = area_id2[keys[i - 1]]
+            oldx = oldvalues.x * R
+            oldy = oldvalues.y * R
+            ctx.beginPath()
+            ctx.globalCompositeOperation = 'destination-over'
+            ctx.strokeStyle = 'rgba(255 ,165, 0, 1.0)'
+            ctx.moveTo(oldx+5, oldy)
+            ctx.lineTo(oldx+5,oldy-15)
+            ctx.lineTo(x,oldy-15)
+            // ctx.lineTo(oldx+30, oldy)
+            // ctx.arcTo(oldx+2,oldy-15,oldx+15,oldy-15,15)
+            // ctx.lineTo(oldx+120,oldy-15)
+            // ctx.arcTo(oldx+130,oldy-15,oldx+130,oldy-25,10)
+            ctx.lineTo(x,y)
+            ctx.stroke()
+            ctx.closePath()
+            ctx.beginPath()
+            ctx.fillStyle = 'red'
+            ctx.fillRect(x, y, w, h)
+            ctx.closePath()
+            ctx.beginPath()
+            ctx.fillStyle = '#ffffff'
+            ctx.font = '10px Verdana'
+            ctx.fillText(sum[i], x - 20, y + 15)
+            ctx.closePath()
+          } 
         }
         canvas.onclick = function (e) {
         // 处理canvas的按下鼠标事件
