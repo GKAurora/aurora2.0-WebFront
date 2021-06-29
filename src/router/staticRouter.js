@@ -66,8 +66,18 @@ const staticRouter = [
         },
         title: 'menu.map',
         icon: 'el-icon-location',
-        component: () => import('../views/ESMap/esmap1')
+        component: () => import('../views/heatmap/index.vue')
       }, {
+        path: '/canvas',
+        name: 'Map1',
+        meta: {
+          title: '轨迹地图'
+        },
+        title: 'menu.map1',
+        icon: 'el-icon-position',
+        component: () => import('../views/heatmap/canvas')
+      },
+      {
         path: '/Log',
         name: 'index',
         meta: {

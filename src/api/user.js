@@ -15,6 +15,21 @@ export const requestRegister = params => {
 
 export const requestUserInfo = params => {
   return request('/api/user/info', params).then(res => {
+    res['permissions'] = [
+      { name: 'index' },
+      { name: 'Map' },
+      { name: 'Map1' },
+      { name: 'user' },
+      { name: 'test1' },
+      { name: 'charts' },
+      { name: 'errorDemo403' },
+      { name: 'errorDemo404' },
+      { name: 'errorDemo500' },
+      { name: 'drag' },
+      { name: 'userPassword' },
+      { name: 'userPermissions' },
+      { name: 'about' }
+    ]
     // 过滤菜单
     const filterUserMenu = function (menus, accessMenu) {
       menus.forEach(function (m) {
