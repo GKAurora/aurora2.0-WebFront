@@ -70,12 +70,6 @@ export default {
         // yField, //数据点中y坐标的属性名称
         // valueField //数据点中y坐标的属性名称
       })
-
-      var max = 0
-
-      // var width = 600
-
-      // var height = 400
       var data = {
         max: 100, // 数据对比(max和min进行数据对比，从而展示热力颜色)
         min: 0,
