@@ -29,15 +29,15 @@ export default {
   },
   menu: {
     equipment: 'equipment', // 设备
-    overview: 'overview', // 设备概览
-    details: 'details', // 设备详情
-    flow: 'flow', // 流量分析
+    overview: 'Equipment Overview', // 设备概览
+    details: 'Health Analysis', // 设备详情
+    flow: 'Flow Analysis', // 流量分析
     topology: 'topology', // 网络拓扑
-    user: 'user', // 用户列表
-    map: 'Map', // 位置地图
-    map1: 'Map1', //用户轨迹图
-    log: 'log',      //日志分析
-    account:'account',  //账号管理
+    user: 'User List', // 用户列表
+    map: 'Location Map', // 位置地图
+    map1: 'User Path', //用户轨迹图
+    log: 'Log Analysis',      //日志分析
+    account:'Account Management',  //账号管理
     test: 'test',
     home: 'Home',
     table: 'Table',

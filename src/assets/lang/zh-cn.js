@@ -30,7 +30,7 @@ export default {
   menu: {
     equipment: '设备管理',
     overview: '设备概览',
-    details: '设备详情',
+    details: '健康度分析',
     flow: '流量分析',
     topology: '网络拓扑',
     user: '用户列表',

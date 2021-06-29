@@ -28,7 +28,7 @@ const staticRouter = [
         },
         title: 'menu.overview',
         icon: 'el-icon-s-platform',
-        component:() => import('../views/index/index')
+        component:() => import('../views/index/indextest')
       },{
         path: '/user',
         name: 'user',
@@ -38,36 +38,38 @@ const staticRouter = [
         title: 'menu.user',
         icon: 'el-icon-s-custom',
         component: () => import('../views/user/UserList')
-      }, {
-        path: '/test1',
-        name: 'index',
-        meta: {
-          title: '流量监控'
-        },
-        title: 'menu.flow',
-        icon: 'el-icon-odometer',
-        component:() => import('../views/device/Devicedetails')
       }
+      // }, {
+      //   path: '/test1',
+      //   name: 'index',
+      //   meta: {
+      //     title: '流量监控'
+      //   },
+      //   title: 'menu.flow',
+      //   icon: 'el-icon-odometer',
+      //   component:() => import('../views/device/Devicedetails')
+      // }
       , {
         path: '/test2',
         name: 'index',
         meta: {
-          title: '设备详情'
+          title: '健康度分析'
         },
         title: 'menu.details',
-        icon: 'el-icon-mobile-phone',
+        icon: 'el-icon-odometer',
         component:() => import('../views/flow/FlowMonitoring')
       },
-      {
-        path: '/topology',
-        name: 'Map',
-        meta: {
-          title: '网络拓扑'
-        },
-        title: 'menu.topology',
-        icon: 'el-icon-share',
-        component: () => import('../views/topology/Topo')
-      }, {
+      // {
+      //   path: '/topology',
+      //   name: 'Map',
+      //   meta: {
+      //     title: '网络拓扑'
+      //   },
+      //   title: 'menu.topology',
+      //   icon: 'el-icon-share',
+      //   component: () => import('../views/topology/Topo')
+      // }, {
+        {
         path: '/map',
         name: 'Map',
         meta: {
