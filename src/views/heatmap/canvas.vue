@@ -26,13 +26,13 @@ let area_id =
   }
   // 遍历后端的用户区域
 let area_id2 = {
-  'area_1': {},
   'area_2': {},
   'area_3': {},
+  'area_1': {},
   'area_5': {},
   'area_9': {},
   'area_7': {},
-  'area_8': {},
+  'area_8': {}
 }
 export default {
   data () {
@@ -53,20 +53,23 @@ export default {
       img = document.getElementById('scream')
       ctx = canvas.getContext('2d')
       img.onload = function () {
-        for (const key in area_id) {
-          a_key = key
-          a = area_id[key]
-          for (const key1 in area_id2) {
-            b_key = key1
-            b = area_id2[key1]
-            if (a_key === b_key) {
+        for (const key in area_id2) {
+          b_key = key
+          b = area_id2[key]
+          for (const key1 in area_id) {
+            a_key = key1
+            a = area_id[key1]
+            if (b_key === a_key) {
               b = a
               area_id2[key1] = b
             }
           }
         }
         var keys = Object.keys(area_id2)
+        var sum = []
         for (let i = 0; i < keys.length; i++) {
+          sum.push(keys[i])
+          console.log(sum[0])
           let values = area_id2[keys[i]]
           let oldvalues
           let oldx
@@ -79,7 +82,11 @@ export default {
             ctx.beginPath()
             ctx.fillStyle = 'red'
             ctx.fillRect(x, y, w, h)
-            // console.log(x + ',' + y)
+            ctx.closePath()
+            ctx.beginPath()
+            ctx.fillStyle = '#ffffff'
+            ctx.font = '10px Verdana'
+            ctx.fillText(sum[0], x - 20, y + 15)
             ctx.closePath()
           } else if (i > 0) {
             oldvalues = area_id2[keys[i - 1]]
@@ -96,7 +103,33 @@ export default {
             ctx.fillStyle = 'red'
             ctx.fillRect(x, y, w, h)
             ctx.closePath()
+            ctx.beginPath()
+            ctx.fillStyle = '#ffffff'
+            ctx.font = '10px Verdana'
+            ctx.fillText(sum[i], x - 20, y + 15)
+            ctx.closePath()
           }
+        }
+        canvas.onclick = function (e) {
+        // 处理canvas的按下鼠标事件
+        //   let keyid2 = {}
+        //   for (const key_id2 in area_id2) {
+        //     keyid2[key_id2] = {}
+        //     // console.log(keyid2[key_id2])
+        //   }
+        //   var key2 = Object.keys(keyid2)
+        //   for (let i=0;i<key2.length;i++) {
+        //     console.log(key2[i] + keyid2[key2[i]])
+        //   }
+        //   alert(keyid2)
+        // }
+          var key2 = Object.keys(area_id2)
+          var sum = []
+          for (let i = 0; i < key2.length; i++) {
+            sum.push(key2[i])
+          }
+          let sum_string = sum.join('-->')
+          alert('用户路径：' + sum_string)
         }
       }
     }
