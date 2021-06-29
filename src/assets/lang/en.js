@@ -30,19 +30,14 @@ export default {
   menu: {
     equipment: 'equipment', // 设备
     overview: 'overview', // 设备概览
-<<<<<<< HEAD
-    details:'details',   //设备详情
-    flow: 'flow', // 流量监控
-    topology:'topology',  //网络拓扑
-=======
     details: 'details', // 设备详情
     flow: 'flow', // 流量分析
     topology: 'topology', // 网络拓扑
->>>>>>> cbd446c677cb2b2b9cdea1542fd84008db1d3fbc
-    user: 'user', // 用户管理
+    user: 'user', // 用户列表
     map: 'Map', // 位置地图
     map1: 'Map1', //用户轨迹图
-    log: 'log',
+    log: 'log',      //日志分析
+    account:'account',  //账号管理
     test: 'test',
     home: 'Home',
     table: 'Table',

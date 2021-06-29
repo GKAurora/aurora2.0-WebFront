@@ -1,3 +1,5 @@
+
+
 <template>
   <div>
     <!--卡片视图区域-->
@@ -29,10 +31,11 @@
       <el-table :data="UserList" border stripe>
         <!--索引列 type="index"-->
         <el-table-column type="index" label="序号" width="70px" align="center"></el-table-column>
-        <el-table-column label="姓名" prop="username" align="center"></el-table-column>
-        <el-table-column label="邮箱" prop="email" align="center"></el-table-column>
-        <el-table-column label="电话" prop="mobile" align="center"></el-table-column>
-        <el-table-column label="角色" prop="role_name" align="center"></el-table-column>
+        <el-table-column label="用户名" prop="userName" align="center"></el-table-column>
+        <el-table-column label="MAC地址" prop="userMac" align="center"></el-table-column>
+        <el-table-column label="所属区域" prop="reGion" align="center"></el-table-column>
+        <el-table-column label="接入类型" prop="accessType" align="center"></el-table-column>
+        <el-table-column label="角色" prop="roleName" align="center"></el-table-column>
         <!--由于后台状态数据是true或false，所以需要做数据转换-->
         <el-table-column label="状态" align="center">
           <!--slot-scope="scope"作用域插槽-->
@@ -49,7 +52,6 @@
           <template slot-scope="scope">
             <!--修改  scope.row.id：是拿到修改行的id，通过查询，把原始数据渲染到表单中-->
             <el-button
-              style="margin-right:1px;"
               type="primary"
               icon="el-icon-edit"
               size="mini"
@@ -57,7 +59,6 @@
             ></el-button>
             <!--删除-->
             <el-button
-              style="margin-right:8px;"
               type="danger"
               icon="el-icon-delete"
               size="mini"
@@ -252,20 +253,20 @@ export default {
       //列表数据
       UserList: [{
           index: "1",
-          username: "小屋",
-          password: "123456",
-          mobile:'15766329736',
-          email: "2420674058@qq.com",
-          role_name: "超级管理员",
-          state: "true",
+          userName: "小屋",
+          userMac: "cc-bb-fe-1e-18-e0",
+          reGion:'深圳',
+          accessType: "无线接入",
+          roleName: "超级管理员",
+          state: true,
         },{
           index: "2",
-          username: "小九",
-          password: "123456",
-          mobile:'15766329736',
-          email: "2420674058@qq.com",
-          role_name: "管理员",
-          state: "true",
+          userName: "小九",
+          userMac: "cc-bb-fe-1e-18-e0",
+          reGion:'广州',
+          accessType: "有线接入",
+          roleName: "管理员",
+          state: true,
         },],
       //数据总条数
       total: 0,

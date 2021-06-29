@@ -46,7 +46,9 @@ import {
   TimePicker,
   Transfer,
   Upload,
-  Divider
+  Divider,
+  RadioButton,
+  Tooltip
 } from 'element-ui'
 import './assets/css/common.scss'
 import VueI18n from 'vue-i18n'
@@ -99,6 +101,8 @@ Vue.use(TimePicker)
 Vue.use(Transfer)
 Vue.use(Upload)
 Vue.use(Divider)
+Vue.use(RadioButton)
+Vue.use(Tooltip)
 Vue.prototype.$message = Message
 Vue.prototype.$echarts = echarts
 // 根据环境变量决定是否引入mock，引入后端时要注释掉

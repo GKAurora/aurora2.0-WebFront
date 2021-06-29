@@ -30,19 +30,14 @@ export default {
   menu: {
     equipment: '设备管理',
     overview: '设备概览',
-<<<<<<< HEAD
-    details:'设备详情',
-    flow: '流量监控',
-    topology:'网络拓扑',
-=======
     details: '设备详情',
     flow: '流量分析',
     topology: '网络拓扑',
->>>>>>> cbd446c677cb2b2b9cdea1542fd84008db1d3fbc
-    user: '用户管理',
+    user: '用户列表',
     map: '位置地图',
     map1: '用户轨迹图',
     log: '日志分析',
+    account:'账号管理',
     test: '测试',
     home: '首页',
     table: '表格',

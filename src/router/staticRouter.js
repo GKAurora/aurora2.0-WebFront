@@ -29,6 +29,15 @@ const staticRouter = [
         title: 'menu.overview',
         icon: 'el-icon-s-platform',
         component:() => import('../views/index/index')
+      },{
+        path: '/user',
+        name: 'user',
+        meta: {
+          title: '用户列表'
+        },
+        title: 'menu.user',
+        icon: 'el-icon-s-custom',
+        component: () => import('../views/user/UserList')
       }, {
         path: '/test1',
         name: 'index',
@@ -85,17 +94,17 @@ const staticRouter = [
         },
         title: 'menu.log',
         icon: 'el-icon-notebook-2',
-        // component: () => import('../views/log/EquLog')
-        component:() => import('../views/index/AccrssSuccess')
+        component: () => import('../views/log/EquLog')
+        // component:() => import('../views/index/AccrssSuccess')
       },{
-        path: '/user',
-        name: 'user',
+        path: '/account',
+        name: 'index',
         meta: {
-          title: '用户管理'
+          title: '账号管理'
         },
-        title: 'menu.user',
-        icon: 'el-icon-s-custom',
-        component: () => import('../views/user/Userstest')
+        title: 'menu.account',
+        icon: 'el-icon-setting',
+        component: () => import('../views/account/AccountManagement')
       }
     ]
   },
