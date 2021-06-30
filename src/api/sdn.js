@@ -12,5 +12,27 @@ const sdn = {
                 start_time: start_time
             }
         }
+    },
+    getFloorDevice(site_id, level){
+        return {
+            url: `${this.prefix}/get_floor_device`,
+            method: 'get',
+            params: {
+                site_id: site_id,
+                level: level
+            }
+        }
+    },
+    getSitesMessage(site_id='/'){
+        return {
+            url: `${this.prefix}/get_sdn_info`,
+            method: 'get',
+            params: {
+                site_id: site_id
+            }
+        }
     }
+    // sdn接口4
 }
+
+export default sdn
