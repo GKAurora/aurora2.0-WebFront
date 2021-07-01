@@ -106,10 +106,10 @@ Vue.use(Tooltip)
 Vue.prototype.$message = Message
 Vue.prototype.$echarts = echarts
 // 根据环境变量决定是否引入mock，引入后端时要注释掉
-if (process.env.VUE_APP_USE_MOCK || (process.env.NODE_ENV !== 'production' && !process.env.VUE_APP_BACK_END_URL)) {
-  const Mock = require('./mock/index').default
-  Mock.mockData()
-}
+// if (process.env.VUE_APP_USE_MOCK || (process.env.NODE_ENV !== 'production' && !process.env.VUE_APP_BACK_END_URL)) {
+//   const Mock = require('./mock/index').default
+//   Mock.mockData()
+// }
 
 /* vue-i18n */
 Vue.use(VueI18n)
