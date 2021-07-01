@@ -1,199 +1,199 @@
 <template>
   <div>
     <!-- <el-card> -->
-      <el-row :gutter="20">
-        <el-col :span="24">
+      <el-row :gutter='20'>
+        <el-col :span='24'>
           <img
-            src="@/assets/img/about/bisai1.jpg"
-            style="width: 100%; height: auto"
-            id="img"
-            usemap="#Map"
-            border="0"
+            src='@/assets/img/about/bisai1.jpg'
+            style='width: 100%; height: auto'
+            id='img'
+            usemap='#Map'
+            border='0'
           />
-          <map name="Map" id="Map" @mouseenter="enter"
-              @mouseleave="leave">
-            <!-- coords="98,96,253,96,253,122,310,122,310,188,98,188" -->
+          <map name='Map' id='Map' @mouseenter='enter'
+              @mouseleave='leave'>
+            <!-- coords='98,96,253,96,253,122,310,122,310,188,98,188' -->
             <area
-              shape="poly"
-              :coords="map_1"
-              href="#"
-              target="_self"
-              alt="毕高现代客厅家具"
-              title="毕高现代客厅家具"
-              id="area1"
-              @mouseenter="enter"
-              @mouseleave="leave"
+              shape='poly'
+              :coords='map_1'
+              href='#'
+              target='_self'
+              alt='毕高现代客厅家具'
+              title='毕高现代客厅家具'
+              id='area1'
+              @mouseenter='enter'
+              @mouseleave='leave'
             />
             <area
-              shape="rect"
-              :coords="map_2"
-              href="#"
-              target="_self"
-              alt="维思嘉餐桌椅"
-              title="维思嘉餐桌椅"
-              id="area2"
+              shape='rect'
+              :coords='map_2'
+              href='#'
+              target='_self'
+              alt='维思嘉餐桌椅'
+              title='维思嘉餐桌椅'
+              id='area2'
             />
             <area
-              shape="rect"
-              :coords="map_3"
-              href="#"
-              target="_self"
-              alt="佳梦床垫"
-              title="佳梦床垫"
-              id="area3"
+              shape='rect'
+              :coords='map_3'
+              href='#'
+              target='_self'
+              alt='佳梦床垫'
+              title='佳梦床垫'
+              id='area3'
             />
             <area
-              shape="rect"
-              :coords="map_4"
-              href="#"
-              target="_self"
-              alt="天子. 朗晴板式家具"
-              title="天子. 朗晴板式家具"
-              id="area4"
+              shape='rect'
+              :coords='map_4'
+              href='#'
+              target='_self'
+              alt='天子. 朗晴板式家具'
+              title='天子. 朗晴板式家具'
+              id='area4'
             />
             <area
-              shape="rect"
-              :coords="map_5"
-              href="#"
-              target="_self"
-              alt="一米阳光板式家具"
-              title="一米阳光板式家具"
-              id="area5"
+              shape='rect'
+              :coords='map_5'
+              href='#'
+              target='_self'
+              alt='一米阳光板式家具'
+              title='一米阳光板式家具'
+              id='area5'
             />
             <area
-              shape="rect"
-              :coords="map_6"
-              href="#"
-              target="_self"
-              alt="佳宝丽订制家具"
-              title="佳宝丽订制家具"
-              id="area6"
+              shape='rect'
+              :coords='map_6'
+              href='#'
+              target='_self'
+              alt='佳宝丽订制家具'
+              title='佳宝丽订制家具'
+              id='area6'
             />
             <area
-              shape="poly"
-              :coords="map_7"
-              href="#"
-              target="_self"
-              alt="绿叶绿办公家具"
-              title="绿叶绿办公家具"
-              id="area7"
+              shape='poly'
+              :coords='map_7'
+              href='#'
+              target='_self'
+              alt='绿叶绿办公家具'
+              title='绿叶绿办公家具'
+              id='area7'
             />
             <area
-              shape="poly"
-              :coords="map_8"
-              href="#"
-              target="_self"
-              alt="飞腾办公家具"
-              title="飞腾办公家具"
-              id="area8"
+              shape='poly'
+              :coords='map_8'
+              href='#'
+              target='_self'
+              alt='飞腾办公家具'
+              title='飞腾办公家具'
+              id='area8'
             />
             <area
-              shape="poly"
-              :coords="map_9"
-              href="#"
-              target="_self"
-              alt="百发办公家具"
-              title="百发办公家具"
-              id="area9"
+              shape='poly'
+              :coords='map_9'
+              href='#'
+              target='_self'
+              alt='百发办公家具'
+              title='百发办公家具'
+              id='area9'
             />
             <area
-              shape="rect"
-              :coords="map_10"
-              href="#"
-              target="_self"
-              alt="青松办公家具"
-              title="青松办公家具"
-              id="area10"
+              shape='rect'
+              :coords='map_10'
+              href='#'
+              target='_self'
+              alt='青松办公家具'
+              title='青松办公家具'
+              id='area10'
             />
             <area
-              shape="rect"
-              :coords="map_11"
-              href="#"
-              target="_self"
-              alt="东金茶几餐桌椅"
-              title="东金茶几餐桌椅"
-              id="area11"
+              shape='rect'
+              :coords='map_11'
+              href='#'
+              target='_self'
+              alt='东金茶几餐桌椅'
+              title='东金茶几餐桌椅'
+              id='area11'
             />
             <area
-              shape="rect"
-              :coords="map_12"
-              href="#"
-              target="_self"
-              alt="蓝调沙发"
-              title="蓝调沙发"
-              id="area12"
+              shape='rect'
+              :coords='map_12'
+              href='#'
+              target='_self'
+              alt='蓝调沙发'
+              title='蓝调沙发'
+              id='area12'
             />
             <area
-              shape="poly"
-              :coords="map_13"
-              href="#"
-              target="_self"
-              alt="浪渡沙发"
-              title="浪渡沙发"
-              id="area13"
+              shape='poly'
+              :coords='map_13'
+              href='#'
+              target='_self'
+              alt='浪渡沙发'
+              title='浪渡沙发'
+              id='area13'
             />
             <area
-              shape="poly"
-              :coords="map_14"
-              href="#"
-              target="_self"
-              alt="办公区"
-              title="办公区"
-              id="area14"
+              shape='poly'
+              :coords='map_14'
+              href='#'
+              target='_self'
+              alt='办公区'
+              title='办公区'
+              id='area14'
             />
             <area
-              shape="poly"
-              :coords="map_15"
-              href="#"
-              target="_self"
-              alt="藤艺坊藤制家具"
-              title="藤艺坊藤制家具"
-              id="area15"
+              shape='poly'
+              :coords='map_15'
+              href='#'
+              target='_self'
+              alt='藤艺坊藤制家具'
+              title='藤艺坊藤制家具'
+              id='area15'
             />
             <area
-              shape="rect"
-              :coords="map_16"
-              href="#"
-              target="_self"
-              alt="斯帝来沙发"
-              title="斯帝来沙发"
-              id="area16"
+              shape='rect'
+              :coords='map_16'
+              href='#'
+              target='_self'
+              alt='斯帝来沙发'
+              title='斯帝来沙发'
+              id='area16'
             />
             <area
-              shape="poly"
-              :coords="map_17"
-              href="#"
-              target="_self"
-              alt="晶点时光儿童家具"
-              title="晶点时光儿童家具"
-              id="area17"
+              shape='poly'
+              :coords='map_17'
+              href='#'
+              target='_self'
+              alt='晶点时光儿童家具'
+              title='晶点时光儿童家具'
+              id='area17'
             />
             <area
-              shape="rect"
-              :coords="map_18"
-              href="#"
-              target="_self"
-              alt="慧点家具"
-              title="慧点家具"
-              id="area18"
+              shape='rect'
+              :coords='map_18'
+              href='#'
+              target='_self'
+              alt='慧点家具'
+              title='慧点家具'
+              id='area18'
             />
             <area
-              shape="rect"
-              :coords="map_19"
-              href="#"
-              target="_self"
-              alt="欧艺家板式家具"
-              title="欧艺家板式家具"
-              id="area19"
+              shape='rect'
+              :coords='map_19'
+              href='#'
+              target='_self'
+              alt='欧艺家板式家具'
+              title='欧艺家板式家具'
+              id='area19'
             />
             <area
-              shape="poly"
-              :coords="map_20"
-              href="#"
-              target="_self"
-              alt="园林办公家具"
-              title="园林办公家具"
-              id="area20"
+              shape='poly'
+              :coords='map_20'
+              href='#'
+              target='_self'
+              alt='园林办公家具'
+              title='园林办公家具'
+              id='area20'
             />
           </map>
         </el-col>
@@ -391,7 +391,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang='scss' scoped>
 * {
   margin: 0 auto;
   padding: 0;

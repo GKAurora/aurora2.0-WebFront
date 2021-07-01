@@ -1,22 +1,22 @@
 <template>
-  <div id="Annular" style="width: 500px; height: 250px"></div>
+  <div id='Annular' style='width: 500px; height: 250px'></div>
 </template>
 <script>
 export default {
-  name: "page",
+  name: 'page',
   mounted() {
     this.getAnnular();
   },
   methods: {
     getAnnular() {
-      this.$echarts.init(document.getElementById("Annular")).setOption({
+      this.$echarts.init(document.getElementById('Annular')).setOption({
         tooltip: {
-          trigger: "item",
+          trigger: 'item',
         },
         legend: {
           orient: 'vertical',    //竖直排列
-          top: "14%",
-          left: "78%",
+          top: '14%',
+          left: '78%',
           textStyle:{
             color:'#fff'
           },
@@ -24,30 +24,30 @@ export default {
         },
         series: [
           {
-            name: "设备状态",
-            type: "pie",
-            radius: ["45%", "75%"],
+            name: '设备状态',
+            type: 'pie',
+            radius: ['45%', '75%'],
             avoidLabelOverlap: false,
-            selectedMode: "multiple",
+            selectedMode: 'multiple',
             tooltip:{
               trigger:'item'
             },
             itemStyle: {              //每块区域的圆滑
               // 阴影
               borderRadius: 10,
-              borderColor: "#fff",
+              borderColor: '#fff',
               borderWidth: 2,
             },
             label: {          // 圆环中数据
               show: false,
-              position: "center",
+              position: 'center',
             },
             emphasis: {
               label: {
                 show: true,         //是否显示圆环中文字
-                fontSize: "16",
-                fontWeight: "bold",
-                color: "#fff",
+                fontSize: '16',
+                fontWeight: 'bold',
+                color: '#fff',
               },
             },
             labelLine: {
@@ -56,14 +56,14 @@ export default {
             data: [
               {
                 value: 40,
-                name: "接入成功数",
+                name: '接入成功数',
               },
-              { value: 50, name: "关联成功数" },
-              { value: 28, name: "关联失败数" },
-              { value: 19, name: "认证成功数" },
-              { value: 30, name: "认证失败数" },
-              { value: 27, name: "DHCP 成功数" },
-              { value: 42, name: "DHCP 失败数" },
+              { value: 50, name: '关联成功数' },
+              { value: 28, name: '关联失败数' },
+              { value: 19, name: '认证成功数' },
+              { value: 30, name: '认证失败数' },
+              { value: 27, name: 'DHCP 成功数' },
+              { value: 42, name: 'DHCP 失败数' },
             ],
           },
         ],
@@ -72,5 +72,5 @@ export default {
   },
 };
 </script>
-<style lang="scss" scoped>
+<style lang='scss' scoped>
 </style>

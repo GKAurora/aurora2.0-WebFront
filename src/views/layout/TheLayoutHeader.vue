@@ -1,61 +1,61 @@
 <template>
-  <el-header class="header el-button--primary">
-    <router-link to="/index">
-      <div class="logo" :class="{'logo-hide': !openNav}">
-        <img src="../../assets/img/about/网络安全.png" class="image"/>
-        <span class="text">SDN安全</span>
+  <el-header class='header el-button--primary'>
+    <router-link to='/index'>
+      <div class='logo' :class='{"logo-hide": !openNav}'>
+        <img src='../../assets/img/about/网络安全.png' class='image'/>
+        <span class='text'>SDN安全</span>
       </div>
     </router-link>
-    <div class="content">
-      <i class="el-icon-s-fold toggle" @click="navOpenToggle" :title="$t('header.toggleNavHide')" v-show="openNav"></i>
-      <i class="el-icon-s-unfold toggle" @click="navOpenToggle" :title="$t('header.toggleNavShow')"
-         v-show="!openNav"></i>
+    <div class='content'>
+      <i class='el-icon-s-fold toggle' @click='navOpenToggle' :title='$t("header.toggleNavHide")' v-show='openNav'></i>
+      <i class='el-icon-s-unfold toggle' @click='navOpenToggle' :title='$t("header.toggleNavShow")'
+         v-show='!openNav'></i>
     </div>
-    <div class="right max-right">
-      <div class="right-item">
+    <div class='right max-right'>
+      <div class='right-item'>
         {{ $t('header.themeChange') }}
         <theme-picker></theme-picker>
       </div>
-      <div class="right-item" @click="clickLangue">
-        <el-dropdown trigger="click" @command="changeLanguage" id="langDropDown">
-          <p class="user-info">
+      <div class='right-item' @click='clickLangue'>
+        <el-dropdown trigger='click' @command='changeLanguage' id='langDropDown'>
+          <p class='user-info'>
             {{ $t('header.languageSelect') }}
-            <i class="el-icon-arrow-down el-icon--right drop-icon" id="langDropIcon"></i>
+            <i class='el-icon-arrow-down el-icon--right drop-icon' id='langDropIcon'></i>
           </p>
-          <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item command="zh-cn" :disabled="this.lang==='zh-cn'">
+          <el-dropdown-menu slot='dropdown'>
+            <el-dropdown-item command='zh-cn' :disabled='this.lang==="zh-cn"'>
               {{$t('header.langZh')}}
             </el-dropdown-item>
-            <el-dropdown-item command="en" :disabled="this.lang==='en'">
+            <el-dropdown-item command='en' :disabled='this.lang==="en"'>
               {{$t('header.langEn')}}
             </el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
       </div>
-      <div class="right-item">
-        <el-dropdown trigger="click">
-          <p class="user-info">
-            {{ user.name }}<i class="el-icon-s-custom" style="margin-left: 10px"></i>
+      <div class='right-item'>
+        <el-dropdown trigger='click'>
+          <p class='user-info'>
+            {{ user.name }}<i class='el-icon-s-custom' style='margin-left: 10px'></i>
           </p>
-          <el-dropdown-menu slot="dropdown">
+          <el-dropdown-menu slot='dropdown'>
             <el-dropdown-item>
-              <router-link to="/user/password">
-                <el-link :underline="false">{{$t('header.modifyPass')}}</el-link>
+              <router-link to='/user/password'>
+                <el-link :underline='false'>{{$t('header.modifyPass')}}</el-link>
               </router-link>
             </el-dropdown-item>
-            <el-dropdown-item divided @click.native="logout()">
+            <el-dropdown-item divided @click.native='logout()'>
               {{$t('header.logout')}}
             </el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
       </div>
     </div>
-    <div class="right min-right">
-      <el-dropdown trigger="click" :hide-on-click="false">
-        <p class="user-info">
-          <i class="el-icon-s-custom"></i>
+    <div class='right min-right'>
+      <el-dropdown trigger='click' :hide-on-click='false'>
+        <p class='user-info'>
+          <i class='el-icon-s-custom'></i>
         </p>
-        <el-dropdown-menu slot="dropdown">
+        <el-dropdown-menu slot='dropdown'>
           <el-dropdown-item>
             {{ user.name }}
           </el-dropdown-item>
@@ -64,22 +64,22 @@
             <theme-picker></theme-picker>
           </el-dropdown-item>
           <el-dropdown-item>
-            <el-dropdown trigger="click" @command="changeLanguage" placement="left">
-              <p class="user-info">
+            <el-dropdown trigger='click' @command='changeLanguage' placement='left'>
+              <p class='user-info'>
                 {{ $t('header.languageSelect') }}
-                <i class="el-icon-arrow-down el-icon--right drop-icon"></i>
+                <i class='el-icon-arrow-down el-icon--right drop-icon'></i>
               </p>
-              <el-dropdown-menu slot="dropdown">
-                <el-dropdown-item command="zh-cn" :disabled="this.lang==='zh-cn'">
+              <el-dropdown-menu slot='dropdown'>
+                <el-dropdown-item command='zh-cn' :disabled='this.lang==="zh-cn"'>
                   {{$t('header.langZh')}}
                 </el-dropdown-item>
-                <el-dropdown-item command="en" :disabled="this.lang==='en'">
+                <el-dropdown-item command='en' :disabled='this.lang==="en"'>
                   {{$t('header.langEn')}}
                 </el-dropdown-item>
               </el-dropdown-menu>
             </el-dropdown>
           </el-dropdown-item>
-          <el-dropdown-item divided @click.native="logout()">
+          <el-dropdown-item divided @click.native='logout()'>
             {{$t('header.logout')}}
           </el-dropdown-item>
         </el-dropdown-menu>
@@ -123,9 +123,9 @@ export default {
     modelBrn(){
       this.dark = !this.dark;
       if(this.dark){
-        window.document.documentElement.setAttribute( "data-theme", 'dark' );
+        window.document.documentElement.setAttribute( 'data-theme', 'dark' );
       }else{
-         window.document.documentElement.setAttribute( "data-theme", 'light' );
+         window.document.documentElement.setAttribute( 'data-theme', 'light' );
       }
     },
     navOpenToggle () {
@@ -151,12 +151,12 @@ export default {
     }
   },
   mounted(){
-    window.document.documentElement.setAttribute( "data-theme", 'light' );
+    window.document.documentElement.setAttribute( 'data-theme', 'light' );
   }
 }
 </script>
 
-<style scoped lang="scss">
+<style scoped lang='scss'>
 .warpper {
   display: flex;
 }

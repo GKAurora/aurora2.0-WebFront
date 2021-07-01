@@ -1,34 +1,34 @@
 <template>
-  <div class="bg">
+  <div class='bg'>
     <!--下部分-->
-    <el-card id="bar">
-      <el-row class="test">
-        <el-col :span="24">
-          <div class="grid-content bg-purple-light">
+    <el-card id='bar'>
+      <el-row class='test'>
+        <el-col :span='24'>
+          <div class='grid-content bg-purple-light'>
             <el-row>
-              <el-col :span="8"
-                ><div class="grid-content bg-purple">
+              <el-col :span='8'
+                ><div class='grid-content bg-purple'>
                   <el-row>
-                    <el-col :span="8"
-                      ><div class="grid-content bg-purple">
+                    <el-col :span='8'
+                      ><div class='grid-content bg-purple'>
                         <the-AccessSuccess_guape></the-AccessSuccess_guape>
                       </div>
                     </el-col>
-                    <el-col :span="8"
-                      ><div class="grid-content bg-purple">
+                    <el-col :span='8'
+                      ><div class='grid-content bg-purple'>
                         <the-CertificationSuccess></the-CertificationSuccess>
                       </div>
                     </el-col>
-                    <el-col :span="8"
-                      ><div class="grid-content bg-purple">
+                    <el-col :span='8'
+                      ><div class='grid-content bg-purple'>
                         <the-DhcpSuccess></the-DhcpSuccess>
                       </div>
                     </el-col>
                   </el-row>
                 </div>
               </el-col>
-              <el-col :span="16"
-                ><div class="grid-content bg-purple-light">
+              <el-col :span='16'
+                ><div class='grid-content bg-purple-light'>
                   <the-AccessSuccess_line></the-AccessSuccess_line></div
               ></el-col>
             </el-row>
@@ -36,33 +36,33 @@
         </el-col>
       </el-row>
       <br />
-      <el-row class="test">
-        <el-col :span="24">
-          <div class="grid-content bg-purple-light">
+      <el-row class='test'>
+        <el-col :span='24'>
+          <div class='grid-content bg-purple-light'>
             <el-row>
-              <el-col :span="8"
-                ><div class="grid-content bg-purple">
+              <el-col :span='8'
+                ><div class='grid-content bg-purple'>
                   <el-row>
-                    <el-col :span="8"
-                      ><div class="grid-content bg-purple">
+                    <el-col :span='8'
+                      ><div class='grid-content bg-purple'>
                         <the-RelationTime></the-RelationTime>
                       </div>
                     </el-col>
-                    <el-col :span="8"
-                      ><div class="grid-content bg-purple">
+                    <el-col :span='8'
+                      ><div class='grid-content bg-purple'>
                         <the-Authentication></the-Authentication>
                       </div>
                     </el-col>
-                    <el-col :span="8"
-                      ><div class="grid-content bg-purple">
+                    <el-col :span='8'
+                      ><div class='grid-content bg-purple'>
                         <the-DhcpTime></the-DhcpTime>
                       </div>
                     </el-col>
                   </el-row>
                 </div>
               </el-col>
-              <el-col :span="16"
-                ><div class="grid-content bg-purple-light">
+              <el-col :span='16'
+                ><div class='grid-content bg-purple-light'>
                   <the-AccessTime_line></the-AccessTime_line></div
               ></el-col>
             </el-row>
@@ -70,26 +70,26 @@
         </el-col>
       </el-row>
       <br />
-      <el-row class="test">
-        <el-col :span="24">
-          <div class="grid-content bg-purple-light">
+      <el-row class='test'>
+        <el-col :span='24'>
+          <div class='grid-content bg-purple-light'>
             <el-row>
-              <el-col :span="8"
-                ><div class="grid-content bg-purple">
+              <el-col :span='8'
+                ><div class='grid-content bg-purple'>
                   <el-row>
-                    <el-col :span="12"
-                      ><div class="grid-content bg-purple">
+                    <el-col :span='12'
+                      ><div class='grid-content bg-purple'>
                         <the-RoamSuccess></the-RoamSuccess></div
                     ></el-col>
-                    <el-col :span="12"
-                      ><div class="grid-content bg-purple-light">
+                    <el-col :span='12'
+                      ><div class='grid-content bg-purple-light'>
                         <the-RoamTime></the-RoamTime></div
                     ></el-col>
                   </el-row>
                 </div>
               </el-col>
-              <el-col :span="16"
-                ><div class="grid-content bg-purple-light">
+              <el-col :span='16'
+                ><div class='grid-content bg-purple-light'>
                   <the-RoamDefence></the-RoamDefence></div
               ></el-col>
             </el-row>
@@ -97,26 +97,26 @@
         </el-col>
       </el-row>
       <br />
-      <el-row class="test">
-        <el-col :span="24">
-          <div class="grid-content bg-purple-light">
+      <el-row class='test'>
+        <el-col :span='24'>
+          <div class='grid-content bg-purple-light'>
             <el-row>
-              <el-col :span="8"
-                ><div class="grid-content bg-purple">
+              <el-col :span='8'
+                ><div class='grid-content bg-purple'>
                   <el-row>
-                    <el-col :span="12"
-                      ><div class="grid-content bg-purple">
+                    <el-col :span='12'
+                      ><div class='grid-content bg-purple'>
                         <the-Strength></the-Strength></div
                     ></el-col>
-                    <el-col :span="12"
-                      ><div class="grid-content bg-purple-light">
+                    <el-col :span='12'
+                      ><div class='grid-content bg-purple-light'>
                         <the-Interfere></the-Interfere></div
                     ></el-col>
                   </el-row>
                 </div>
               </el-col>
-              <el-col :span="16"
-                ><div class="grid-content bg-purple-light">
+              <el-col :span='16'
+                ><div class='grid-content bg-purple-light'>
                   <the-SignaInterference_line></the-SignaInterference_line></div
               ></el-col>
             </el-row>
@@ -127,45 +127,45 @@
   </div>
 </template>
 <script>
-import AccessSuccess_guape from "../index/AccessSuccess/AccessSuccess_guape.vue";
-import CertificationSuccess_gauge from "../index/AccessSuccess/CertificationSuccess_gauge.vue";
-import DhcpSuccess_gauge from "../index/AccessSuccess/DhcpSuccess_gauge.vue";
-import AccessSuccess_line from "../index/AccessSuccess/AccessSuccess_line.vue";
-import Authentication from "../index/AccessTime/AuthenticationTime.vue";
-import DhcpTime from "../index/AccessTime/DhcpTime.vue";
-import RelationTime from "../index/AccessTime/RelationTime.vue";
-import AccessTime_line from "../index/AccessTime/AccessTime_line.vue";
-import RoamSuccess from "../index/Roam/RoamSuccess.vue";
-import RoamTime from "../index/Roam/RoamTime.vue";
-import RoamDefence from "../index/Roam/RoamDefence.vue";
-import Strength from "../index/Signal/Strength.vue";
-import Interfere from "../index/Signal/Interfere.vue";
-import SignaInterference_line from "../index/Signal/SignaInterference_line.vue"
+import AccessSuccess_guape from '../index/AccessSuccess/AccessSuccess_guape.vue';
+import CertificationSuccess_gauge from '../index/AccessSuccess/CertificationSuccess_gauge.vue';
+import DhcpSuccess_gauge from '../index/AccessSuccess/DhcpSuccess_gauge.vue';
+import AccessSuccess_line from '../index/AccessSuccess/AccessSuccess_line.vue';
+import Authentication from '../index/AccessTime/AuthenticationTime.vue';
+import DhcpTime from '../index/AccessTime/DhcpTime.vue';
+import RelationTime from '../index/AccessTime/RelationTime.vue';
+import AccessTime_line from '../index/AccessTime/AccessTime_line.vue';
+import RoamSuccess from '../index/Roam/RoamSuccess.vue';
+import RoamTime from '../index/Roam/RoamTime.vue';
+import RoamDefence from '../index/Roam/RoamDefence.vue';
+import Strength from '../index/Signal/Strength.vue';
+import Interfere from '../index/Signal/Interfere.vue';
+import SignaInterference_line from '../index/Signal/SignaInterference_line.vue'
 export default {
   components: {
-    "the-AccessSuccess_guape": AccessSuccess_guape,
-    "the-CertificationSuccess": CertificationSuccess_gauge,
-    "the-DhcpSuccess": DhcpSuccess_gauge,
-    "the-AccessSuccess_line": AccessSuccess_line,
-    "the-Authentication": Authentication,
-    "the-DhcpTime": DhcpTime,
-    "the-RelationTime": RelationTime,
-    "the-AccessTime_line": AccessTime_line,
-    "the-RoamSuccess": RoamSuccess,
-    "the-RoamTime": RoamTime,
-    "the-RoamDefence": RoamDefence,
-    "the-Strength": Strength,
-    "the-Interfere": Interfere,
-    "the-SignaInterference_line":SignaInterference_line
+    'the-AccessSuccess_guape': AccessSuccess_guape,
+    'the-CertificationSuccess': CertificationSuccess_gauge,
+    'the-DhcpSuccess': DhcpSuccess_gauge,
+    'the-AccessSuccess_line': AccessSuccess_line,
+    'the-Authentication': Authentication,
+    'the-DhcpTime': DhcpTime,
+    'the-RelationTime': RelationTime,
+    'the-AccessTime_line': AccessTime_line,
+    'the-RoamSuccess': RoamSuccess,
+    'the-RoamTime': RoamTime,
+    'the-RoamDefence': RoamDefence,
+    'the-Strength': Strength,
+    'the-Interfere': Interfere,
+    'the-SignaInterference_line':SignaInterference_line
   },
-  name: "page",
+  name: 'page',
   data() {
     return {
       //设备状态概览
       device: {
         counts: [65, 5, 186],
-        names: ["设备接入总数", "有线设备", "无线设备"],
-        classs: ["Device_count", "Security_count", "Wireless_count"],
+        names: ['设备接入总数', '有线设备', '无线设备'],
+        classs: ['Device_count', 'Security_count', 'Wireless_count'],
       },
     };
   },
@@ -179,7 +179,7 @@ export default {
   },
 };
 </script>
-<style lang="scss" scoped>
+<style lang='scss' scoped>
 // .bg{
 //   background-color: #446bc7;
 // }

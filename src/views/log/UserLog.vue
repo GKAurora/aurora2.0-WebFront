@@ -1,41 +1,41 @@
 <template>
 <div>
   <el-card>
-    <div class="block_1">
-        <!-- <div class="block_1_1"><el-link class="el-icon-open" style="margin-right: 5px;" @click="hid_show()"></el-link>
+    <div class='block_1'>
+        <!-- <div class='block_1_1'><el-link class='el-icon-open' style='margin-right: 5px;' @click='hid_show()'></el-link>
           <span>关联失败：2 认证失败：0 DHCP失败：0</span>
         </div> -->
-        <div class="block_1_1">
-          <img :src="views" id="img" style="width:25px; height: 15px; margin-right: 15px;" @click="hid_show()"><span>查看日志</span>
+        <div class='block_1_1'>
+          <img :src='views' id='img' style='width:25px; height: 15px; margin-right: 15px;' @click='hid_show()'><span>查看日志</span>
         </div>
-        <div class="block_1_2" v-show="hidden_show">
+        <div class='block_1_2' v-show='hidden_show'>
           <el-divider></el-divider>
           <el-table
-    :data="tableData"
-    height="450"
+    :data='tableData'
+    height='450'
     border
-    style="width: 100%">
+    style='width: 100%'>
     <el-table-column
-      prop="date"
-      label="时间"
-      width="180">
+      prop='date'
+      label='时间'
+      width='180'>
     </el-table-column>
     <el-table-column
-      prop="name"
-      label="类型"
-      width="180">
+      prop='name'
+      label='类型'
+      width='180'>
     </el-table-column>
     <el-table-column
-      prop="address"
-      label="AP名称">
+      prop='address'
+      label='AP名称'>
     </el-table-column>
     <el-table-column
-      prop="address"
-      label="SSID">
+      prop='address'
+      label='SSID'>
     </el-table-column>
     <el-table-column
-      prop="address"
-      label="原因">
+      prop='address'
+      label='原因'>
     </el-table-column>
           </el-table>
         </div>
@@ -115,7 +115,7 @@ export default {
   }
 }
 </script>
-<style lang="scss" scoped>
+<style lang='scss' scoped>
 .block_1{
   box-sizing: border-box;
   box-shadow: 10px 10px 5px #bebdbd;

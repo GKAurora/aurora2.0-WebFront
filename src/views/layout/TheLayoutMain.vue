@@ -1,7 +1,7 @@
 <template>
-  <el-main class="page-sub-main">
-    <transition name="fade" mode="out-in">
-      <router-view class="main-body"></router-view>
+  <el-main class='page-sub-main'>
+    <transition name='fade' mode='out-in'>
+      <router-view class='main-body'></router-view>
     </transition>
   </el-main>
 </template>

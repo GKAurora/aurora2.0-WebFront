@@ -2,11 +2,11 @@
 <html >
  
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <meta http-equiv='X-UA-Compatible' content='ie=edge'>
     <title>Demo</title>
-    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <link rel='stylesheet' href='https://unpkg.com/element-ui/lib/theme-chalk/index.css'>
     <style>
         .el-table-add-row {
     margin-top: 10px;
@@ -22,64 +22,64 @@
 </head>
  
 <body>
-    <div id="app">
+    <div id='app'>
         <el-row>
-            <el-col span="24">
-                <el-table size="mini" :data="master_user.data" border style="width: 100%" highlight-current-row>
-                    <el-table-column type="index"></el-table-column>
-                    <el-table-column v-for="(v,i) in master_user.columns" :prop="v.field" :label="v.title" :width="v.width">
-                        <template slot-scope="scope">
-                            <span v-if="scope.row.isSet">
-                                <el-input size="mini" placeholder="请输入内容" v-model="master_user.sel[v.field]">
+            <el-col span='24'>
+                <el-table size='mini' :data='master_user.data' border style='width: 100%' highlight-current-row>
+                    <el-table-column type='index'></el-table-column>
+                    <el-table-column v-for='(v,i) in master_user.columns' :prop='v.field' :label='v.title' :width='v.width'>
+                        <template slot-scope='scope'>
+                            <span v-if='scope.row.isSet'>
+                                <el-input size='mini' placeholder='请输入内容' v-model='master_user.sel[v.field]'>
                                 </el-input>
                             </span>
                             <span v-else>{{scope.row[v.field]}}</span>
                         </template>
                     </el-table-column>
-                    <el-table-column label="操作" width="100">
-                        <template slot-scope="scope">
-                            <span class="el-tag el-tag--info el-tag--mini" style="cursor: pointer;" @click="pwdChange(scope.row,scope.$index,true)">
+                    <el-table-column label='操作' width='100'>
+                        <template slot-scope='scope'>
+                            <span class='el-tag el-tag--info el-tag--mini' style='cursor: pointer;' @click='pwdChange(scope.row,scope.$index,true)'>
                               {{scope.row.isSet}}  
-                              {{scope.row.isSet?'保存':"修改"}}
+                              {{scope.row.isSet?'保存':'修改'}}
                             </span>
-                            <span v-if="!scope.row.isSet" class="el-tag el-tag--danger el-tag--mini" style="cursor: pointer;">
+                            <span v-if='!scope.row.isSet' class='el-tag el-tag--danger el-tag--mini' style='cursor: pointer;'>
                                 删除
                             </span>
-                            <span v-else class="el-tag  el-tag--mini" style="cursor: pointer;" @click="pwdChange(scope.row,scope.$index,false)">
+                            <span v-else class='el-tag  el-tag--mini' style='cursor: pointer;' @click='pwdChange(scope.row,scope.$index,false)'>
                                 取消
                             </span>
                         </template>
                     </el-table-column>
                 </el-table>
             </el-col>
-            <el-col span="24">
-                <div class="el-table-add-row" style="width: 99.2%;" @click="addMasterUser()"><span>+ 添加</span></div>
+            <el-col span='24'>
+                <div class='el-table-add-row' style='width: 99.2%;' @click='addMasterUser()'><span>+ 添加</span></div>
             </el-col>
         </el-row>
  
     </div>
     <!-- import Vue before Element -->
-    <script src="https://unpkg.com/vue@2.5.17/dist/vue.min.js"></script>
+    <script src='https://unpkg.com/vue@2.5.17/dist/vue.min.js'></script>
     <!-- import JavaScript -->
-    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script src='https://unpkg.com/element-ui/lib/index.js'></script>
     <script>
         //id生成工具 这个不用看 示例而已 模拟后台返回的id
         var generateId = {
             _count: 1,
-            get(){return ((+new Date()) + "_" + (this._count++))}
+            get(){return ((+new Date()) + '_' + (this._count++))}
         };
         //主要内容
         var app = new Vue({
-            el: "#app",
+            el: '#app',
             data: {
                 master_user: {
                     sel: null,//选中行   
                     columns: [
-                        { field: "type", title: "远程类型", width: 120 },
-                        { field: "addport", title: "连接地址", width: 150 },
-                        { field: "user", title: "登录用户", width: 120 },
-                        { field: "pwd", title: "登录密码", width: 220 },
-                        { field: "info", title: "其他信息" }
+                        { field: 'type', title: '远程类型', width: 120 },
+                        { field: 'addport', title: '连接地址', width: 150 },
+                        { field: 'user', title: '登录用户', width: 120 },
+                        { field: 'pwd', title: '登录密码', width: 220 },
+                        { field: 'info', title: '其他信息' }
                     ],
                     data: [],
                 },
@@ -97,9 +97,9 @@
                 //添加账号
                 addMasterUser() {
                     for (let i of app.master_user.data) {
-                        if (i.isSet) return app.$message.warning("请先保存当前编辑项");
+                        if (i.isSet) return app.$message.warning('请先保存当前编辑项');
                     }
-                    let j = { id: 0, "type": "", "addport": "", "user": "", "pwd": "", "info": "", "isSet": true, "_temporary": true };
+                    let j = { id: 0, 'type': '', 'addport': '', 'user': '', 'pwd': '', 'info': '', 'isSet': true, '_temporary': true };
                     app.master_user.data.push(j);
                     app.master_user.sel = JSON.parse(JSON.stringify(j));
                 },
@@ -108,7 +108,7 @@
                     //点击修改 判断是否已经保存所有操作
                     for (let i of app.master_user.data) {
                         if (i.isSet && i.id != row.id) {
-                            app.$message.warning("请先保存当前编辑项");
+                            app.$message.warning('请先保存当前编辑项');
                             return false;
                         }
                     }
@@ -125,7 +125,7 @@
                             for (let k in data) row[k] = data[k];
                             app.$message({
                                 type: 'success',
-                                message: "保存成功!"
+                                message: '保存成功!'
                             });
                             //然后这边重新读取表格数据
                             app.readMasterUser();

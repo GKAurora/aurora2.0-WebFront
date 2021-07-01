@@ -28,8 +28,9 @@ const staticRouter = [
         },
         title: 'menu.overview',
         icon: 'el-icon-s-platform',
-        component:() => import('../views/index/index')
-      },{
+        component: () => import('../views/index/index')
+      },
+      {
         path: '/user',
         name: 'user',
         meta: {
@@ -49,7 +50,7 @@ const staticRouter = [
       //   icon: 'el-icon-odometer',
       //   component:() => import('../views/device/Devicedetails')
       // }
-      , {
+      {
         path: '/health',
         name: 'health',
         meta: {

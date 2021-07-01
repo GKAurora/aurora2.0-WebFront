@@ -9,8 +9,8 @@
           <hr />
           <br />
           <div class="grid-content bg-purple text">
-            <el-row :gutter="10">
-              <el-col :span="8" :xs="24" :sm="24" :lg="8">
+            <el-row :gutter="10" >
+              <el-col :span="8" :xs="24" :sm="24" :md="12" :lg="8">
                 <div class="grid-content bg-purple">
                   <el-card class="Device_count">
                     <span class="Device_font"><strong>186</strong></span>
@@ -114,41 +114,38 @@
   </div>
 </template>
 <script>
-import Radarmap from "./RadarMap";
-import Accrsssuccess from "./AccrssSuccess.vue";
-import Dashboard from "./Dashboard.vue";
-import Annular from "./Annular.vue";
-import TotalRate from "./HealthTrend/TotalRate.vue"
-import Trend from "./HealthTrend/Trend.vue"
+import Radarmap from './RadarMap'
+import Dashboard from './Dashboard.vue'
+import Annular from './Annular.vue'
+import TotalRate from './HealthTrend/TotalRate.vue'
+import Trend from './HealthTrend/Trend.vue'
 export default {
   components: {
-    "the-Radarmap": Radarmap,
-    "the-Accrsssuccess": Accrsssuccess,
-    "the-Dashboard": Dashboard,
-    "the-Annular": Annular,
-    "the-TotalRate": TotalRate,
-    "the-Trend": Trend
+    'the-Radarmap': Radarmap,
+    'the-Dashboard': Dashboard,
+    'the-Annular': Annular,
+    'the-TotalRate': TotalRate,
+    'the-Trend': Trend
   },
-  name: "page",
-  data() {
+  name: 'page',
+  data () {
     return {
-      //设备状态概览
       device: {
         counts: [65, 5, 186],
-        names: ["设备接入总数", "有线设备", "无线设备"],
-        classs: ["Device_count", "Security_count", "Wireless_count"],
-      },
-    };
+        names: ['设备接入总数', '有线设备', '无线设备'],
+        classs: ['Device_count', 'Security_count', 'Wireless_count']
+      }
+    }
   },
-  created() {
+  created () {
     // this.test();
   },
   methods: {
     // test(){
     //   console.log(this.device)
     // }
-  },
-};
+  }
+}
 </script>
 <style lang="scss" scoped>
 // .bg{

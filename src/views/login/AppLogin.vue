@@ -1,29 +1,29 @@
 <template>
   <div class='page'>
-    <div class="login-box">
-      <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-position="left" label-width="0px"
-               class="demo-ruleForm login-container" status-icon>
-        <h3 class="title">系统登录</h3>
-        <el-form-item prop="account">
-          <el-input type="text" v-model="ruleForm.account" auto-complete="off" placeholder="账号"
-                    id="loginEmail" prefix-icon="el-icon-user-solid"></el-input>
+    <div class='login-box'>
+      <el-form :model='ruleForm' :rules='rules' ref='ruleForm' label-position='left' label-width='0px'
+               class='demo-ruleForm login-container' status-icon>
+        <h3 class='title'>系统登录</h3>
+        <el-form-item prop='account'>
+          <el-input type='text' v-model='ruleForm.account' auto-complete='off' placeholder='账号'
+                    id='loginEmail' prefix-icon='el-icon-user-solid'></el-input>
         </el-form-item>
-        <el-form-item prop="checkPass">
-          <el-input type="password" v-model="ruleForm.checkPass" auto-complete="off" placeholder="密码"
-                    id="loginPassword" prefix-icon="el-icon-key"></el-input>
-          <!-- <label id="showPasswordToggle">
-            <el-checkbox v-model="checked" id="showPasswordCheck">显示密码</el-checkbox>
+        <el-form-item prop='checkPass'>
+          <el-input type='password' v-model='ruleForm.checkPass' auto-complete='off' placeholder='密码'
+                    id='loginPassword' prefix-icon='el-icon-key'></el-input>
+          <!-- <label id='showPasswordToggle'>
+            <el-checkbox v-model='checked' id='showPasswordCheck'>显示密码</el-checkbox>
           </label>
-          <router-link to="/" style="float: right; color: #bbbbbb">忘记密码？</router-link> -->
+          <router-link to='/' style='float: right; color: #bbbbbb'>忘记密码？</router-link> -->
         </el-form-item>
-        <el-form-item style="width:100%;">
-          <el-button type="primary" style="width:100%;" @click.native.prevent="handleSubmit" :loading="logining">
+        <el-form-item style='width:100%;'>
+          <el-button type='primary' style='width:100%;' @click.native.prevent='handleSubmit' :loading='logining'>
             登录
           </el-button>
         </el-form-item>
-        <el-form-item style="width:100%;">
-          <router-link to="/register">
-            <el-button style="width:100%;">
+        <el-form-item style='width:100%;'>
+          <router-link to='/register'>
+            <el-button style='width:100%;'>
               注册
             </el-button>
           </router-link>
@@ -112,7 +112,7 @@ export default {
 }
 
 .page {
-  background: url("../../assets/img/about/bg.gif") no-repeat;
+  background: url('../../assets/img/about/bg.gif') no-repeat;
   background-size: 100% 100%;
   position: absolute;
   width: 100%;

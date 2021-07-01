@@ -1,23 +1,23 @@
 <template>
   <div
-    id="CertificationSuccess"
-    style="width: 150px; height: 250px;"
+    id='CertificationSuccess'
+    style='width: 150px; height: 250px;'
   ></div>
 </template>
 <script>
 export default {
-  name: "page",
+  name: 'page',
   mounted() {
     this.getCertificationSuccess();
   },
   methods: {
     getCertificationSuccess() {
-      this.$echarts.init(document.getElementById("CertificationSuccess")).setOption({
+      this.$echarts.init(document.getElementById('CertificationSuccess')).setOption({
         series: [
           {
-            type: "gauge",
-            radius: "80%", //大小
-            center: ["50%", "45%"], //显示位置
+            type: 'gauge',
+            radius: '80%', //大小
+            center: ['50%', '45%'], //显示位置
             startAngle: 90,
             endAngle: -270,
             pointer: {
@@ -36,7 +36,7 @@ export default {
             axisLine: {
               lineStyle: {
                 width: 7, //宽度
-                color:[[1,"#fff"]]     //圆环背景颜色
+                color:[[1,'#fff']]     //圆环背景颜色
               },
             },
             splitLine: {
@@ -51,12 +51,12 @@ export default {
             data: [
               {
                 value: 95,
-                name: "认证成功率",
+                name: '认证成功率',
                 title: {
-                  offsetCenter: ["0%", "150%"], //标题显示位置
+                  offsetCenter: ['0%', '150%'], //标题显示位置
                 },
                 detail: {
-                  offsetCenter: ["0%", "0%"], //数值显示位置
+                  offsetCenter: ['0%', '0%'], //数值显示位置
                 },
               },
             ],
@@ -68,9 +68,9 @@ export default {
             detail: {
               //数值样式
               fontSize: 24,
-              color: "auto",
-              borderColor: "auto",
-              formatter: "{value}%",
+              color: 'auto',
+              borderColor: 'auto',
+              formatter: '{value}%',
               color:'#fff',
               valueAnimation:true    //数值动态渲染
             },
@@ -81,5 +81,3 @@ export default {
   },
 };
 </script>
-<style lang="scss" scoped>
-</style>

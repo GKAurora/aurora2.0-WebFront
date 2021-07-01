@@ -1,28 +1,28 @@
 <template>
-    <div class="tags" v-if="showTags">
+    <div class='tags' v-if='showTags'>
         <ul>
             <li
-                class="tags-li"
-                v-for="(item,index) in tagsList"
-                :class="{'active': isActive(item.path)}"
-                :key="index"
+                class='tags-li'
+                v-for='(item,index) in tagsList'
+                :class='{"active": isActive(item.path)}'
+                :key='index'
             >
-                <router-link :to="item.path" class="tags-li-title">{{item.title}}</router-link>
-                <span class="tags-li-icon" @click="closeTags(index)">
-                    <i class="el-icon-close"></i>
+                <router-link :to='item.path' class='tags-li-title'>{{item.title}}</router-link>
+                <span class='tags-li-icon' @click='closeTags(index)'>
+                    <i class='el-icon-close'></i>
                 </span>
             </li>
         </ul>
-        <div class="tags-close-box">
-            <el-dropdown @command="handleTags">
-                <el-button size="mini" type="primary">
+        <div class='tags-close-box'>
+            <el-dropdown @command='handleTags'>
+                <el-button size='mini' type='primary'>
                     标签选项
-                    <i class="el-icon-arrow-down el-icon--right"></i>
+                    <i class='el-icon-arrow-down el-icon--right'></i>
                 </el-button>
                 <template #dropdown>
-                    <el-dropdown-menu size="small">
-                        <el-dropdown-item command="other">关闭其他</el-dropdown-item>
-                        <el-dropdown-item command="all">关闭所有</el-dropdown-item>
+                    <el-dropdown-menu size='small'>
+                        <el-dropdown-item command='other'>关闭其他</el-dropdown-item>
+                        <el-dropdown-item command='all'>关闭所有</el-dropdown-item>
                     </el-dropdown-menu>
                 </template>
             </el-dropdown>
@@ -47,7 +47,7 @@ export default {
         // 关闭单个标签
         closeTags(index) {
             const delItem = this.tagsList[index];
-            this.$store.commit("delTagsItem", { index });
+            this.$store.commit('delTagsItem', { index });
             const item = this.tagsList[index]
                 ? this.tagsList[index]
                 : this.tagsList[index - 1];
@@ -55,20 +55,20 @@ export default {
                 delItem.path === this.$route.fullPath &&
                     this.$router.push(item.path);
             } else {
-                this.$router.push("/");
+                this.$router.push('/');
             }
         },
         // 关闭全部标签
         closeAll() {
-            this.$store.commit("clearTags");
-            this.$router.push("/");
+            this.$store.commit('clearTags');
+            this.$router.push('/');
         },
         // 关闭其他标签
         closeOther() {
             const curItem = this.tagsList.filter(item => {
                 return item.path === this.$route.fullPath;
             });
-            this.$store.commit("closeTagsOther", curItem);
+            this.$store.commit('closeTagsOther', curItem);
         },
         // 设置标签
         setTags(route) {
@@ -77,9 +77,9 @@ export default {
             });
             if (!isExist) {
                 if (this.tagsList.length >= 8) {
-                    this.$store.commit("delTagsItem", { index: 0 });
+                    this.$store.commit('delTagsItem', { index: 0 });
                 }
-                this.$store.commit("setTagsItem", {
+                this.$store.commit('setTagsItem', {
                     name: route.name,
                     title: route.meta.title,
                     path: route.fullPath
@@ -87,7 +87,7 @@ export default {
             }
         },
         handleTags(command) {
-            command === "other" ? this.closeOther() : this.closeAll();
+            command === 'other' ? this.closeOther() : this.closeAll();
         }
     },
     watch: {

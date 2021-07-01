@@ -1,7 +1,7 @@
 <template>
-  <div id="main_1">
-      <canvas id="myCanvas" style="width:100%; height:auto"></canvas>
-      <img id="scream" src="../../assets/img/about/拓扑.png" alt="The Scream" style="display: none;">
+  <div id='main_1'>
+      <canvas id='myCanvas' style='width:100%; height:auto'></canvas>
+      <img id='scream' src='../../assets/img/about/拓扑.png' alt='The Scream' style='display: none;'>
   </div>
 </template>
 

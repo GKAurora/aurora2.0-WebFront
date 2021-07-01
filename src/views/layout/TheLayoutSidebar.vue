@@ -1,13 +1,13 @@
 <template>
-  <aside class="sidebar" :class="{'sidebar-hide': !openNav}">
-    <el-menu :default-active="selectMenu" class="sidebar-menu" :collapse="!openNav"
-             :collapse-transition="false" :router="true">
-      <template v-for="menu in user.accessMenu">
-        <el-menu-item v-if="!menu.children" :key="menu.name" :index="menu.path">
-          <i :class="menu.icon" v-if="menu.icon"></i>
-          <span slot="title">{{ $t(menu.title) }}</span>
+  <aside class='sidebar' :class='{"sidebar-hide": !openNav}'>
+    <el-menu :default-active='selectMenu' class='sidebar-menu' :collapse='!openNav'
+             :collapse-transition='false' :router='true'>
+      <template v-for='menu in user.accessMenu'>
+        <el-menu-item v-if='!menu.children' :key='menu.name' :index='menu.path'>
+          <i :class='menu.icon' v-if='menu.icon'></i>
+          <span slot='title'>{{ $t(menu.title) }}</span>
         </el-menu-item>
-        <the-submenu :key="menu.name" :subMenu="menu" v-else :i18n="i18n"></the-submenu>
+        <the-submenu :key='menu.name' :subMenu='menu' v-else :i18n='i18n'></the-submenu>
       </template>
     </el-menu>
   </aside>
@@ -37,7 +37,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style scoped lang='scss'>
 .sidebar {
   float: left;
   width: 240px;

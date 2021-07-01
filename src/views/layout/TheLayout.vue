@@ -1,18 +1,18 @@
 <template>
-  <el-row class="page">
-    <el-col :span="24" style="position: absolute">
-      <the-header :open-nav="openNav" @toggle-open="toggleOpen"></the-header>
+  <el-row class='page'>
+    <el-col :span='24' style='position: absolute'>
+      <the-header :open-nav='openNav' @toggle-open='toggleOpen'></the-header>
     </el-col>
-    <el-col :span="24" class="page-main">
-      <the-sidebar :open-nav="openNav"></the-sidebar>
+    <el-col :span='24' class='page-main'>
+      <the-sidebar :open-nav='openNav'></the-sidebar>
       <!--标签栏-->
-      <div class="content-box" :class="{ 'content-collapse': collapse }">
+      <div class='content-box' :class='{ "content-collapse": collapse }'>
         <the-tags></the-tags>
-        <div class="content">
-          <router-view v-slot="{ Component }">
-            <transition name="move" mode="out-in">
-              <keep-alive :include="tagsList">
-                <component :is="Component" />
+        <div class='content'>
+          <router-view v-slot='{ Component }'>
+            <transition name='move' mode='out-in'>
+              <keep-alive :include='tagsList'>
+                <component :is='Component' />
               </keep-alive>
             </transition>
           </router-view>
@@ -23,12 +23,12 @@
 </template>
 
 <script>
-import TheLayoutHeader from "./TheLayoutHeader";
-import TheLayoutSidebar from "./TheLayoutSidebar";
-import TheLayoutMain from "./TheLayoutMain";
-import TheLayoutTags from "./TheLayoutTags.vue";
+import TheLayoutHeader from './TheLayoutHeader';
+import TheLayoutSidebar from './TheLayoutSidebar';
+import TheLayoutMain from './TheLayoutMain';
+import TheLayoutTags from './TheLayoutTags.vue';
 export default {
-  name: "TheLayout",
+  name: 'TheLayout',
   data() {
     return {
       openNav: true,
@@ -40,10 +40,10 @@ export default {
     },
   },
   components: {
-    "the-header": TheLayoutHeader,
-    "the-sidebar": TheLayoutSidebar,
-    "the-main": TheLayoutMain,
-    "the-tags": TheLayoutTags,
+    'the-header': TheLayoutHeader,
+    'the-sidebar': TheLayoutSidebar,
+    'the-main': TheLayoutMain,
+    'the-tags': TheLayoutTags,
   },
   computed: {
     tagsList() {
@@ -56,7 +56,7 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
+<style scoped lang='scss'>
 .page {
   position: absolute;
   left: 0;

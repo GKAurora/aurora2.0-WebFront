@@ -1,8 +1,8 @@
 <template>
 <div>
-  <div class="maps">
-      <div class="hotPic" id="heatmap">
-        <img src="../../assets/img/about/拓扑.png" alt="" style="width:100%; height: auto">
+  <div class='maps'>
+      <div class='hotPic' id='heatmap'>
+        <img src='../../assets/img/about/拓扑.png' alt='' style='width:100%; height: auto'>
       </div>
   </div>
 </div>

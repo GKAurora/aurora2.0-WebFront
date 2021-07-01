@@ -1,49 +1,49 @@
 <template>
-  <div id="Dashboard" style="width: 300px; height: 300px;"></div>
+  <div id='Dashboard' style='width: 300px; height: 300px;'></div>
 </template>
 <script>
 export default {
-  name: "page",
+  name: 'page',
   mounted() {
     this.getDash();
   },
   methods: {
     getDash() {
-      this.$echarts.init(document.getElementById("Dashboard")).setOption({
+      this.$echarts.init(document.getElementById('Dashboard')).setOption({
         title: {
-          text: "CPU利用率",
+          text: 'CPU利用率',
           textStyle: {
-            color: "#fff",
+            color: '#fff',
             fontSize: 16,
           },
-          left: "center",
+          left: 'center',
         },
 
         series: [
           {
-            type: "gauge",
-            center: ["50%", "60%"],
+            type: 'gauge',
+            center: ['50%', '60%'],
             axisLine: {
               lineStyle: {
                 width: 15, // 宽度
                 color: [
                   // 颜色区域划分
-                  [0.3, "darkseagreen"],
-                  [0.7, "#37a2da"],
-                  [1, "#fd666d"],
+                  [0.3, 'darkseagreen'],
+                  [0.7, '#37a2da'],
+                  [1, '#fd666d'],
                 ],
               },
             },
             pointer: {
               itemStyle: {
-                color: "auto",
+                color: 'auto',
               },
             },
             axisTick: {
               distance: -20, // 刻度位置
               length: 0,
               lineStyle: {
-                color: "#fff",
+                color: '#fff',
                 width: 1,
               },
             },
@@ -51,20 +51,20 @@ export default {
               distance: -10, // 刻度值位置
               length: 0,
               lineStyle: {
-                color: "#fff",
+                color: '#fff',
                 width: 2,
               },
             },
             axisLabel: {
-              color: "auto", // 刻度值位置
+              color: 'auto', // 刻度值位置
               distance: -10,
               fontSize: 14,
             },
             detail: {
               fontSize: 25,
               valueAnimation: true,
-              formatter: "{value} %",
-              color: "auto",
+              formatter: '{value} %',
+              color: 'auto',
             },
             data: [
               {
@@ -78,5 +78,5 @@ export default {
   },
 };
 </script>
-<style lang="scss" scoped>
+<style lang='scss' scoped>
 </style>

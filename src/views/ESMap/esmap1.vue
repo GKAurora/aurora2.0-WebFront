@@ -1,51 +1,51 @@
 <template>
-<!-- <div id="pane_main"> -->
+<!-- <div id='pane_main'> -->
   <el-card>
   <el-row>
-    <el-col :span="21">
-      <div id="content">
-        <div id="map-container"></div>
-        <div id="range" v-show="range">
-          <div id="range_1"><div id="red"></div><span id="text">1000以上</span></div>
-          <div id="range_1"><div id="Orange"></div><span id="text">750-1000</span></div>
-          <div id="range_1"><div id="Yellow"></div><span id="text">500-750</span></div>
-          <div id="range_1"><div id="DeepSkyBlue"></div><span id="text">250-500</span></div>
-          <div id="range_1"><div id="Turquoise"></div><span id="text">0-250</span></div>
+    <el-col :span='21'>
+      <div id='content'>
+        <div id='map-container'></div>
+        <div id='range' v-show='range'>
+          <div id='range_1'><div id='red'></div><span id='text'>1000以上</span></div>
+          <div id='range_1'><div id='Orange'></div><span id='text'>750-1000</span></div>
+          <div id='range_1'><div id='Yellow'></div><span id='text'>500-750</span></div>
+          <div id='range_1'><div id='DeepSkyBlue'></div><span id='text'>250-500</span></div>
+          <div id='range_1'><div id='Turquoise'></div><span id='text'>0-250</span></div>
         </div>
-        <div id="safety" v-show="range1">
-          <div id="range_1"><div id="red"></div><span id="text">有感染者</span></div>
+        <div id='safety' v-show='range1'>
+          <div id='range_1'><div id='red'></div><span id='text'>有感染者</span></div>
         </div>
-        <div id="pannel" v-show="trajectory">
-          <el-button type="primary" id="begin">开始</el-button>
+        <div id='pannel' v-show='trajectory'>
+          <el-button type='primary' id='begin'>开始</el-button>
         </div>
       </div>
     </el-col>
-    <el-col :span="2">
-      <div id="tab">
+    <el-col :span='2'>
+      <div id='tab'>
         <el-dropdown>
-          <el-button type="primary" class="el-dropdown-link">
-            地图背景色<i class="el-icon-arrow-down el-icon--right"></i>
+          <el-button type='primary' class='el-dropdown-link'>
+            地图背景色<i class='el-icon-arrow-down el-icon--right'></i>
           </el-button>
-          <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item><a data-prop="setBackgroundColor" data-des="" data-val="#001326">默认背景</a></el-dropdown-item>
-            <el-dropdown-item><a data-prop="setBackgroundColor" data-des="" data-val="#87CEFA">淡蓝色</a></el-dropdown-item>
-            <el-dropdown-item><a data-prop="setBackgroundColor" data-des="" data-val="#808080">灰色</a></el-dropdown-item>
-            <el-dropdown-item><a data-prop="setBackgroundImage" data-des="" data-val="./image/wedgets/map_bg1.jpg">自定义背景</a></el-dropdown-item>
+          <el-dropdown-menu slot='dropdown'>
+            <el-dropdown-item><a data-prop='setBackgroundColor' data-des='' data-val='#001326'>默认背景</a></el-dropdown-item>
+            <el-dropdown-item><a data-prop='setBackgroundColor' data-des='' data-val='#87CEFA'>淡蓝色</a></el-dropdown-item>
+            <el-dropdown-item><a data-prop='setBackgroundColor' data-des='' data-val='#808080'>灰色</a></el-dropdown-item>
+            <el-dropdown-item><a data-prop='setBackgroundImage' data-des='' data-val='./image/wedgets/map_bg1.jpg'>自定义背景</a></el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
         <el-divider></el-divider>
         <el-dropdown>
-          <el-button type="primary" class="heatmap">
-            商场热力图<i class="el-icon-arrow-down el-icon--right"></i>
+          <el-button type='primary' class='heatmap'>
+            商场热力图<i class='el-icon-arrow-down el-icon--right'></i>
           </el-button>
-          <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item><a id="hpshow1" data-des='人流量热力图'>人流量热力图</a></el-dropdown-item>
-            <el-dropdown-item><a id="hpshow" data-des='疫情热力图'>疫情热力图</a></el-dropdown-item>
-            <el-dropdown-item><a id="hpHide" data-des='商场热力图'>取消热力图</a></el-dropdown-item>
+          <el-dropdown-menu slot='dropdown'>
+            <el-dropdown-item><a id='hpshow1' data-des='人流量热力图'>人流量热力图</a></el-dropdown-item>
+            <el-dropdown-item><a id='hpshow' data-des='疫情热力图'>疫情热力图</a></el-dropdown-item>
+            <el-dropdown-item><a id='hpHide' data-des='商场热力图'>取消热力图</a></el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
         <el-divider></el-divider>
-        <el-button type="primary"  id="begin_show">感染者轨迹回放</el-button>
+        <el-button type='primary'  id='begin_show'>感染者轨迹回放</el-button>
       </div>
     </el-col>
   </el-row>
@@ -346,11 +346,11 @@ export default {
         max: 1, // 热力点value的最大值
         gradient: gradient // 渐变色值，可配
         // 系统默认值：
-        // .45: "rgb(0,0,255)",
-        // .55: "rgb(0,255,255)",
-        // .65: "rgb(0,255,0)",
-        // .95: "yellow",
-        // 1: "rgb(255,0,0)"
+        // .45: 'rgb(0,0,255)',
+        // .55: 'rgb(0,255,255)',
+        // .65: 'rgb(0,255,0)',
+        // .95: 'yellow',
+        // 1: 'rgb(255,0,0)'
       })
     }
     // 随机
@@ -363,11 +363,11 @@ export default {
         max: 1000, // 热力点value的最大值
         gradient: gradient1 // 渐变色值，可配
         // 系统默认值：
-        // .45: "rgb(0,0,255)",
-        // .55: "rgb(0,255,255)",
-        // .65: "rgb(0,255,0)",
-        // .95: "yellow",
-        // 1: "rgb(255,0,0)"
+        // .45: 'rgb(0,0,255)',
+        // .55: 'rgb(0,255,255)',
+        // .65: 'rgb(0,255,0)',
+        // .95: 'yellow',
+        // 1: 'rgb(255,0,0)'
       })
     }
     // 添加热力图方法,根据json文件
