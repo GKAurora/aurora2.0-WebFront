@@ -10,7 +10,7 @@
           <br />
           <div class="grid-content bg-purple text">
             <el-row :gutter="10">
-              <el-col :span="8">
+              <el-col :span="8" :xs="24" :sm="24" :lg="8">
                 <div class="grid-content bg-purple">
                   <el-card class="Device_count">
                     <span class="Device_font"><strong>186</strong></span>
@@ -24,7 +24,7 @@
                   </el-card>
                 </div>
               </el-col>
-              <el-col :span="8"
+              <el-col :span="8" :xs="24" :sm="24" :lg="8"
                 ><div class="grid-content bg-purple-light">
                   <el-card class="Security_count">
                     <span class="Device_font"><strong>58</strong></span>
@@ -37,7 +37,7 @@
                     </div>
                   </el-card></div
               ></el-col>
-              <el-col :span="8"
+              <el-col :span="8" :xs="24" :sm="24" :lg="8"
                 ><div class="grid-content bg-purple">
                   <el-card class="Wireless_count">
                     <span class="Device_font"><strong>128</strong></span>
@@ -51,7 +51,7 @@
                   </el-card>
                 </div>
               </el-col>
-              <el-row :gutter="20">
+              <el-row>
                 <el-col :span="24">
                   <!--图表-->
                   <div class="grid-content bg-purple">
