@@ -44,8 +44,8 @@ export default {
       logining: false,
       fromUrl: '/',
       ruleForm: {
-        account: 'admin',
-        checkPass: '123456'
+        account: '',
+        checkPass: ''
       },
       rules: {
         account: [
@@ -68,19 +68,19 @@ export default {
           requestLogin(loginParams).then(data => {
             this.logining = false
             console.log(data)
-            if (this.ruleForm.account === data.result.name && this.ruleForm.checkPass === '123456') {
+            // if (this.ruleForm.account === data.result.name && this.ruleForm.checkPass === '123456') {
               this.$message({
                 message: '登录成功！',
                 type: 'success'
               })
               console.log(this.$store.state.source.token)
               this.$router.push(this.fromUrl)
-            } else {
-              this.$message({
-                message: '登录失败！',
-                type: 'error'
-              })
-            }
+            // } else {
+            //   this.$message({
+            //     message: '登录失败！',
+            //     type: 'error'
+            //   })
+            // }
           }).catch(err => {
             this.logining = false
             console.log(err)
