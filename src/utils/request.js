@@ -1,7 +1,7 @@
 import axios from 'axios'
-// import qs from 'qs'
+import qs from 'qs'
 import store from '../store/index'
-// import router from '../router/index'
+import router from '../router/index'
 import { MessageBox, Message } from 'element-ui'
 
 /*
@@ -47,7 +47,7 @@ const axiosCustom = axios.create({
 })
 
 axiosCustom.interceptors.request.use(function (config) {
-  config.headers.token = localStorage.getItem('user-token')
+  config.headers.Authorization = 'Bearer' + ' ' + localStorage.getItem('user-token')
   return config
 })
 
@@ -65,8 +65,8 @@ export const request = (url, params = {}, config = {}, autoErrorRes = true, auto
   if (!['put', 'post', 'patch'].includes(args.method.toLowerCase())) {
     args['params'] = args['params'] || args['data']
     args['paramsSerializer'] = args['paramsSerializer'] || function (params) {
-      // return qs.stringify(params, { arrayFormat: 'indices' })
-      return JSON.stringify(params)
+      return qs.stringify(params, { arrayFormat: 'indices' })
+      // return JSON.stringify(params)
     }
   }
   return axiosCustom(args).then((res) => {
@@ -76,7 +76,7 @@ export const request = (url, params = {}, config = {}, autoErrorRes = true, auto
       window.location.href = res.data.url || '/login'
     }
     // 自动处理返回格式错误
-    if (autoErrorData && res.data.hasOwnProperty('code') && res.data.code !== 1) {
+    if (autoErrorData && res.data.hasOwnProperty('code') && res.data.code !== 200) {
       console.error(res.data)
       const errMsg = res.data.errorMessage || '未知的服务器错误，请联系管理员！'
       const errCod = res.data.code
