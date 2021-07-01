@@ -6,20 +6,6 @@
     <el-card>
       <!--搜索与添加区域-->
       <el-row :gutter="20">
-        <el-col :span="8">
-          <el-input
-            placeholder="请输入内容"
-            clearable
-            @clear="getUserList"
-            v-model="queryInfo.query"
-          >
-            <el-button
-              slot="append"
-              icon="el-icon-search"
-              @click="getUserList"
-            ></el-button>
-          </el-input>
-        </el-col>
         <el-col :span="4">
           <el-button type="primary" @click="addDialogVisible = true"
             >添加用户</el-button
@@ -30,12 +16,37 @@
       <!--用户列表区域-->
       <el-table :data="UserList" border stripe>
         <!--索引列 type="index"-->
-        <el-table-column type="index" label="序号" width="70px" align="center"></el-table-column>
-        <el-table-column label="用户名" prop="userName" align="center"></el-table-column>
-        <el-table-column label="MAC地址" prop="userMac" align="center"></el-table-column>
-        <el-table-column label="所属区域" prop="reGion" align="center"></el-table-column>
-        <el-table-column label="接入类型" prop="accessType" align="center"></el-table-column>
-        <el-table-column label="角色" prop="roleName" align="center"></el-table-column>
+        <el-table-column
+          type="index"
+          label="序号"
+          width="70px"
+          align="center"
+        ></el-table-column>
+        <el-table-column
+          label="用户名"
+          prop="userName"
+          align="center"
+        ></el-table-column>
+        <el-table-column
+          label="MAC地址"
+          prop="userMac"
+          align="center"
+        ></el-table-column>
+        <el-table-column
+          label="所属区域"
+          prop="reGion"
+          align="center"
+        ></el-table-column>
+        <el-table-column
+          label="接入类型"
+          prop="accessType"
+          align="center"
+        ></el-table-column>
+        <el-table-column
+          label="角色"
+          prop="roleName"
+          align="center"
+        ></el-table-column>
         <!--由于后台状态数据是true或false，所以需要做数据转换-->
         <el-table-column label="状态" align="center">
           <!--slot-scope="scope"作用域插槽-->
@@ -115,7 +126,6 @@
                   :key="v.field"
                   :prop="v.field"
                   :label="v.title"
-                 
                   align="center"
                 >
                   <template slot-scope="scope">
@@ -143,6 +153,7 @@
                       v-if="!scope.row.isSet"
                       class="el-tag el-tag--danger el-tag--mini"
                       style="cursor: pointer"
+                      @click="pwdChange(scope.row, scope.$index, false)"
                     >
                       删除
                     </span>
@@ -164,7 +175,7 @@
                 style="width: 99.2%"
                 @click="addMasterUser()"
               >
-                  <el-button type="primary" round>继续添加</el-button>
+                <el-button type="primary" round>继续添加</el-button>
               </div>
             </el-col>
             <el-col :span="12">
@@ -215,15 +226,16 @@
     <!-- import JavaScript -->
     <script src="https://unpkg.com/element-ui/lib/index.js"></script>
 <script>
+var generateId = {
+  _count: 1,
+  get() {
+    return +new Date() + "_" + this._count++;
+  },
+};
 export default {
   data() {
     //id生成工具 这个不用看 示例而已 模拟后台返回的id
-    var generateId = {
-      _count: 1,
-      get() {
-        return +new Date() + "_" + this._count++;
-      },
-    };
+
     //自定义邮箱校验规则
     var checkEmail = (rule, value, cb) => {
       //验证邮箱正则表达式
@@ -251,23 +263,26 @@ export default {
         pagesize: 2, //每一页的数据总数
       },
       //列表数据
-      UserList: [{
+      UserList: [
+        {
           index: "1",
           userName: "小屋",
           userMac: "cc-bb-fe-1e-18-e0",
-          reGion:'深圳',
+          reGion: "深圳",
           accessType: "无线接入",
           roleName: "超级管理员",
           state: true,
-        },{
+        },
+        {
           index: "2",
           userName: "小九",
           userMac: "cc-bb-fe-1e-18-e0",
-          reGion:'广州',
+          reGion: "广州",
           accessType: "有线接入",
           roleName: "管理员",
           state: true,
-        },],
+        },
+      ],
       //数据总条数
       total: 0,
       //控制添加用户对话框的显示与隐藏
@@ -314,25 +329,25 @@ export default {
       },
       //添加用户表单数据
       // tableData: [
-        // {
-        //   index: "1",
-        //   username: "小屋",
-        //   password: "123456",
-        //   phone:'15766329736',
-        //   email: "2420674058@qq.com",
-        //   role: "超级管理员",
-        //   state: "true",
-        // },
+      // {
+      //   index: "1",
+      //   username: "小屋",
+      //   password: "123456",
+      //   phone:'15766329736',
+      //   email: "2420674058@qq.com",
+      //   role: "超级管理员",
+      //   state: "true",
+      // },
       // ],
       master_user: {
         sel: null, //选中行
         columns: [
-          { field: "username", title: "用户名",},
-          { field: "password", title: "密码",},
-          { field: "email", title: "邮箱",},
-          { field: "phone", title: "联系方式",},
-          { field: "role", title: "角色",},
-          { field: "state", title: "状态",},
+          { field: "username", title: "用户名" },
+          { field: "password", title: "密码" },
+          { field: "email", title: "邮箱" },
+          { field: "phone", title: "联系方式" },
+          { field: "role", title: "角色" },
+          { field: "state", title: "状态" },
         ],
         data: [],
       },
@@ -363,7 +378,7 @@ export default {
     };
   },
   created() {
-    this.getUserList();
+    // this.getUserList();
   },
   methods: {
     //读取表格数据
@@ -412,18 +427,15 @@ export default {
       if (row.isSet) {
         //项目是模拟请求操作(function中的this.master_user.sel读取不到master_user导致无法保存)
         //函数自调用
-        console.log(this.master_user)
-        (function () {
-          let data = JSON.parse(JSON.stringify(this.master_user.sel));
-          for (let k in data) row[k] = data[k];
-          this.$message({
-            type: "success",
-            message: "保存成功!",
-          });
-          //然后这边重新读取表格数据
-          this.readMasterUser();
-          row.isSet = false;
-        })();
+        let data = JSON.parse(JSON.stringify(this.master_user.sel));
+        for (let k in data) row[k] = data[k];
+        this.$message({
+          type: "success",
+          message: "保存成功!",
+        });
+        //然后这边重新读取表格数据
+        this.readMasterUser();
+        row.isSet = false;
       } else {
         this.master_user.sel = JSON.parse(JSON.stringify(row));
         row.isSet = true;
@@ -529,6 +541,5 @@ export default {
   justify-content: center;
   display: flex;
   line-height: 40px;
-  
 }
 </style>

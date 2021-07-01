@@ -7,16 +7,15 @@
         <el-col :span="6">
           <div>
             <el-radio-group v-model="radio" size="medium">
-              <el-radio-button label="上海"></el-radio-button>
-              <el-radio-button label="北京"></el-radio-button>
-              <el-radio-button label="广州"></el-radio-button>
               <el-radio-button label="深圳"></el-radio-button>
+              <el-radio-button label="南京"></el-radio-button>
+              <el-radio-button label="上海"></el-radio-button>
+              <el-radio-button label="苏州"></el-radio-button>
             </el-radio-group>
           </div>
         </el-col>
 
-        <el-col :span="6">
-          
+        <el-col :span="5">
           <div class="block">
             <el-date-picker
               v-model="value1"
@@ -28,12 +27,11 @@
               value-format="timestamp"
             >
             </el-date-picker>
-            <span>时间戳:{{value1}}</span>
+            <!-- <span>时间戳:{{value1}}</span> -->
           </div>
         </el-col>
-        <el-col :span="6">
+        <el-col :span="7">
           <div>
-            
             <el-time-picker
               is-range
               v-model="value"
@@ -44,25 +42,11 @@
               value-format="timestamp"
             >
             </el-time-picker>
-            <span>时间戳：{{value}}</span>
+            <!-- <span>时间戳：{{value}}</span> -->
           </div>
         </el-col>
-      </el-row>
-      <br />
-      <el-row :gutter="20">
-        <el-col :span="8">
-          <el-input
-            placeholder="请输入内容"
-            clearable
-            @clear="getUserList"
-            v-model="queryInfo.query"
-          >
-            <el-button
-              slot="append"
-              icon="el-icon-search"
-              @click="getUserList"
-            ></el-button>
-          </el-input>
+        <el-col :span="3">
+          <el-button type="primary">查询</el-button>
         </el-col>
       </el-row>
       <br />
@@ -95,23 +79,166 @@
           prop="accessType"
           align="center"
         ></el-table-column>
-        <el-table-column
-          label="接入时间"
-          prop="accessTime"
-          align="center"
-        ></el-table-column>
+        <el-table-column label="查看" align="center">
+          <template slot-scope="scope">
+            <el-button
+              type="primary"
+              size="small"
+              round
+              @click="editDialogVisible = true"
+            >
+              详细信息
+            </el-button>
+          </template>
+        </el-table-column>
       </el-table>
       <!--分页区域-->
       <el-pagination
         @size-change="handleSizeChange"
         @current-change="handleCurrentChange"
-        :page-sizes="[2, 5, 8, 10]"
+        :page-sizes="[5, 10, 20, 40,100]"
         :current-page="queryInfo.pagenum"
         :page-size="queryInfo.pagesize"
         layout="total, sizes, prev, pager, next, jumper"
         :total="total"
       >
       </el-pagination>
+      <!--详细信息-->
+      <el-dialog
+        title="用户详细信息"
+        :visible.sync="editDialogVisible"
+        width="50%"
+      >
+        <el-card class="box-card">
+          <div style="font-size: 16px; padding: 12px">
+            <el-row>
+              <el-col :span="8"
+                ><div class="grid-content bg-purple">
+                  <span>用户名：10</span>
+                </div></el-col
+              >
+              <el-col :span="8"
+                ><div class="grid-content bg-purple-light">
+                  <span>用户 MAC：12</span>
+                </div></el-col
+              >
+              <el-col :span="8"
+                ><div class="grid-content bg-purple">
+                  <span>VIP用户：12</span>
+                </div></el-col
+              >
+            </el-row>
+            <br />
+            <el-row>
+              <el-col :span="8"
+                ><div class="grid-content bg-purple">
+                  <span>设备厂商：12</span>
+                </div></el-col
+              >
+              <el-col :span="8"
+                ><div class="grid-content bg-purple-light">
+                  <span>AP名称：12</span>
+                </div></el-col
+              >
+              <el-col :span="8"
+                ><div class="grid-content bg-purple">
+                  <span>AP MAC：12</span>
+                </div></el-col
+              >
+            </el-row>
+            <br />
+            <el-row>
+              <el-col :span="8"
+                ><div class="grid-content bg-purple">
+                  <span>总接入次数：12</span>
+                </div></el-col
+              >
+              <el-col :span="8"
+                ><div class="grid-content bg-purple-light">
+                  <span>接入失败次数：12</span>
+                </div></el-col
+              >
+              <el-col :span="8"
+                ><div class="grid-content bg-purple">
+                  <span>接入类型：12</span>
+                </div></el-col
+              >
+            </el-row>
+            <br />
+            <el-row>
+              <el-col :span="8"
+                ><div class="grid-content bg-purple">
+                  <span>本次接入时间：12</span>
+                </div></el-col
+              >
+              <el-col :span="8"
+                ><div class="grid-content bg-purple-light">
+                  <span>第一次接入时间：12</span>
+                </div></el-col
+              >
+              <el-col :span="8"
+                ><div class="grid-content bg-purple">
+                  <span>频段：12</span>
+                </div></el-col
+              >
+            </el-row>
+            <br />
+            <el-row>
+              <el-col :span="8"
+                ><div class="grid-content bg-purple">
+                  <span>总体验时长：12</span>
+                </div></el-col
+              >
+              <el-col :span="8"
+                ><div class="grid-content bg-purple-light">
+                  <span>最近接入：12</span>
+                </div></el-col
+              >
+              <el-col :span="8"
+                ><div class="grid-content bg-purple">
+                  <span>平均接入耗时：12</span>
+                </div></el-col
+              >
+            </el-row>
+            <br />
+            <el-row>
+              <el-col :span="8"
+                ><div class="grid-content bg-purple">
+                  <span>平均RSSI：12</span>
+                </div></el-col
+              >
+              <el-col :span="8"
+                ><div class="grid-content bg-purple-light">
+                  <span>平均速率：12</span>
+                </div></el-col
+              >
+              <el-col :span="8"
+                ><div class="grid-content bg-purple">
+                  <span>平均信噪比：12</span>
+                </div></el-col
+              >
+            </el-row>
+            <br />
+            <el-row>
+              <el-col :span="8"
+                ><div class="grid-content bg-purple">
+                  <span>总流量：12</span>
+                </div></el-col
+              >
+              <el-col :span="8"
+                ><div class="grid-content bg-purple-light">
+                  <span>时延：12</span>
+                </div></el-col
+              >
+              <el-col :span="8"
+                ><div class="grid-content bg-purple">
+                  <span>丢包率：12</span>
+                </div></el-col
+              >
+            </el-row>
+          </div>
+        </el-card>
+      </el-dialog>
     </el-card>
   </div>
 </template>
@@ -120,14 +247,14 @@ export default {
   data() {
     return {
       //地区选择
-      radio: "上海",
+      radio: "深圳",
       //时间选择
       value: [
         new Date(
           new Date().getFullYear(),
           new Date().getMonth(),
           new Date().getDate(),
-          new Date().getHours()-6,
+          new Date().getHours() - 6,
           new Date().getMinutes()
         ),
         new Date(
@@ -168,12 +295,14 @@ export default {
           },
         ],
       },
-      value1:new Date(),
+      value1: new Date(),
+      //控制详细信息对话框的显示与隐藏
+      editDialogVisible: false,
       //获取用户参数列表的对象时携带的参数
       queryInfo: {
         query: "", //搜索时传递的参数
         pagenum: 1, //页数
-        pagesize: 2, //每一页的数据总数
+        pagesize: 5, //每一页的数据总数
       },
       //列表数据
       UserList: [
@@ -200,8 +329,7 @@ export default {
       total: 0,
     };
   },
-  created() {
-  },
+  created() {},
   methods: {
     //获取用户列表
     async getUserList() {

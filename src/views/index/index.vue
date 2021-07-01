@@ -1,7 +1,7 @@
 <template>
   <div class="bg">
     <!--上部分-->
-    <el-card style="height: 430px" id="bar">
+    <el-card style="height: 450px" id="bar">
       <el-row>
         <!--设备概览-->
         <el-col :span="10" class="Biankuang">
@@ -97,121 +97,19 @@
             <el-row>
               <el-col :span="8"
                 ><div class="grid-content bg-purple">
-                  <el-row>
-                    <el-col :span="8"
-                      ><div class="grid-content bg-purple">
-                        <the-AccessSuccess_guape></the-AccessSuccess_guape>
-                      </div>
-                    </el-col>
-                    <el-col :span="8"
-                      ><div class="grid-content bg-purple">
-                        <the-CertificationSuccess></the-CertificationSuccess>
-                      </div>
-                    </el-col>
-                    <el-col :span="8"
-                      ><div class="grid-content bg-purple">
-                        <the-DhcpSuccess></the-DhcpSuccess>
-                      </div>
-                    </el-col>
-                  </el-row>
+                  <the-TotalRate></the-TotalRate>
                 </div>
               </el-col>
               <el-col :span="16"
                 ><div class="grid-content bg-purple-light">
-                  <the-AccessSuccess_line></the-AccessSuccess_line></div
+                  <the-Trend></the-Trend>
+                  </div
               ></el-col>
             </el-row>
           </div>
         </el-col>
       </el-row>
       <br />
-      <el-row class="test">
-        <el-col :span="24">
-          <div class="grid-content bg-purple-light">
-            <el-row>
-              <el-col :span="8"
-                ><div class="grid-content bg-purple">
-                  <el-row>
-                    <el-col :span="8"
-                      ><div class="grid-content bg-purple">
-                        <the-RelationTime></the-RelationTime>
-                      </div>
-                    </el-col>
-                    <el-col :span="8"
-                      ><div class="grid-content bg-purple">
-                        <the-Authentication></the-Authentication>
-                      </div>
-                    </el-col>
-                    <el-col :span="8"
-                      ><div class="grid-content bg-purple">
-                        <the-DhcpTime></the-DhcpTime>
-                      </div>
-                    </el-col>
-                  </el-row>
-                </div>
-              </el-col>
-              <el-col :span="16"
-                ><div class="grid-content bg-purple-light">
-                  <the-AccessTime_line></the-AccessTime_line></div
-              ></el-col>
-            </el-row>
-          </div>
-        </el-col>
-      </el-row>
-      <br />
-      <el-row class="test">
-        <el-col :span="24">
-          <div class="grid-content bg-purple-light">
-            <el-row>
-              <el-col :span="8"
-                ><div class="grid-content bg-purple">
-                  <el-row>
-                    <el-col :span="12"
-                      ><div class="grid-content bg-purple">
-                        <the-RoamSuccess></the-RoamSuccess></div
-                    ></el-col>
-                    <el-col :span="12"
-                      ><div class="grid-content bg-purple-light">
-                        <the-RoamTime></the-RoamTime></div
-                    ></el-col>
-                  </el-row>
-                </div>
-              </el-col>
-              <el-col :span="16"
-                ><div class="grid-content bg-purple-light">
-                  <the-RoamDefence></the-RoamDefence></div
-              ></el-col>
-            </el-row>
-          </div>
-        </el-col>
-      </el-row>
-      <br />
-      <el-row class="test">
-        <el-col :span="24">
-          <div class="grid-content bg-purple-light">
-            <el-row>
-              <el-col :span="8"
-                ><div class="grid-content bg-purple">
-                  <el-row>
-                    <el-col :span="12"
-                      ><div class="grid-content bg-purple">
-                        <the-Strength></the-Strength></div
-                    ></el-col>
-                    <el-col :span="12"
-                      ><div class="grid-content bg-purple-light">
-                        <the-Interfere></the-Interfere></div
-                    ></el-col>
-                  </el-row>
-                </div>
-              </el-col>
-              <el-col :span="16"
-                ><div class="grid-content bg-purple-light">
-                  <the-SignaInterference_line></the-SignaInterference_line></div
-              ></el-col>
-            </el-row>
-          </div>
-        </el-col>
-      </el-row>
     </el-card>
   </div>
 </template>
@@ -220,40 +118,16 @@ import Radarmap from "./RadarMap";
 import Accrsssuccess from "./AccrssSuccess.vue";
 import Dashboard from "./Dashboard.vue";
 import Annular from "./Annular.vue";
-import AccessSuccess_guape from "./AccessSuccess/AccessSuccess_guape.vue";
-import CertificationSuccess_gauge from "./AccessSuccess/CertificationSuccess_gauge.vue";
-import DhcpSuccess_gauge from "./AccessSuccess/DhcpSuccess_gauge.vue";
-import AccessSuccess_line from "./AccessSuccess/AccessSuccess_line.vue";
-import Authentication from "./AccessTime/AuthenticationTime.vue";
-import DhcpTime from "./AccessTime/DhcpTime.vue";
-import RelationTime from "./AccessTime/RelationTime.vue";
-import AccessTime_line from "./AccessTime/AccessTime_line.vue";
-import RoamSuccess from "./Roam/RoamSuccess.vue";
-import RoamTime from "./Roam/RoamTime.vue";
-import RoamDefence from "./Roam/RoamDefence.vue";
-import Strength from "./Signal/Strength.vue";
-import Interfere from "./Signal/Interfere.vue";
-import SignaInterference_line from "./Signal/SignaInterference_line.vue"
+import TotalRate from "./HealthTrend/TotalRate.vue"
+import Trend from "./HealthTrend/Trend.vue"
 export default {
   components: {
     "the-Radarmap": Radarmap,
     "the-Accrsssuccess": Accrsssuccess,
     "the-Dashboard": Dashboard,
     "the-Annular": Annular,
-    "the-AccessSuccess_guape": AccessSuccess_guape,
-    "the-CertificationSuccess": CertificationSuccess_gauge,
-    "the-DhcpSuccess": DhcpSuccess_gauge,
-    "the-AccessSuccess_line": AccessSuccess_line,
-    "the-Authentication": Authentication,
-    "the-DhcpTime": DhcpTime,
-    "the-RelationTime": RelationTime,
-    "the-AccessTime_line": AccessTime_line,
-    "the-RoamSuccess": RoamSuccess,
-    "the-RoamTime": RoamTime,
-    "the-RoamDefence": RoamDefence,
-    "the-Strength": Strength,
-    "the-Interfere": Interfere,
-    "the-SignaInterference_line":SignaInterference_line
+    "the-TotalRate": TotalRate,
+    "the-Trend": Trend
   },
   name: "page",
   data() {

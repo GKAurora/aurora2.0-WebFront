@@ -28,7 +28,7 @@ const staticRouter = [
         },
         title: 'menu.overview',
         icon: 'el-icon-s-platform',
-        component:() => import('../views/index/indextest')
+        component:() => import('../views/index/index')
       },{
         path: '/user',
         name: 'user',
@@ -50,8 +50,8 @@ const staticRouter = [
       //   component:() => import('../views/device/Devicedetails')
       // }
       , {
-        path: '/test2',
-        name: 'index',
+        path: '/health',
+        name: 'health',
         meta: {
           title: '健康度分析'
         },
@@ -89,8 +89,8 @@ const staticRouter = [
         component: () => import('../views/heatmap/canvas')
       },
       {
-        path: '/Log',
-        name: 'index',
+        path: '/log',
+        name: 'log',
         meta: {
           title: '日志分析'
         },
@@ -100,7 +100,7 @@ const staticRouter = [
         // component:() => import('../views/index/AccrssSuccess')
       },{
         path: '/account',
-        name: 'index',
+        name: 'account',
         meta: {
           title: '账号管理'
         },

@@ -1,5 +1,5 @@
 <template>
-  <div id="Trend" style="width: 950px; height: 250px"></div>
+  <div id="Trend" style="width: 100%; height: 200%"></div>
 </template>
 <script>
 var data = [

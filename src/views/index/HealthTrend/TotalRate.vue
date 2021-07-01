@@ -1,5 +1,5 @@
 <template>
-  <div id="TotalRate" style="width: 500px; height: 225px"></div>
+  <div id="TotalRate" style="width: 100%; height: 200%"></div>
 </template>
 <script>
 export default {
