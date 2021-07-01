@@ -3,18 +3,14 @@ import staticRouter from '@/router/staticRouter'
 // import store from '@/store'
 
 export const requestLogin = (params) => {
-  return request('/api/user/login', params, { method: 'post' }).then(data => {
-    localStorage.setItem('user-token', JSON.stringify(data.token))
-    return data
+  return request('/api/auth/login', params).then(res => {
+    localStorage.setItem('user-token', JSON.stringify(res.data.token))
+    return res
   })
 }
 
-export const requestRegister = params => {
-  return request('/api/user/register', params)
-}
-
-export const requestUserInfo = params => {
-  return request('/api/user/info', params).then(res => {
+export const requestUserInfo = () => {
+  return request('/api/user/get_user_info', {}, { 'method': 'get' }).then(res => {
     res['permissions'] = [
       { name: 'index' },
       { name: 'Map' },
