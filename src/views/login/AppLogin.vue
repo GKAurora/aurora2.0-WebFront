@@ -36,7 +36,6 @@
 <script>
 // import sha256 from 'crypto-js/sha256'
 import { requestLogin } from '@/api/user'
-
 export default {
   name: 'app-login',
   data () {

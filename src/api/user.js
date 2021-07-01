@@ -29,6 +29,8 @@ export const requestUserInfo = () => {
       { name: 'userPermissions' },
       { name: 'about' }
     ]
+    console.log(res)
+    console.log()
     // 过滤菜单
     const filterUserMenu = function (menus, accessMenu) {
       menus.forEach(function (m) {

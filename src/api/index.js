@@ -5,5 +5,4 @@ const API = {
   auth: auth,
   sdn: sdn
 }
-
 export default API

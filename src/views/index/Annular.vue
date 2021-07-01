@@ -1,5 +1,5 @@
 <template>
-  <div id='Annular' style='width: 500px; height: 250px'></div>
+  <div id='Annular' style='width: 100%; height: 250px'></div>
 </template>
 <script>
 export default {
@@ -15,8 +15,8 @@ export default {
         },
         legend: {
           orient: 'vertical',    //竖直排列
-          top: '14%',
-          left: '78%',
+          top: 'auto',
+          left: 'auto',  
           textStyle:{
             color:'#fff'
           },

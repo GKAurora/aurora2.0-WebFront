@@ -47,7 +47,9 @@ const axiosCustom = axios.create({
 })
 
 axiosCustom.interceptors.request.use(function (config) {
-  config.headers.Authorization = 'Bearer' + ' ' + localStorage.getItem('user-token')
+  config.headers.Authorization='Bearer'+' '+localStorage.getItem('user-token')
+  let test=config.headers.Authorization.split('"')
+  config.headers.Authorization=test[0]+test[1]
   return config
 })
 
