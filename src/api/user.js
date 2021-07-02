@@ -1,16 +1,8 @@
-import { request } from '../utils/request'
 import staticRouter from '@/router/staticRouter'
-// import store from '@/store'
-
-export const requestLogin = (params) => {
-  return request('/api/auth/login', params).then(res => {
-    localStorage.setItem('user-token', JSON.stringify(res.data.token))
-    return res
-  })
-}
+import axios from '../axios.config'
 
 export const requestUserInfo = () => {
-  return request('/api/user/get_user_info', {}, { 'method': 'get' }).then(res => {
+  return axios({ 'method': 'get', 'url': '/user/get_user_info' }).then((res) => {
     res['permissions'] = [
       { name: 'index' },
       { name: 'Map' },
@@ -30,7 +22,6 @@ export const requestUserInfo = () => {
       { name: 'about' }
     ]
     console.log(res)
-    console.log()
     // 过滤菜单
     const filterUserMenu = function (menus, accessMenu) {
       menus.forEach(function (m) {
@@ -59,20 +50,4 @@ export const requestUserInfo = () => {
     res.accessMenu = accessMenu
     return res
   })
-}
-
-export const requestLogout = params => {
-  return request('/api/user/logout', params)
-}
-
-export const requestChangePassword = params => {
-  return request('/api/user/changePassword', params)
-}
-
-export const requestUserQuery = params => {
-  return request('/api/user/query', params)
-}
-
-export const requestPermissionsQuery = params => {
-  return request('/api/user/permissions', params)
 }
