@@ -8,7 +8,7 @@ Vue.use(Router)
 
 const router = new Router({
   base: process.env.BASE_URL,
-  routes: staticRouter,
+  routes: staticRouter
   // mode: 'history'
 })
 
@@ -40,19 +40,33 @@ router.beforeEach((to, from, next) => {
   const token = localStorage.getItem('user-token')
   console.log('router', token)
   console.log(to, from)
-  whiteList.indexOf(to.path) === -1 ? token != null && token != '' ? next() : next('/login') : next()
-
-  // if (to.path === '/login') {
-  //   next()
-  // } else if (to.path === '/index') {
-  //   if (token === null || token === '') {
-  //     next('/login')
-  //   } else {
-  //     next()
-  //   }
-  // } else {
-  //   next()
-  // }
+  // whiteList.indexOf(to.path) === -1 ? token != null && token != '' ? next() : next('/login') : next()
+/* 进入登录页面将注销用户信息 */
+  if (to.path === '/login') {
+    router.app.$options.store.commit('deleteUser')
+    localStorage.removeItem('user-token')
+  }
+  /* 免登录页面 */
+  if (whiteList.indexOf(to.fullPath) >= 0) {
+    return next()
+  }
+  let permissions = router.app.$options.store.state.user.permissions
+  /* 上次会话结束，重新获取用户信息 */
+  if (!permissions.length) {
+    /* 获取用户信息和权限 */
+    router.app.$options.store.dispatch('requestUserInfo').then(() => {
+      permissions = router.app.$options.store.state.user.permissions || []
+      routerInit(permissions)
+      pagePermission(permissions, to, next)
+    }).catch((err) => {
+      /* 获取用户信息异常 */
+      console.error(err)
+      return next({ path: '/error/500' })
+    })
+  } else {
+    /* 已登录时判断页面权限 */
+    pagePermission(permissions, to, next)
+  }
 })
 
 export default router
