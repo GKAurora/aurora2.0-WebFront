@@ -133,7 +133,7 @@
           <div
             style="font-size: 16px; padding: 12px"
             :data="UserList"
-            v-for="(name, index) in UserList"
+            v-for="(name) in UserList"
             :key="name.userMac"
           >
             <el-row>
@@ -162,9 +162,9 @@
                   设备厂商：<span v-text="name.vendor">12</span>
                 </div></el-col
               >
-              <el-col :span="7"
+              <el-col :span="8"
                 ><div class="grid-content bg-purple">
-                  接入时间：<span v-text="name.accTime">12</span>
+                  接入时间：<span v-text="new Date(parseInt(name.accTime)).toLocaleString().replace(/:\d{1,2}$/,' ')">12</span>
                 </div></el-col
               >
             </el-row>
@@ -175,14 +175,14 @@
                   总接入次数：<span v-text="name.joinTotalTimes">12</span>
                 </div></el-col
               >
-              <el-col :span="9"
+              <el-col :span="8"
                 ><div class="grid-content bg-purple-light">
                   接入失败次数：<span v-text="name.joinFailTimes">12</span>
                 </div></el-col
               >
-              <el-col :span="8"
+              <el-col :span="9"
                 ><div class="grid-content bg-purple-light">
-                  第一次接入时间：<span v-text="name.minAccTime">12</span>
+                  第一次接入时间：<span v-text="new Date(parseInt(name.minAccTime)).toLocaleString().replace(/:\d{1,2}$/,' ')">12</span>
                 </div></el-col
               >
             </el-row>
@@ -340,7 +340,6 @@ export default {
         const data = await this.$axios(conf);
         if (data.status === 200) {
           this.SiteList = data.data.data;
-          console.log(data.data.data);
           return true;
         }
         return false;
@@ -361,7 +360,6 @@ export default {
           this.queryInfo.page_size
         );
         const data = await this.$axios(conf);
-        console.log(data);
         if (data.status === 200) {
           //存储用户列表数据
           this.UserList = data.data.data.tableData;
