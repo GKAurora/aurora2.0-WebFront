@@ -93,7 +93,7 @@ export default {
           });
           // 跳转路由
           this.$router.push(this.fromUrl)
-          return
+          return 
         }
         this.$message({
             message: `${data.data.message}`,

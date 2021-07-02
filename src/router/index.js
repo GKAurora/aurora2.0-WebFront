@@ -8,7 +8,7 @@ Vue.use(Router)
 
 const router = new Router({
   base: process.env.BASE_URL,
-  routes: staticRouter,
+  routes: staticRouter
   // mode: 'history'
 })
 
@@ -33,22 +33,15 @@ const pagePermission = (permissions, to, next) => {
 /* 权限控制 */
 router.beforeEach((to, from, next) => {
   /* 取消旧请求 */
+
   const CancelToken = axios.CancelToken
   router.app.$options.store.state.source.cancel && router.app.$options.store.state.source.cancel()
   router.app.$options.store.commit('updateSource', { source: CancelToken.source() })
   const token = localStorage.getItem('user-token')
-  if (to.path === '/login') {
-    next()
-  } else if (to.path === '/index') {
-    if (token === null || token === '') {
-      next('/login')
-    } else {
-      next()
-    }
-  } else {
-    next()
-  }
-  /* 进入登录页面将注销用户信息 */
+  console.log('router', token)
+  console.log(to, from)
+  // whiteList.indexOf(to.path) === -1 ? token != null && token != '' ? next() : next('/login') : next()
+/* 进入登录页面将注销用户信息 */
   if (to.path === '/login') {
     router.app.$options.store.commit('deleteUser')
     localStorage.removeItem('user-token')
