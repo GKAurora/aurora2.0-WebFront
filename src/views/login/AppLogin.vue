@@ -86,10 +86,10 @@ export default {
           this.ruleForm.checkPass
         )
         const data = await this.$axios(conf)
-        console.log(data)
+        // console.log(data)
         if (data.status === 200) {
           // 存储token
-          localStorage.setItem("user-token", data.data.token)
+          localStorage.setItem("user-token", data.data.data.token)
           this.$message({
             message: "登录成功",
             type: "success",
