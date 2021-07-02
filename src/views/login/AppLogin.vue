@@ -29,6 +29,7 @@
             placeholder="密码"
             id="loginPassword"
             prefix-icon="el-icon-key"
+            @keyup.enter='handleSubmit'
           ></el-input>
           <!-- <label id='showPasswordToggle'>
             <el-checkbox v-model='checked' id='showPasswordCheck'>显示密码</el-checkbox>
@@ -78,23 +79,26 @@ export default {
     };
   },
   methods: {
-    async handleSubmit(ev) {
+    async handleSubmit() {
       
       try {
         const conf = API.auth.login(this.ruleForm.account, this.ruleForm.checkPass);
-        const data = await this.$axios(conf).then((result) => {
-          return result.data
-        });
-        if (data.code === 200) {
+        const data = await this.$axios(conf)
+        if (data.status === 200) {
           // 存储token
           localStorage.setItem('user-token', data.data.data.token)
           this.$message({
-            message: "登录成功！",
+            message: "登录成功",
             type: "success",
           });
           // 跳转路由
           this.$router.push(this.fromUrl)
+          return 
         }
+        this.$message({
+            message: `${data.data.message}`,
+            type: "error",
+          });
       } catch (error) {
         console.log('err', error)
         this.$message({
@@ -102,40 +106,6 @@ export default {
           type: "error",
         });
       }
-      // this.$message({
-      //   message: "登录成功！",
-      //   type: "success",
-      // });
-      // this.$refs.ruleForm.validate((valid) => {
-      //   if (valid) {
-      //     this.logining = true
-      //     const loginParams = { username: this.ruleForm.account, password: this.ruleForm.checkPass }
-      //     console.log(JSON.stringify(loginParams))
-      //     requestLogin(loginParams).then(data => {
-      //       this.logining = false
-      //       console.log(data)
-      //       // if (this.ruleForm.account === data.result.name && this.ruleForm.checkPass === '123456') {
-      //         this.$message({
-      //           message: '登录成功！',
-      //           type: 'success'
-      //         })
-      //         console.log(this.$store.state.source.token)
-      //         this.$router.push(this.fromUrl)
-      //       // } else {
-      //       //   this.$message({
-      //       //     message: '登录失败！',
-      //       //     type: 'error'
-      //       //   })
-      //       // }
-      //     }).catch(err => {
-      //       this.logining = false
-      //       console.log(err)
-      //     })
-      //   } else {
-      //     console.log('error submit!!')
-      //     return false
-      //   }
-      // })
     },
   },
   beforeRouteEnter(to, from, next) {
