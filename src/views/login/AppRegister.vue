@@ -124,13 +124,11 @@ export default {
         this.ruleForm.email
       );
       const data = await this.$axios(conf);
-      console.log(data);
       if (data.status === 200) {
         this.$message({
           message: "注册成功",
           type: "success",
         });
-        console.log(data.data);
         // 跳转
         this.$router.push('/login')
         return 
