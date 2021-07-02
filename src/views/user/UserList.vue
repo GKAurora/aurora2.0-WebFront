@@ -109,8 +109,8 @@
         @size-change="handleSizeChange"
         @current-change="handleCurrentChange"
         :page-sizes="[5, 10, 20, 40, 100]"
-        :current-page="queryInfo.pagenum"
-        :page-size="queryInfo.pagesize"
+        :current-page="queryInfo.page"
+        :page-size="queryInfo.page_size"
         layout="total, sizes, prev, pager, next, jumper"
         :total="total"
       >
@@ -255,6 +255,7 @@
   </div>
 </template>
 <script>
+import API from "../../api";
 export default {
   data() {
     return {
@@ -310,59 +311,94 @@ export default {
       value1: new Date(),
       //控制详细信息对话框的显示与隐藏
       editDialogVisible: false,
+      //获取站点信息携带的参数
+      SitequeryInfo: {
+        queryInfoSite_id: "857b706e-67d9-49c0-b3cd-4bd1e6963c07",
+      },
       //获取用户参数列表的对象时携带的参数
       queryInfo: {
-        query: "", //搜索时传递的参数
-        pagenum: 1, //页数
-        pagesize: 5, //每一页的数据总数
+        level: 1,
+        page: 1, //页数
+        page_size: 100, //每一页的数据总数
+        site_id: "857b706e-67d9-49c0-b3cd-4bd1e6963c07", //站点id
       },
-      //列表数据
-      UserList: [
-        {
-          index: "1",
-          userName: "小屋",
-          userMac: "cc-bb-fe-1e-18-e0",
-          reGion: "深圳",
-          accessType: "无线接入",
-          accessTime: "2021-6-11",
-          state: true,
-        },
-        {
-          index: "2",
-          userName: "小九",
-          userMac: "cc-bb-fe-1e-18-e0",
-          reGion: "广州",
-          accessType: "有线接入",
-          accessTime: "2021-5-01",
-          state: true,
-        },
-      ],
+      //存储站点信息
+      site: [],
+      //存储用户列表数据
+      UserList: [],
       //数据总条数
       total: 0,
     };
   },
-  created() {},
+  mounted() {
+    this.getSite();
+    // this.getUserList();
+  },
   methods: {
-    //获取用户列表
-    async getUserList() {
-      const { data: res } = await this.$http.get("users", {
-        params: this.queryInfo,
-      });
-      if (res.meta.status !== 200) {
-        return this.$message.error("获取用户列表失败！");
+    async getSite() {
+      try {
+        console.log("1")
+        const conf = API.sdn.getSitesMessage(this.SitequeryInfo.queryInfoSite_id);
+        console.log("2")
+        const data = await this.$axios(conf)
+        console.log(data);
+        if (data.code === 200) {
+          console.log("1")
+          // this.UserList = data.tableData;
+        }
+      } catch (error) {
+        this.$message({
+          message: "获取站点信息失败",
+          type: "error",
+        });
       }
-      this.UserList = res.data.users;
-      this.total = res.data.total;
     },
-    //监听pagesize改变的事件
+    async getUserList() {
+      try {
+        const conf = API.sdn.getUserList(
+          this.queryInfo.level,
+          this.queryInfo.page,
+          this.queryInfo.page_size,
+          this.queryInfo.site_id
+        );
+        const data = await this.$axios(conf);
+        console.log(data);
+        if (data.code === 200) {
+          //存储数据
+          console.log('123')
+          return
+        }
+        this.$message({
+          message: "获取用户数据失败",
+          type: "error",
+        });
+      } catch (error) {
+        this.$message({
+          message: "获取用户数据失败",
+          type: "error",
+        });
+      }
+    },
+    //获取用户列表
+    // async getUserList() {
+    //   const { data: res } = await this.$http.get("users", {
+    //     params: this.queryInfo,
+    //   });
+    //   if (res.meta.status !== 200) {
+    //     return this.$message.error("获取用户列表失败！");
+    //   }
+    //   this.UserList = res.data.users;
+    //   this.total = res.data.total;
+    // },
+    //监听page_size改变的事件
     handleSizeChange(newSize) {
       // console.log(newSize)
-      this.queryInfo.pagesize = newSize;
+      this.queryInfo.page_size = newSize;
       this.getUserList();
     },
     //监听页面值的改变
     handleCurrentChange(newSize) {
-      this.queryInfo.pagenum = newSize;
+      this.queryInfo.page = newSize;
       this.getUserList();
     },
   },
@@ -379,13 +415,13 @@ export default {
   display: flex;
   line-height: 40px;
 }
- .el-dropdown {
-    vertical-align: top;
-  }
-  .el-dropdown + .el-dropdown {
-    margin-left: 15px;
-  }
-  .el-icon-arrow-down {
-    font-size: 12px;
-  }
+.el-dropdown {
+  vertical-align: top;
+}
+.el-dropdown + .el-dropdown {
+  margin-left: 15px;
+}
+.el-icon-arrow-down {
+  font-size: 12px;
+}
 </style>

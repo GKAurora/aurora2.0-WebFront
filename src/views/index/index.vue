@@ -8,7 +8,7 @@
           <span style="font-weight: 700; color: #f5f3f3">设备状态概览</span>
           <hr />
           <br />
-          <div class="grid-content bg-purple text">
+          <div class="grid-content bg-purple text" >
             <el-row :gutter="10">
               <el-col :span="8" :xs="24" :sm="24" :md="12" :lg="8">
                 <div class="grid-content bg-purple">
@@ -118,6 +118,7 @@ import Dashboard from "./Dashboard.vue";
 import Annular from "./Annular.vue";
 import TotalRate from "./HealthTrend/TotalRate.vue";
 import Trend from "./HealthTrend/Trend.vue";
+import API from '../../api/index'
 export default {
   components: {
     "the-Radarmap": Radarmap,
@@ -130,9 +131,7 @@ export default {
   data() {
     return {
       device: {
-        counts: [65, 5, 186],
-        names: ["设备接入总数", "有线设备", "无线设备"],
-        classs: ["Device_count", "Security_count", "Wireless_count"],
+        
       },
     };
   },

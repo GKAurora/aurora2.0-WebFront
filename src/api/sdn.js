@@ -23,7 +23,7 @@ const sdn = {
       }
     }
   },
-  getSitesMessage (site_id = '/') {
+  getSitesMessage (site_id='/') {
     return {
       url: `${this.prefix}/get_sdn_info`,
       method: 'get',
