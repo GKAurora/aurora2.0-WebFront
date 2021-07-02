@@ -60,6 +60,9 @@ import ElementLocale from 'element-ui/lib/locale'
 import G6 from '@antv/g6'
 Vue.config.productionTip = false
 
+import axios from './axios.config'
+Vue.prototype.$axios = axios
+
 // 按需引入element-ui
 Vue.use(Badge)
 Vue.use(Button)
