@@ -29,7 +29,6 @@
             placeholder="密码"
             id="loginPassword"
             prefix-icon="el-icon-key"
-            @keyup.enter='handleSubmit'
           ></el-input>
           <!-- <label id='showPasswordToggle'>
             <el-checkbox v-model='checked' id='showPasswordCheck'>显示密码</el-checkbox>
@@ -79,36 +78,30 @@ export default {
     };
   },
   methods: {
-    async handleSubmit() {
+    async handleSubmit(ev) {
+      
       try {
-        const conf = API.auth.login(
-          this.ruleForm.account,
-          this.ruleForm.checkPass
-        )
-        const data = await this.$axios(conf)
-        console.log(data)
-        if (data.status === 200) {
+        const conf = API.auth.login(this.ruleForm.account, this.ruleForm.checkPass);
+        const data = await this.$axios(conf).then((result) => {
+          return result.data
+        });
+        console.log(data);
+        if (data.code === 200) {
           // 存储token
-          localStorage.setItem("user-token", data.data.token)
+          localStorage.setItem('user-token', data.data.token)
           this.$message({
-            message: "登录成功",
+            message: "登录成功！",
             type: "success",
           });
           // 跳转路由
           this.$router.push(this.fromUrl)
-          return 
         }
-        // 登录失败错误信息处理
-        this.$message({
-          message: `${data.data.message}`,
-            type: "error",
-        });
       } catch (error) {
-        console.log("err", error)
+        console.log('err', error)
         this.$message({
           message: "登录失败",
           type: "error",
-        })
+        });
       }
       // this.$message({
       //   message: "登录成功！",
