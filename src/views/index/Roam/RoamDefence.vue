@@ -26,84 +26,84 @@ var data = [
   ['20:00', 71],
   ['21:00', 78],
   ['22:00', 84],
-  ['23:00', 93],
-];
+  ['23:00', 93]
+]
 
 var dateList = data.map(function (item) {
-  return item[0];
-});
+  return item[0]
+})
 var valueList = data.map(function (item) {
-  return item[1];
-});
+  return item[1]
+})
 
 export default {
   name: 'page',
-  mounted() {
-    this.getAccessSuccess();
+  mounted () {
+    this.getAccessSuccess()
   },
   methods: {
-    getAccessSuccess() {
+    getAccessSuccess () {
       this.$echarts
         .init(document.getElementById('RoamDefence'))
         .setOption({
           // Make gradient line here
           visualMap: [
             {
-              show: false, //颜色栏
-              type: 'continuous', //连续型
-              seriesIndex: 0, //渐变
-              min: 0, //最小值
-              max: 100, //最大值
+              show: false, // 颜色栏
+              type: 'continuous', // 连续型
+              seriesIndex: 0, // 渐变
+              min: 0, // 最小值
+              max: 100, // 最大值
               range: [0, 100],
-              color: ['#5385F5'],
+              color: ['#5385F5']
               // color: ['orangered','yellow','lightskyblue']  //线颜色渐变
-            },
+            }
           ],
           title: [
             {
               left: '8%',
               text: '漫游达标率',
               textStyle: {
-                color: '#fff',
-              },
-            },
+                color: '#fff'
+              }
+            }
           ],
           toolbox: {
             feature: {
-              saveAsImage: {}, //这样子就具备了下载图片功能
-              dataZoom: {}, //区域缩放
+              saveAsImage: {}, // 这样子就具备了下载图片功能
+              dataZoom: {}, // 区域缩放
               magicType: {
-                //多种图表切换
-                type: ['bar', 'line'],
-              },
-            },
+                // 多种图表切换
+                type: ['bar', 'line']
+              }
+            }
           },
           tooltip: {
-            trigger: 'axis',
+            trigger: 'axis'
           },
           xAxis: [
             {
-              data: dateList,
-            },
+              data: dateList
+            }
           ],
           yAxis: [{}
           ],
           grid: [
             {
               show: true,
-              bottom: '20%', //大小
+              bottom: '20%', // 大小
               height: 'auto',
               width: 'auto',
               backgroundColor: 'transparent',
-              borderColor: '#ccc',
-            },
+              borderColor: '#ccc'
+            }
           ],
           series: [
             {
               type: 'line',
-              showSymbol: false, //是否显示节点
+              showSymbol: false, // 是否显示节点
               data: valueList,
-              smooth:true,    //是否平滑
+              smooth: true, // 是否平滑
               areaStyle: {
                 color: {
                   type: 'linear',
@@ -114,22 +114,22 @@ export default {
                   colorStops: [
                     {
                       offset: 0,
-                      color: 'rgba(157,163,179,.8)', // 0% 处的颜色
+                      color: 'rgba(157,163,179,.8)' // 0% 处的颜色
                     },
                     {
                       offset: 1,
-                      color: 'rgba(157,163,179,.2)', // 100% 处的颜色
-                    },
+                      color: 'rgba(157,163,179,.2)' // 100% 处的颜色
+                    }
                   ],
-                  global: false, // 缺省为 false
-                },
-              }, //区域颜色
-            },
-          ],
-        });
-    },
-  },
-};
+                  global: false // 缺省为 false
+                }
+              } // 区域颜色
+            }
+          ]
+        })
+    }
+  }
+}
 </script>
 <style lang='scss' scoped>
 </style>
