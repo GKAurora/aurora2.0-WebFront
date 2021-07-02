@@ -101,7 +101,7 @@
         @close="addDialogClosed"
       >
         <!--内容主题区域-->
-        <div id="app">
+        <div id="app" style="height: 100%">
           <el-row>
             <el-col :span="24">
               <el-table
@@ -334,7 +334,10 @@ export default {
     //添加账号
     addMasterUser() {
       for (let i of this.master_user.data) {
-        if (i.isSet) return this.$message.warning("请先保存当前编辑项");
+        if (i.isSet) return this.$message({
+            type: "warning",
+            message: "请先保存当前编辑项",
+          });
       }
       let j = {
         id: 0,
@@ -353,7 +356,10 @@ export default {
       //点击修改 判断是否已经保存所有操作
       for (let i of this.master_user.data) {
         if (i.isSet && i.id != row.id) {
-          this.$message.warning("请先保存当前编辑项");
+          this.$message({
+            type: "warning",
+            message: "请先保存当前编辑项",
+          });
           return false;
         }
       }
@@ -411,9 +417,15 @@ export default {
       const data = await this.$axios(conf);
       if (data.status !== 200) {
         userinfo.state = !userinfo.state;
-        return this.$message.error("更新用户状态失败!");
+        this.$message({
+          message: "更新用户状态失败!",
+          type: "error",
+        });
       }
-      this.$message.success("更新用户状态成功!");
+      this.$message({
+        message: "更新用户状态成功!",
+        type: "success",
+      });
     },
     //监听添加用户输入框的关闭
     addDialogClosed() {
@@ -421,8 +433,13 @@ export default {
     },
     //点击确定，添加新用户
     async addUser() {
-      console.log(this.master_user.data);
-      console.log(parseInt(this.master_user.data[0].group))
+      if (this.master_user.data.length == 0) {
+        this.$message({
+          message: "添加账号数量不能为0，你可以选择取消添加或继续添加",
+          type: "error",
+        });
+      }
+      console.log(parseInt(this.master_user.data[0].group));
       const conf = API.auth.reg(
         this.master_user.data[0].email,
         this.master_user.data[0].username,
@@ -430,7 +447,6 @@ export default {
         parseInt(this.master_user.data[0].group)
       );
       const data = await this.$axios(conf);
-      console.log("1");
       console.log(data);
       //隐藏添加用户对话框
       this.addDialogVisible = false;
@@ -458,14 +474,20 @@ export default {
         );
         const data = await this.$axios(conf);
         if (data.status !== 200) {
-          return this.$message.error("更新用户信息失败!");
+          return this.$message({
+            type: "error",
+            message: "更新用户信息失败!",
+          });
         }
         //关闭对话框
         this.editDialogVisible = false;
         //刷新数据列表
         this.getUserList();
         //提示修改成功
-        this.$message.success("更新用户数据成功！");
+        this.$message({
+            type: "success",
+            message: "更新用户数据成功！",
+          });
       });
     },
   },
@@ -475,7 +497,7 @@ export default {
 .el-table-add-row {
   margin-top: 10px;
   width: 100%;
-  height: 40px;
+  height: 40ipx;
   border-radius: 3px;
   cursor: pointer;
   justify-content: center;

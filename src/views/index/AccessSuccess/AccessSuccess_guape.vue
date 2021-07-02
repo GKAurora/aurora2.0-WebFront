@@ -7,12 +7,18 @@
 <script>
 export default {
   name: 'page',
-  mounted () {
-    this.getAccessSuccess()
-  },
-  methods: {
-    getAccessSuccess () {
-      this.$echarts.init(document.getElementById('AccessSuccess_guape')).setOption({
+  data(){
+    return {
+      centers:[
+        ['25%','50%'],
+        ['50%','50%'],
+        ['70%','50%']
+      ],
+      values:[
+        81,93,10
+      ],
+      names:['关联成功率','认证成功率','DHCP成功率'],
+      options:{
         series: [
           {
             type: 'gauge',
@@ -53,7 +59,7 @@ export default {
             },
             data: [
               {
-                value: 87,
+                value: 82,
                 name: '关联成功率',
                 title: {
                   offsetCenter: ['0%', '150%'] // 标题显示位置
@@ -61,7 +67,7 @@ export default {
                 detail: {
                   offsetCenter: ['0%', '0%'] // 数值显示位置
                 }
-              }
+              },
             ],
             title: {
               // 标题样式
@@ -79,7 +85,15 @@ export default {
             }
           }
         ]
-      })
+      }
+    }
+  },
+  mounted () {
+    this.getAccessSuccess()
+  },
+  methods: {
+    getAccessSuccess () {
+      this.$echarts.init(document.getElementById('AccessSuccess_guape')).setOption(this.options)
     }
   }
 }

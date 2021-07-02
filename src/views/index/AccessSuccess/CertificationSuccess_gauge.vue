@@ -7,6 +7,11 @@
 <script>
 export default {
   name: 'page',
+  data(){
+    return{
+      total:90
+    }
+  },
   mounted () {
     this.getCertificationSuccess()
   },
@@ -50,7 +55,7 @@ export default {
             },
             data: [
               {
-                value: 95,
+                value: this.total,
                 name: '认证成功率',
                 title: {
                   offsetCenter: ['0%', '150%'] // 标题显示位置
