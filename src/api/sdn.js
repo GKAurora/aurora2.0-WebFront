@@ -176,7 +176,7 @@ const sdn = {
      */
   heatmap () {
     return {
-      url: `${this.prefix}/heat`,
+      url: `${this.prefix}/heatmap`,
       method: 'get'
     }
   }
