@@ -9,7 +9,7 @@ Vue.use(Router)
 const router = new Router({
   base: process.env.BASE_URL,
   routes: staticRouter,
-  mode: 'history'
+  // mode: 'history'
 })
 
 /* 利用router.meta保存数据级权限 */

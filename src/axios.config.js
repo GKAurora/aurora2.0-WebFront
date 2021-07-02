@@ -21,17 +21,10 @@ axios.interceptors.request.use(function (config) {
 // 响应拦截器
 axios.interceptors.response.use(function (config) {
   console.log('resp', config)
-  // if(config.status === 401){
-  //   console.log('鉴权失败')
-  // }
-  // return config
   return config
 }, err => {
-  console.log('resp err↓')
-  console.log(err.response)
-  if(err.response.status === 401){
-    console.log('鉴权失败')
-    return null
+  if(err.response.status >= 400 || err.response.status >= 500){
+    return err.response
   }
   return err
 })
