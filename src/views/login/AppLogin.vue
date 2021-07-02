@@ -79,25 +79,31 @@ export default {
   },
   methods: {
     async handleSubmit(ev) {
-      
       try {
-        const conf = API.auth.login(this.ruleForm.account, this.ruleForm.checkPass);
-        const data = await this.$axios(conf).then((result) => {
-          return result.data
-        });
-        console.log(data);
-        if (data.code === 200) {
+        const conf = API.auth.login(
+          this.ruleForm.account,
+          this.ruleForm.checkPass
+        );
+        console.log("config", conf);
+        const data = await this.$axios(conf);
+        console.log(data, typeof data)
+        if (data && data.data.code === 200) {
           // 存储token
-          localStorage.setItem('user-token', data.data.token)
+          localStorage.setItem("user-token", data.data.token);
           this.$message({
             message: "登录成功！",
             type: "success",
           });
           // 跳转路由
-          this.$router.push(this.fromUrl)
+          this.$router.push(this.fromUrl);
+          return 
         }
+        this.$message({
+          message: "鉴权失败",
+            type: "error",
+        });
       } catch (error) {
-        console.log('err', error)
+        console.log("err", error);
         this.$message({
           message: "登录失败",
           type: "error",

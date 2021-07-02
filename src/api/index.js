@@ -8,6 +8,6 @@ const API = {
   tokenPrefix: 'Bearer ',
   auth: auth,
   sdn: sdn,
-  server: server
+  sys: server
 }
 export default API
