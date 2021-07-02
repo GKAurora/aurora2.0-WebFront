@@ -73,98 +73,72 @@
 </template>
 
 <script>
-import { requestRegister } from "@/api/user";
-import API from "../../api";
+import API from '../../api'
 
 export default {
-  name: "app-login",
-  data() {
+  name: 'app-login',
+  data () {
     var validatePass = (rule, value, callback) => {
-      if (value === "") {
-        callback(new Error("请输入密码"));
+      if (value === '') {
+        callback(new Error('请输入密码'))
       } else {
-        if (this.ruleForm.checkPass !== "") {
-          this.$refs.ruleForm.validateField("checkPass");
+        if (this.ruleForm.checkPass !== '') {
+          this.$refs.ruleForm.validateField('checkPass')
         }
-        callback();
+        callback()
       }
-    };
+    }
     var validatePass2 = (rule, value, callback) => {
-      if (value === "") {
-        callback(new Error("请再次输入密码"));
+      if (value === '') {
+        callback(new Error('请再次输入密码'))
       } else if (value !== this.ruleForm.password) {
-        callback(new Error("两次输入密码不一致!"));
+        callback(new Error('两次输入密码不一致!'))
       } else {
-        callback();
+        callback()
       }
-    };
+    }
     return {
       logining: false,
       ruleForm: {
-        account: "admin123",
-        password: "admin123",
-        checkPass: "admin123",
-        email: "admin123@admin.com",
+        account: 'admin123',
+        password: 'admin123',
+        checkPass: 'admin123',
+        email: 'admin123@admin.com'
       },
       rules: {
-        account: [{ required: true, message: "请输入账号", trigger: "blur" }],
-        password: [{ validator: validatePass, trigger: "blur" }],
-        checkPass: [{ validator: validatePass2, trigger: "blur" }],
-      },
-    };
+        account: [{ required: true, message: '请输入账号', trigger: 'blur' }],
+        password: [{ validator: validatePass, trigger: 'blur' }],
+        checkPass: [{ validator: validatePass2, trigger: 'blur' }]
+      }
+    }
   },
   methods: {
-    async handleSubmit(ev) {
+    async handleSubmit (ev) {
       if (this.ruleForm.password != this.ruleForm.checkPass) {
-        return;
+        return
       }
       const conf = API.auth.reg(
         this.ruleForm.account,
         this.ruleForm.password,
         this.ruleForm.email
-      );
-      const data = await this.$axios(conf);
+      )
+      const data = await this.$axios(conf)
       if (data.status === 200) {
         this.$message({
-          message: "注册成功",
-          type: "success",
-        });
+          message: '注册成功',
+          type: 'success'
+        })
         // 跳转
         this.$router.push('/login')
-        return 
+        return
       }
       this.$message({
         message: `${data.data.message}`,
-        type: "error",
-      });
-      
-      // this.$refs.ruleForm.validate((valid) => {
-      //   if (valid) {
-      //     this.logining = true
-      //     var registerParams = {
-      //       username: this.ruleForm.account,
-      //       password: this.ruleForm.password,
-      //       checkPass: this.ruleForm.checkPass
-      //     }
-      //     requestRegister(registerParams).then(data => {
-      //       this.logining = false
-      //       this.$message({
-      //         message: '注册成功！',
-      //         type: 'success'
-      //       })
-      //       this.$router.push({ path: '/login' })
-      //     }).catch(err => {
-      //       this.logining = false
-      //       console.log(err)
-      //     })
-      //   } else {
-      //     console.log('error submit!!')
-      //     return false
-      //   }
-      // })
-    },
-  },
-};
+        type: 'error'
+      })
+    }
+  }
+}
 </script>
 
 <style scoped>
