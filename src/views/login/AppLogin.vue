@@ -85,10 +85,9 @@ export default {
         const data = await this.$axios(conf).then((result) => {
           return result.data
         });
-        console.log(data);
         if (data.code === 200) {
           // 存储token
-          localStorage.setItem('user-token', data.data.token)
+          localStorage.setItem('user-token', data.data.data.token)
           this.$message({
             message: "登录成功！",
             type: "success",
