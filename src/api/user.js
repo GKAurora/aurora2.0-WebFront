@@ -1,4 +1,6 @@
 import staticRouter from '@/router/staticRouter'
+import { getMetadata } from 'core-js/fn/reflect'
+import API from '.'
 import axios from '../axios.config'
 
 export const requestUserInfo = () => {
@@ -50,4 +52,13 @@ export const requestUserInfo = () => {
     res.accessMenu = accessMenu
     return res
   })
+}
+
+export const getData = (site_id)=>{
+  const conf=API.sdn.qualityHealth(
+    Date.now() - 1000 * 60 * 60 * 24 * parseInt(7),
+    Date.now(),
+    1,
+    site_id
+  )
 }

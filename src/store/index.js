@@ -15,9 +15,13 @@ export default new Vuex.Store({
     source: {
       token: null,
       cancel: null
-    }
+    },
+    SiteId:'857b706e-67d9-49c0-b3cd-4bd1e6963c07'
   },
   mutations: {
+    setSiteId(state,siteid){
+      state.SiteId=siteid
+    },
     setUser(state, { user }) {
       state.user.name = user.name
       state.user.permissions = user.permissions

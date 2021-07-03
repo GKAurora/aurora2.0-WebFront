@@ -1,5 +1,5 @@
 <template>
-  <div id='SignaInterference_line' style='width: 950px; height: 250px'></div>
+  <div id='SignaInterference_line' style='width: 100%; height: 250px'></div>
 </template>
 <script>
 var data = [
@@ -59,7 +59,6 @@ export default {
         ],
         tooltip: {
           trigger: 'axis'
-
         },
         title: [
           {
@@ -82,7 +81,8 @@ export default {
         },
         xAxis: [
           {
-            data: dateList
+            data: dateList,
+            boundaryGap:false     //第一个值紧挨在Y轴，默认是与Y轴有距离的
           }
         ],
         yAxis: [{}],

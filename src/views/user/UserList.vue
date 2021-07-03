@@ -20,7 +20,6 @@
             </el-radio-group>
           </div>
         </el-col>
-
         <el-col :span="4">
           <div class="block">
             <el-date-picker

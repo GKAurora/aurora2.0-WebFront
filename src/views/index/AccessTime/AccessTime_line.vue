@@ -1,5 +1,5 @@
 <template>
-  <div id='AccessTime_line' style='width: 950px; height: 250px'></div>
+  <div id='AccessTime_line' style='width: 100%; height: 250px'></div>
 </template>
 <script>
 var data = [
@@ -10,23 +10,7 @@ var data = [
   ['04:00', 73],
   ['05:00', 85],
   ['06:00', 73],
-  ['07:00', 68],
-  ['08:00', 92],
-  ['09:00', 30],
-  ['10:00', 45],
-  ['11:00', 39],
-  ['12:00', 15],
-  ['13:00', 11],
-  ['14:00', 9],
-  ['15:00', 6],
-  ['16:00', 37],
-  ['17:00', 28],
-  ['18:00', 85],
-  ['19:00', 94],
-  ['20:00', 71],
-  ['21:00', 6],
-  ['22:00', 84],
-  ['23:00', 93]
+  ['07:00', 68]
 ]
 
 var dateList = data.map(function (item) {
@@ -82,8 +66,10 @@ export default {
         },
         xAxis: [
           {
-            data: dateList
+            data: dateList,
+            boundaryGap:false     //第一个值紧挨在Y轴，默认是与Y轴有距离的
           }
+          
         ],
         yAxis: [{}],
         grid: [

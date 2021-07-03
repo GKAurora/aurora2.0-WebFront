@@ -1,5 +1,5 @@
 <template>
-  <div id='RoamDefence' style='width: 950px; height: 250px'></div>
+  <div id='RoamDefence' style='width: 100%; height: 250px'></div>
 </template>
 <script>
 var data = [
@@ -83,7 +83,8 @@ export default {
           },
           xAxis: [
             {
-              data: dateList
+              data: dateList,
+              boundaryGap:false     //第一个值紧挨在Y轴，默认是与Y轴有距离的
             }
           ],
           yAxis: [{}
