@@ -15,9 +15,19 @@ export default new Vuex.Store({
     source: {
       token: null,
       cancel: null
+    },
+    siteMsg: {
+      siteTree: [],
+      siteId: null
     }
   },
   mutations: {
+    setSiteId(state, id){
+      state.siteMsg.siteId = id
+    },
+    setSiteTree(state, siteTree){
+      state.siteMsg.siteTree = siteTree
+    },
     setUser(state, { user }) {
       state.user.name = user.name
       state.user.permissions = user.permissions

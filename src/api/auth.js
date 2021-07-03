@@ -16,6 +16,12 @@ const auth = {
       }
     }
   },
+  getLoginUserMsg() {
+    return {
+      url: `/user/get_user_info`,
+      method: 'get'
+    }
+  },
   /**
      * 获取管理员列表
      * @returns 返回用户信息列表

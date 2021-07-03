@@ -6,11 +6,11 @@
         <div class="general-state-view-content">
         <MessageCard
           class="general-state-view-item"
-          v-for="value in cardMessage"
-          :key="value"
+          v-for="(value, index) in cardMessage"
+          :key="index"
           :cardData="value"
         ></MessageCard>
-      </div>
+        </div>
     </el-card>
 </template>
 
@@ -30,16 +30,15 @@ export default {
   display: flex;
   flex-direction: column;
   align-content: center;
-  // justify-content: center;
   .general-state-view-title {
     border-bottom: 1px solid #999;
   }
   .general-state-view-content {
     display: flex;
     padding: 20px 10px;
-    align-content: space-between;
     .general-state-view-item {
       padding: 0 15px;
+      overflow: hidden;
     }
   }
 }
