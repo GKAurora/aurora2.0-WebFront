@@ -47,8 +47,13 @@ router.beforeEach((to, from, next) => {
     localStorage.removeItem('user-token')
   }
   /* 免登录页面 */
-  if (whiteList.indexOf(to.fullPath) >= 0) {
-    return next()
+  console.log(to, from)
+  if (whiteList.indexOf(to.fullPath) != -1) {
+    next()
+    return 
+  }
+  if (token == null) {
+    next('/login')
   }
   let permissions = router.app.$options.store.state.user.permissions
   /* 上次会话结束，重新获取用户信息 */
