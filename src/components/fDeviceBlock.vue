@@ -1,5 +1,5 @@
 <template>
-  <el-col :span="8" :xs="24" :sm="24" :md="12">
+  <div>
 
       <el-card
         class="device-count"
@@ -18,7 +18,7 @@
         </a>
       </el-card>
 
-  </el-col>
+  </div>
 </template>
 
 <script>

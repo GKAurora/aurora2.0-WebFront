@@ -1,14 +1,27 @@
 <template>
-  <div id='Annular' style='width: 100%; height: 250px'></div>
+  <div id="Annular" style='width: 100%; height: 250px'></div>
 </template>
 <script>
 export default {
+  data() {
+    return {
+      annular: null
+    }
+  },
   mounted () {
     this.getAnnular()
   },
+  created() {
+    this.$nextTick(() => {
+      window.addEventListener('resize', () => {
+        this.annular.resize()
+      })
+    })
+  },
   methods: {
     getAnnular () {
-      this.$echarts.init(document.getElementById('Annular')).setOption({
+      this.annular = this.$echarts.init(document.getElementById('Annular'))
+      this.annular.setOption({
         tooltip: {
           trigger: 'item'
         },
@@ -17,7 +30,7 @@ export default {
           top: 'auto',
           left: 'auto',
           textStyle: {
-            color: '#fff'
+            // color: '#fff'
           }
           // icon:'image://https://unsplash.it/100/100?image=1005'    //可以自定义图标
         },
@@ -45,8 +58,8 @@ export default {
               label: {
                 show: true, // 是否显示圆环中文字
                 fontSize: '16',
-                fontWeight: 'bold',
-                color: '#fff'
+                fontWeight: 'bold'
+                // color: ''
               }
             },
             labelLine: {
@@ -72,4 +85,7 @@ export default {
 }
 </script>
 <style lang='scss' scoped>
+#Annular {
+  min-width: 500px;
+}
 </style>

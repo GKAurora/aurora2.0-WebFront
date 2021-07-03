@@ -16,11 +16,17 @@ export default new Vuex.Store({
       token: null,
       cancel: null
     },
-    SiteId:'857b706e-67d9-49c0-b3cd-4bd1e6963c07'
+    siteMsg: {
+      siteTree: [],
+      siteId: null
+    }
   },
   mutations: {
-    setSiteId(state,siteid){
-      state.SiteId=siteid
+    setSiteId(state, id){
+      state.siteMsg.siteId = id
+    },
+    setSiteTree(state, siteTree){
+      state.siteMsg.siteTree = siteTree
     },
     setUser(state, { user }) {
       state.user.name = user.name

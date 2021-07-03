@@ -23,6 +23,10 @@ export default {
 
 <style lang="scss" scoped>
 .annular-card{
-    min-width: 500px;
+    // min-width: 500px;
+    // width: 100%;
+    .annular-card-content{
+        overflow: hidden;
+    }
 }
 </style>

@@ -1,5 +1,6 @@
 import axios from 'axios'
 import API from './api'
+import router from './router'
 
 axios.defaults.baseURL = `${API.server}`
 
@@ -26,6 +27,11 @@ axios.interceptors.response.use(function (config) {
 }, err => {
   console.log('axios err', err.response)
   if(err.response.status >= 400 || err.response.status >= 500){
+    if(err.response.status === 401){
+      // 鉴权失败，跳转登录
+      console.log('401! to login')
+      // router.push('/login')
+    }
     return err.response
   }
   return err

@@ -85,6 +85,11 @@ export default {
         if (data.status === 200) {
           // 存储token
           localStorage.setItem('user-token', data.data.data.token)
+          const siteConf = API.sdn.getSitesMessage()
+          let sitesData = await this.$axios(siteConf)
+          console.log(sitesData.data.data)
+          this.$store.commit('setSiteTree', sitesData.data.data)
+          console.log('store', this.$store.state)
           this.$message({
             message: '登录成功',
             type: 'success'
