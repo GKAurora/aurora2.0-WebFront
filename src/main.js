@@ -59,7 +59,11 @@ import zhLocale from 'element-ui/lib/locale/lang/zh-CN'
 import ElementLocale from 'element-ui/lib/locale'
 import G6 from '@antv/g6'
 Vue.config.productionTip = false
-
+// ui
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+Vue.use(ElementUI)
+// axios
 import axios from './axios.config'
 Vue.prototype.$axios = axios
 

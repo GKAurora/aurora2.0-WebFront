@@ -158,7 +158,7 @@ const sdn = {
      * @param {integer} page_size
      * @returns axios conf
      */
-  getUserList (level = 1, site_id = '/', page = 1, page_size = 100) {
+  getUserList (level = 1, site_id = '857b706e-67d9-49c0-b3cd-4bd1e6963c07', page = 1, page_size = 100) {
     return {
       url: `${this.prefix}/get_user_route`,
       method: 'put',

@@ -42,8 +42,8 @@ router.beforeEach((to, from, next) => {
   const token = localStorage.getItem('user-token')
   // whiteList.indexOf(to.path) === -1 ? token != null && token != '' ? next() : next('/login') : next()
 /* 进入登录页面将注销用户信息 */
-  console.log(to)
-  console.log(from)
+  // console.log(to)
+  // console.log(from)
   if (to.path === '/login') {
     router.app.$options.store.commit('deleteUser')
     localStorage.removeItem('user-token')
@@ -79,7 +79,7 @@ router.beforeEach((to, from, next) => {
     /* 已登录时判断页面权限 */
     pagePermission(permissions, to, next)
   }
-  console.log('Router end')
+  // console.log('Router end')
 })
 
 export default router
