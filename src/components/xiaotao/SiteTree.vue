@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import API from '../api'
+import API from '../../api'
 export default {
     name: 'SiteTree',
     data() {
@@ -43,6 +43,8 @@ export default {
     },
     methods: {
         async loadNode(node, resolve) {
+            console.log('NODE', node)
+            // this.$store.commit('setSiteId', node.data.id)
             if (node.level === 0) {
                 resolve([{
                     label: '/ root',
@@ -53,14 +55,17 @@ export default {
                 }])
             } else {
                 this.loading = true
-                const data = (await this.axios(API.network.getSiteList(node.data.id))).data
+                // node.data.id
+                const data = (await this.$axios(API.sdn.getSitesMessage(node.data.id))).data.data
                 this.loading = false
                 resolve(data.map(e => {
                     e.label = `${e.name} | 类型：${e.position_type}`
                     e.isLeaf = !e.is_parent
                     return e
                 }))
+                this.$store.commit('setSiteId', node.data.id)
             }
+            
         },
         handleNodeClick(e) {
             this.selectingNode = e

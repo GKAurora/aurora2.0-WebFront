@@ -23,6 +23,7 @@ export default {
 .dashboard-card {
     .dashboard-card-content {
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
     }

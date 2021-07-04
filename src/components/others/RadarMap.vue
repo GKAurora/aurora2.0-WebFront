@@ -150,7 +150,7 @@ export default {
 </script>
 <style lang='css' scoped>
 #Radarmap {
-  width: 400px;
-  height: 400px;
+  width: 300px;
+  height: 300px;
 }
 </style>

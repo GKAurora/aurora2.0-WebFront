@@ -21,7 +21,8 @@
 </template>
 <script>
 // site selector
-import Selector from '../../components/fSiteSelector.vue'
+// import Selector from '../../components/fSiteSelector.vue'
+import Selector from '../../components/xiaotao/SiteTree.vue'
 // overview
 import GeneralState from '../../components/fGeneralStateView.vue'
 import AnnularCard from '../../components/fAnnularCard.vue'
