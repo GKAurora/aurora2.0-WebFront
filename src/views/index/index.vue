@@ -1,7 +1,9 @@
 <template>
   <div class="index-content">
     <!-- site selector -->
-    <Selector></Selector>
+    <Selector
+    @select="handleSiteSelect"
+    ></Selector>
     <div class="overview">
       <!-- 状态总览 -->
       <GeneralState
@@ -117,6 +119,9 @@ export default {
       }
       this.card.totalDevice.total = users.data.data.totalSize
       return users.data.data.totalSize
+    },
+    handleSiteSelect(e) {
+      this.$store.commit('setSiteId', e.id)
     }
   },
   mounted() {

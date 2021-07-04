@@ -63,12 +63,13 @@ export default {
                     e.isLeaf = !e.is_parent
                     return e
                 }))
-                this.$store.commit('setSiteId', node.data.id)
             }
             
         },
         handleNodeClick(e) {
             this.selectingNode = e
+            this.currentNode = this.selectingNode
+            this.$emit('select', this.currentNode)
         },
         select() {
             this.currentNode = this.selectingNode
