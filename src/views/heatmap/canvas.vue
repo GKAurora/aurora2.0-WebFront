@@ -1,5 +1,5 @@
 <template>
-  <div id='main_1'>
+  <div id='canvas'>
       <canvas id='myCanvas' style='width:100%; height:auto' @click="dialogVisible = true"></canvas>
       <img id='scream' src='../../assets/img/about/拓扑.png' alt='The Scream' style='display: none;'>
       <el-dialog
@@ -58,6 +58,7 @@ export default {
   },
   methods: {
     async initarea () {
+      console.log('数据');
       try {
         const conf = API.sdn.getUserRoute(this.queryInfo.level, this.queryInfo.site_id, this.queryInfo.user_mac)
         const data = await this.$axios(conf)
@@ -72,6 +73,7 @@ export default {
             let end_time = new Date(parseInt(this.areas[i].endTime)).toLocaleString().replace(/:\d{1,2}$/, ' ')
             this.areas[i].endTime = end_time
           }
+          this.initCanvas()
         }
         // console.log(area_id2);
       } catch (error) {
@@ -284,21 +286,15 @@ export default {
             ctx.closePath()
           }
         }
-        // canvas.onclick = function (e) {
-        //   var key2 = Object.keys(area_id2)
-        //   var sum = []
-        //   for (let i = 0; i < key2.length; i++) {
-        //     sum.push(key2[i])
-        //   }
-        //   let sum_string = sum.join('-->')
-        //   alert('用户一周的路径：' + sum_string)
-        // }
       }
     }
   },
-  mounted () {
-    this.initCanvas()
+  created () {
     this.initarea()
+  },
+  mounted () {
+    // this.initarea()
+    this.initCanvas()
     var _this = this
     window.onresize = () => {
       return (() => {
@@ -310,7 +306,7 @@ export default {
 </script>
 
 <style>
-#main_1{
+#canvas{
     display: flex;
     justify-content: center;
     align-content: center;
