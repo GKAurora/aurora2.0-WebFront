@@ -1,16 +1,34 @@
 <template>
-  <div id='RoamDefence' style='width: 100%; height: 350px'></div>
+  <div id="RoamDefence" style="width: 100%; height: 350px"></div>
 </template>
 <script>
-import API from '../../../api';
+import { mapState } from 'vuex';
+import API from "../../../api";
 export default {
-  name: 'page',
+  computed:{
+    ...mapState(['timeFrame'])
+  },
+  //监听父组件修改了时间，得到新的时间戳，更新到子组件的时间戳，重新发起请求
+  watch: {
+    timeFrame: {
+      handler(newtime, oldtime) {
+        this.startime=newtime[0]
+        this.endtime=newtime[1]
+        this.dataList=[]
+        this.valueList=[]
+        this.getData();
+      },
+    },
+  },
+  name: "page",
   data() {
     return {
       message: [],
       dataList: [],
       valueList: [],
-      Siteid: this.$store.state.siteMsg.siteId,    //当前站点id
+      Siteid: this.$store.state.siteMsg.siteId, //当前站点id
+      startime:this.$store.state.timeFrame[0] || Date.now() - 1000 * 60 * 60 * 24 * parseInt(7),
+      endtime:this.$store.state.timeFrame[1] || Date.now()
     };
   },
   created() {
@@ -23,19 +41,26 @@ export default {
     async getData() {
       try {
         const conf = API.sdn.qualityHealth(
-          Date.now() - 1000 * 60 * 60 * 24 * parseInt(7),
-          Date.now(),
+          this.startime,
+          this.endtime,
           1,
           this.Siteid
         );
         const sitedata = await this.$axios(conf);
+        if (sitedata.data.data == null) {
+          this.$message({
+            message: "该站点暂无数据",
+            type: "info",
+          });
+          return;
+        }
         this.message = sitedata.data.data.values;
         if (sitedata.data.code === 200) {
           for (let i = 0; i < this.message.length; i++) {
             let roaming = this.message[i].roaming;
             let timestamp = new Date(parseInt(this.message[i].timestamp))
               .toLocaleString()
-              .replace(/:\d{1,2}$/, ' ');
+              .replace(/:\d{1,2}$/, " ");
             this.dataList.push(timestamp);
             this.valueList.push(roaming);
           }
@@ -44,32 +69,32 @@ export default {
         }
       } catch (error) {
         this.$message({
-          message: '获取漫游达标率失败',
-          type: 'error',
+          message: "获取漫游达标率失败",
+          type: "error",
         });
       }
     },
     getAccessSuccess() {
-      this.$echarts.init(document.getElementById('RoamDefence')).setOption({
+      this.$echarts.init(document.getElementById("RoamDefence")).setOption({
         // Make gradient line here
         visualMap: [
           {
             show: false, // 颜色栏
-            type: 'continuous', // 连续型
+            type: "continuous", // 连续型
             seriesIndex: 0, // 渐变
             // min: -100, // 最小值
             // max: 0, // 最大值
             range: [-100, 0],
-            color: ['#5385F5'],
+            color: ["#5385F5"],
             // color: ['orangered','yellow','lightskyblue']  //线颜色渐变
           },
         ],
         title: [
           {
-            left: '8%',
-            text: '漫游达标率',
+            left: "8%",
+            text: "漫游达标率",
             textStyle: {
-              color: '#fff',
+              color: "#fff",
             },
           },
         ],
@@ -79,12 +104,12 @@ export default {
             dataZoom: {}, // 区域缩放
             magicType: {
               // 多种图表切换
-              type: ['bar', 'line'],
+              type: ["bar", "line"],
             },
           },
         },
         tooltip: {
-          trigger: 'axis',
+          trigger: "axis",
         },
         xAxis: [
           {
@@ -95,10 +120,10 @@ export default {
         yAxis: [{}],
         dataZoom: [
           {
-            type: 'inside',
+            type: "inside",
             start: 0,
             end: 10,
-            top: '50%',
+            top: "50%",
           },
           {
             start: 50,
@@ -108,22 +133,22 @@ export default {
         grid: [
           {
             show: true,
-            bottom: '20%', // 大小
-            height: 'auto',
-            width: 'auto',
-            backgroundColor: 'transparent',
-            borderColor: '#ccc',
+            bottom: "20%", // 大小
+            height: "auto",
+            width: "auto",
+            backgroundColor: "transparent",
+            borderColor: "#ccc",
           },
         ],
         series: [
           {
-            type: 'line',
+            type: "line",
             showSymbol: false, // 是否显示节点
             data: this.valueList,
             smooth: true, // 是否平滑
             areaStyle: {
               color: {
-                type: 'linear',
+                type: "linear",
                 x: 0,
                 y: 0,
                 x2: 0,
@@ -131,11 +156,11 @@ export default {
                 colorStops: [
                   {
                     offset: 0,
-                    color: 'rgba(157,163,179,.8)', // 0% 处的颜色
+                    color: "rgba(157,163,179,.8)", // 0% 处的颜色
                   },
                   {
                     offset: 1,
-                    color: 'rgba(157,163,179,.2)', // 100% 处的颜色
+                    color: "rgba(157,163,179,.2)", // 100% 处的颜色
                   },
                 ],
                 global: false, // 缺省为 false

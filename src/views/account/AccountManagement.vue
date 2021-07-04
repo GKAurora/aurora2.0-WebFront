@@ -289,7 +289,7 @@ export default {
           { field: "username", title: "用户名" },
           { field: "password", title: "密码" },
           { field: "email", title: "邮箱" },
-          { field: "group", title: "角色" },
+          { field: "group", title: "用户权限" },
         ],
         data: [],
       },

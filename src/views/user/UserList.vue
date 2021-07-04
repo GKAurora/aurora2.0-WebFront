@@ -4,7 +4,7 @@
     <el-card>
       <!--搜索与添加区域-->
       <el-row>
-        <el-col :lg="7" :md="24" :sm="24" :xs="24">
+        <!-- <el-col :lg="7" :md="24" :sm="24" :xs="24">
           <div :data="SiteList">
             <el-radio-group
               v-model="radio"
@@ -19,8 +19,8 @@
               ></el-radio-button>
             </el-radio-group>
           </div>
-        </el-col>
-        <el-col :lg="4" :md="12" :sm="12" :xs="24">
+        </el-col> -->
+        <!-- <el-col :lg="4" :md="12" :sm="12" :xs="24">
           <div class="block">
             <el-date-picker
               v-model="value1"
@@ -32,7 +32,7 @@
               value-format="timestamp"
             >
             </el-date-picker>
-            <!-- <span>时间戳:{{value1}}</span> -->
+             <span>时间戳:{{value1}}</span>
           </div>
         </el-col>
         <el-col :lg="7" :md="12" :sm="12" :xs="24">
@@ -47,10 +47,10 @@
               value-format="timestamp"
             >
             </el-time-picker>
-            <!-- <span>时间戳：{{value}}</span> -->
+            <span>时间戳：{{value}}</span> 
           </div>
-        </el-col>
-        <el-col :lg="3" :md="12" :sm="12" :xs="12">
+        </el-col> -->
+        <!-- <el-col :lg="3" :md="12" :sm="12" :xs="12">
           <el-dropdown>
             <el-button type="primary">
               用户类型<i class="el-icon-arrow-down el-icon--right"></i>
@@ -67,10 +67,11 @@
               >
             </el-dropdown-menu>
           </el-dropdown>
-        </el-col>
-        <el-col :lg="3" :md="12" :sm="12" :xs="12">
+        </el-col> -->
+        <el-col :lg="3" :md="24" :sm="24" :xs="24">
           <el-button type="primary" @click="editDialogVisible = true"
-            >详细信息</el-button>
+            >详细信息</el-button
+          >
         </el-col>
       </el-row>
       <br />
@@ -104,13 +105,14 @@
           align="center"
         >
         </el-table-column>
-        <el-table-column label="接入类型" prop="accessType" align="center">
+        <el-table-column label="用户类型" prop="accessType" align="center">
           <template slot-scope="scope">
             <span v-if="scope.row.accessType === 1">无线用户</span>
             <span v-else>有线用户</span>
           </template>
         </el-table-column>
       </el-table>
+
       <!--分页区域-->
       <el-pagination
         @size-change="handleSizeChange"
@@ -132,7 +134,7 @@
           <div
             style="font-size: 16px; padding: 12px"
             :data="UserList"
-            v-for="(name) in UserList"
+            v-for="name in UserList"
             :key="name.userMac"
           >
             <el-row>
@@ -163,7 +165,14 @@
               >
               <el-col :span="8"
                 ><div class="grid-content bg-purple">
-                  接入时间：<span v-text="new Date(parseInt(name.accTime)).toLocaleString().replace(/:\d{1,2}$/,' ')">12</span>
+                  接入时间：<span
+                    v-text="
+                      new Date(parseInt(name.accTime))
+                        .toLocaleString()
+                        .replace(/:\d{1,2}$/, ' ')
+                    "
+                    >12</span
+                  >
                 </div></el-col
               >
             </el-row>
@@ -181,7 +190,14 @@
               >
               <el-col :span="9"
                 ><div class="grid-content bg-purple-light">
-                  第一次接入时间：<span v-text="new Date(parseInt(name.minAccTime)).toLocaleString().replace(/:\d{1,2}$/,' ')">12</span>
+                  第一次接入时间：<span
+                    v-text="
+                      new Date(parseInt(name.minAccTime))
+                        .toLocaleString()
+                        .replace(/:\d{1,2}$/, ' ')
+                    "
+                    >12</span
+                  >
                 </div></el-col
               >
             </el-row>
@@ -252,58 +268,58 @@ import API from "../../api";
 export default {
   data() {
     return {
-      name: "",
-      index: 2,
+      // name: "",
+      // index: 2,
       //地区选择
-      radio: "Shenzhen",
+      // radio: "Shenzhen",
       //时间选择
-      value: [
-        new Date(
-          new Date().getFullYear(),
-          new Date().getMonth(),
-          new Date().getDate(),
-          new Date().getHours() - 6,
-          new Date().getMinutes()
-        ),
-        new Date(
-          new Date().getFullYear(),
-          new Date().getMonth(),
-          new Date().getDate(),
-          new Date().getHours(),
-          new Date().getMinutes()
-        ),
-      ],
-      //日期选择
-      pickerOptions: {
-        disabledDate(time) {
-          return time.getTime() > Date.now();
-        },
-        shortcuts: [
-          {
-            text: "今天",
-            onClick(picker) {
-              picker.$emit("pick", date);
-            },
-          },
-          {
-            text: "昨天",
-            onClick(picker) {
-              const date = new Date();
-              date.setTime(date.getTime() - 3600 * 1000 * 24);
-              picker.$emit("pick", date);
-            },
-          },
-          {
-            text: "一周前",
-            onClick(picker) {
-              const date = new Date();
-              date.setTime(date.getTime() - 3600 * 1000 * 24 * 7);
-              picker.$emit("pick", date);
-            },
-          },
-        ],
-      },
-      value1: new Date(),
+      // value: [
+      //   new Date(
+      //     new Date().getFullYear(),
+      //     new Date().getMonth(),
+      //     new Date().getDate(),
+      //     new Date().getHours() - 6,
+      //     new Date().getMinutes()
+      //   ),
+      //   new Date(
+      //     new Date().getFullYear(),
+      //     new Date().getMonth(),
+      //     new Date().getDate(),
+      //     new Date().getHours(),
+      //     new Date().getMinutes()
+      //   ),
+      // ],
+      // //日期选择
+      // pickerOptions: {
+      //   disabledDate(time) {
+      //     return time.getTime() > Date.now();
+      //   },
+      //   shortcuts: [
+      //     {
+      //       text: "今天",
+      //       onClick(picker) {
+      //         picker.$emit("pick", date);
+      //       },
+      //     },
+      //     {
+      //       text: "昨天",
+      //       onClick(picker) {
+      //         const date = new Date();
+      //         date.setTime(date.getTime() - 3600 * 1000 * 24);
+      //         picker.$emit("pick", date);
+      //       },
+      //     },
+      //     {
+      //       text: "一周前",
+      //       onClick(picker) {
+      //         const date = new Date();
+      //         date.setTime(date.getTime() - 3600 * 1000 * 24 * 7);
+      //         picker.$emit("pick", date);
+      //       },
+      //     },
+      //   ],
+      // },
+      // value1: new Date(),
       //控制详细信息对话框的显示与隐藏
       editDialogVisible: false,
       //获取站点信息携带的参数
@@ -315,40 +331,46 @@ export default {
         level: 1,
         page: 1, //页数
         page_size: 10, //每一页的数据总数
-        site_id: "857b706e-67d9-49c0-b3cd-4bd1e6963c07", //站点id
+        site_id:
+          this.$store.state.siteMsg.siteId ||
+          "857b706e-67d9-49c0-b3cd-4bd1e6963c07", //站点id
       },
       //存储站点信息
-      SiteList: [],
+      // SiteList: [],
       //存储用户列表数据
       UserList: [],
+      //存储无线用户列表数据
+      WirelessList: [],
+      //存储有线用户列表数据
+      CableList: [],
       //数据总条数
       total: 0,
     };
   },
   mounted() {
-    this.getSitesMessage();
+    // this.getSitesMessage();
     this.getUserList();
   },
   methods: {
-    //获取站点信息
-    async getSitesMessage() {
-      try {
-        const conf = API.sdn.getSitesMessage(
-          this.SitequeryInfo.queryInfoSite_id
-        );
-        const data = await this.$axios(conf);
-        if (data.status === 200) {
-          this.SiteList = data.data.data;
-          return true;
-        }
-        return false;
-      } catch (error) {
-        this.$message({
-          message: "获取站点信息失败",
-          type: "error",
-        });
-      }
-    },
+    // //获取站点信息
+    // async getSitesMessage() {
+    //   try {
+    //     const conf = API.sdn.getSitesMessage(
+    //       this.SitequeryInfo.queryInfoSite_id
+    //     );
+    //     const data = await this.$axios(conf);
+    //     if (data.status === 200) {
+    //       this.SiteList = data.data.data;
+    //       return true;
+    //     }
+    //     return false;
+    //   } catch (error) {
+    //     this.$message({
+    //       message: "获取站点信息失败",
+    //       type: "error",
+    //     });
+    //   }
+    // },
     //获取用户列表数据
     async getUserList() {
       try {
@@ -359,9 +381,19 @@ export default {
           this.queryInfo.page_size
         );
         const data = await this.$axios(conf);
+        console.log(data);
         if (data.status === 200) {
           //存储用户列表数据
           this.UserList = data.data.data.tableData;
+          // for(let i=0;i<data.data.data.pageSize;i++){
+          //   //无线用户
+          //   if(data.data.data.tableData[i].accessType==1){
+          //     this.WirelessList.push(data.data.data.tableData[i])
+          //   }
+          //   else{
+          //     this.CableList.push(data.data.data.tableData[i])
+          //   }
+          // }
           //存储用户列表列数
           this.total = data.data.data.totalSize;
         }
@@ -372,45 +404,34 @@ export default {
         });
       }
     },
-    //选择不同地区，展示不同用户列表
-    getSer(site_id, index) {
-      //记录当前选中状态
-      this.index = index;
-      this.queryInfo.site_id = site_id;
-      var flag = this.getUserList();
-      if (flag) {
-        this.$message({
-          message: "查询成功",
-          type: "success",
-        });
-      } else {
-        this.$message({
-          message: "暂无数据",
-          type: "error",
-        });
-      }
-    },
     //全部用户、无线用户()
-    getUser() {
-      //判断当前是否为深圳站点（这种解决方法需要优化）
-      if (this.index == 2) {
-        this.getSer("857b706e-67d9-49c0-b3cd-4bd1e6963c07", 2);
-      } else {
-        this.$message({
-          message: "暂无数据",
-          type: "info",
-        });
-      }
-    },
-    //有线用户
-    getNull() {
-      this.$message({
-        message: "暂无数据",
-        type: "info",
-      });
-      this.UserList = "";
-      this.total = 0;
-    },
+    // getUser() {
+    //   //判断当前是否为深圳站点（这种解决方法需要优化）
+    //   var siteid=this.$store.state.siteMsg.siteId
+    //   if (siteid.equals('857b706e-67d9-49c0-b3cd-4bd1e6963c07')) {
+    //     var flag = this.getUserList();
+    //     if (flag) {
+    //       this.$message({
+    //         message: "查询成功",
+    //         type: "success",
+    //       });
+    //     }
+    //   } else {
+    //     this.$message({
+    //       message: "暂无数据",
+    //       type: "info",
+    //     });
+    //   }
+    // },
+    // //有线用户
+    // getNull() {
+    //   this.$message({
+    //     message: "暂无数据",
+    //     type: "info",
+    //   });
+    //   this.UserList = "";
+    //   this.total = 0;
+    // },
     //监听page_size改变的事件
     handleSizeChange(newSize) {
       // console.log(newSize)

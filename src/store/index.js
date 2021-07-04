@@ -19,7 +19,8 @@ export default new Vuex.Store({
     siteMsg: {
       siteTree: [],
       siteId: null
-    }
+    },
+    timeFrame: []   //时间范围
   },
   mutations: {
     setSiteId(state, id){
@@ -27,6 +28,9 @@ export default new Vuex.Store({
     },
     setSiteTree(state, siteTree){
       state.siteMsg.siteTree = siteTree
+    },
+    setTime(state,time){
+      state.timeFrame=time
     },
     setUser(state, { user }) {
       state.user.name = user.name
