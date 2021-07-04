@@ -29,7 +29,7 @@ export default {
               itemStyle: {
                 // 边框
                 borderWidth: 1,
-                // borderColor: "#464646",
+                // borderColor: '#464646',
                 color: '#7DD652' // 进度条颜色
               }
             },

@@ -1,5 +1,5 @@
 <template>
-  <div id="AccessSuccess_guape" style="width: 150px; height: 250px"></div>
+  <div id='AccessSuccess_guape' style='width: 150px; height: 250px'></div>
 </template>
 <script>
 // let series = [];
@@ -10,22 +10,22 @@
 //   });
 // }
 export default {
-  name: "page",
+  name: 'page',
   data() {
     return {
       centers: [
-        ["25%", "10%"],
-        ["50%", "50%"],
-        ["70%", "50%"],
+        ['25%', '10%'],
+        ['50%', '50%'],
+        ['70%', '50%'],
       ],
       values: [81, 93, 10],
-      names: ["关联成功率", "认证成功率", "DHCP成功率"],
+      names: ['关联成功率', '认证成功率', 'DHCP成功率'],
       series:series,
       options: {
         series: [
           {
-            type: "gauge",
-            radius: "80%", // 大小
+            type: 'gauge',
+            radius: '80%', // 大小
             startAngle: 90,
             endAngle: -270,
             pointer: {
@@ -38,16 +38,16 @@ export default {
               itemStyle: {
                 // 边框
                 borderWidth: 1,
-                // borderColor: "blue",      //边框颜色
-                color: "#7DD652", // 进度条颜色
-                shadowColor: "#000",
+                // borderColor: 'blue',      //边框颜色
+                color: '#7DD652', // 进度条颜色
+                shadowColor: '#000',
               },
             },
             axisLine: {
               lineStyle: {
                 width: 7, // 宽度
                 // color:'#fff'
-                color: [[1, "#fff"]], // 圆环背景颜色
+                color: [[1, '#fff']], // 圆环背景颜色
               },
             },
             splitLine: {
@@ -62,27 +62,27 @@ export default {
             data: [
               {
                 value: 82,
-                name: "关联成功率",
+                name: '关联成功率',
                 title: {
-                  offsetCenter: ["0%", "150%"], // 标题显示位置
+                  offsetCenter: ['0%', '150%'], // 标题显示位置
                 },
                 detail: {
-                  offsetCenter: ["0%", "0%"], // 数值显示位置
+                  offsetCenter: ['0%', '0%'], // 数值显示位置
                 },
               },
             ],
             title: {
               // 标题样式
               fontSize: 16,
-              color: "#fff",
+              color: '#fff',
             },
             detail: {
               // 数值样式
               fontSize: 24,
-              color: "auto",
-              borderColor: "auto",
-              formatter: "{value}%",
-              color: "#fff", // 数值颜色
+              color: 'auto',
+              borderColor: 'auto',
+              formatter: '{value}%',
+              color: '#fff', // 数值颜色
               valueAnimation: true, // 数值动态渲染
             },
           },
@@ -96,7 +96,7 @@ export default {
   methods: {
     getAccessSuccess() {
       this.$echarts
-        .init(document.getElementById("AccessSuccess_guape"))
+        .init(document.getElementById('AccessSuccess_guape'))
         .setOption(this.options);
     },
   },

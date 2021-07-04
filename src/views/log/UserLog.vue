@@ -4,17 +4,17 @@
     <div class='block_1'>
         <div class='block_1_1'>
           <img :src='views' id='img' style='width:25px; height: 15px; margin-right: 15px;' @click='hid_show()'><span>查看日志</span>
-          <div :data="SiteList" class="SiteList">
+          <div :data='SiteList' class='SiteList'>
             <el-radio-group
-              v-model="radio"
-              v-for="(site, index) in SiteList"
-              :key="site.id"
-              size="medium"
+              v-model='radio'
+              v-for='(site, index) in SiteList'
+              :key='site.id'
+              size='medium'
             >
               <el-radio-button
-                :label="site.name"
-                :key="site.id"
-                @click.native="getSer(site.id, index)"
+                :label='site.name'
+                :key='site.id'
+                @click.native='getSer(site.id, index)'
               ></el-radio-button>
             </el-radio-group>
           </div>

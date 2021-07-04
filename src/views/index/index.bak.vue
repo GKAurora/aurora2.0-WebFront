@@ -1,51 +1,51 @@
 <template>
-  <div class="bg">
+  <div class='bg'>
     <!--上部分-->
-    <el-card style="height: 450px" id="bar">
+    <el-card style='height: 450px' id='bar'>
       <el-row>
         <!--设备概览-->
-        <el-col :span="10" class="general-view">
-          <span class="general-view-title">设备状态概览</span>
-          <div class="grid-content bg-purple general-view-card" >
-            <el-row :gutter="12">
+        <el-col :span='10' class='general-view'>
+          <span class='general-view-title'>设备状态概览</span>
+          <div class='grid-content bg-purple general-view-card' >
+            <el-row :gutter='12'>
               <DeviceBlock
-              :cardData="card.device"
+              :cardData='card.device'
               ></DeviceBlock>
               <DeviceBlock
-              :cardData="card.apMessage"
+              :cardData='card.apMessage'
               ></DeviceBlock>
-              <!-- <el-col :span="8" :xs="24" :sm="24" :lg="8"
-                ><div class="grid-content bg-purple-light">
-                  <el-card class="Security_count">
-                    <span class="Device_font"><strong>58</strong></span>
+              <!-- <el-col :span='8' :xs='24' :sm='24' :lg='8'
+                ><div class='grid-content bg-purple-light'>
+                  <el-card class='Security_count'>
+                    <span class='Device_font'><strong>58</strong></span>
                     <br /><br />
-                    <p class="Device_font_two">有线用户</p>
+                    <p class='Device_font_two'>有线用户</p>
                     <br />
-                    <div class="Mask">
+                    <div class='Mask'>
                       <span>详细信息 </span>
-                      <i class="el-icon-video-play"></i>
+                      <i class='el-icon-video-play'></i>
                     </div>
                   </el-card></div
               ></el-col> -->
-              <!-- <el-col :span="8" :xs="24" :sm="24" :lg="8"
-                ><div class="grid-content bg-purple">
-                  <el-card class="Wireless_count">
-                    <span class="Device_font"><strong>128</strong></span>
+              <!-- <el-col :span='8' :xs='24' :sm='24' :lg='8'
+                ><div class='grid-content bg-purple'>
+                  <el-card class='Wireless_count'>
+                    <span class='Device_font'><strong>128</strong></span>
                     <br /><br />
-                    <p class="Device_font_two">无线用户</p>
+                    <p class='Device_font_two'>无线用户</p>
                     <br />
-                    <div class="Mask">
+                    <div class='Mask'>
                       <span>详细信息 </span>
-                      <i class="el-icon-video-play"></i>
+                      <i class='el-icon-video-play'></i>
                     </div>
                   </el-card>
                 </div>
               </el-col> -->
               <!-- echat -->
               <!-- <el-row>
-                <el-col :span="24">
+                <el-col :span='24'>
                   图表
-                  <div class="grid-content bg-purple">
+                  <div class='grid-content bg-purple'>
                     <the-Annular></the-Annular>
                   </div>
                 </el-col>
@@ -54,25 +54,25 @@
             </div>
         </el-col>
         <!--仪表盘-->
-        <!-- <el-col :span="14" style="padding-left: 50px">
+        <!-- <el-col :span='14' style='padding-left: 50px'>
           <div
-            class="grid-content bg-purple-light"
-            style="width: 900px; height: 300px"
+            class='grid-content bg-purple-light'
+            style='width: 900px; height: 300px'
           >
             <el-row>
-              <el-col :span="8"
-                ><div class="grid-content bg-purple">
+              <el-col :span='8'
+                ><div class='grid-content bg-purple'>
                   <the-Dashboard></the-Dashboard>
                 </div>
-                <div style="color: darkgrey">
+                <div style='color: darkgrey'>
                   <p>用户名：<span>{{ this.serverInfo.username }}</span></p>
                   <p>用户邮箱：<span>{{ this.serverInfo.email }}</span></p>
                   <p>上一次登录ip：<span>{{ this.serverInfo.ip }}</span></p>
                   <p>最后登录时间：<span>{{ this.serverInfo.lastLogin }}</span></p>
                 </div>
               </el-col>
-              <el-col :span="16"
-                ><div class="grid-content bg-purple-light">
+              <el-col :span='16'
+                ><div class='grid-content bg-purple-light'>
                   <the-Radarmap></the-Radarmap></div
               ></el-col>
             </el-row>
@@ -82,18 +82,18 @@
     </el-card>
     <br />
     <!--下部分-->
-    <el-card id="bar">
-      <el-row class="test">
-        <el-col :span="24">
-          <div class="grid-content bg-purple-light">
+    <el-card id='bar'>
+      <el-row class='test'>
+        <el-col :span='24'>
+          <div class='grid-content bg-purple-light'>
             <el-row>
-              <el-col :span="8"
-                ><div class="grid-content bg-purple">
+              <el-col :span='8'
+                ><div class='grid-content bg-purple'>
                   <the-TotalRate></the-TotalRate>
                 </div>
               </el-col>
-              <el-col :span="16"
-                ><div class="grid-content bg-purple-light">
+              <el-col :span='16'
+                ><div class='grid-content bg-purple-light'>
                   <the-Trend></the-Trend></div
               ></el-col>
             </el-row>
@@ -164,7 +164,7 @@ export default {
   }
 }
 </script>
-<style lang="scss" scoped>
+<style lang='scss' scoped>
 // .bg{
 //   background-color: #446bc7;
 // }

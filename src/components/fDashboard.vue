@@ -1,9 +1,9 @@
 <template>
-  <el-card class="dashboard-card">
-        <div slot="header" class="clearfix">
+  <el-card class='dashboard-card'>
+        <div slot='header' class='clearfix'>
           <span>设备状态概览</span>
         </div>
-        <div class="dashboard-card-content">
+        <div class='dashboard-card-content'>
             <Dashboard></Dashboard>
         </div>
     </el-card>
@@ -19,7 +19,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang='scss' scoped>
 .dashboard-card {
     .dashboard-card-content {
         display: flex;

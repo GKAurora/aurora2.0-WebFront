@@ -1,70 +1,70 @@
 <template>
-  <div class="page">
-    <div class="login-box">
+  <div class='page'>
+    <div class='login-box'>
       <el-form
-        :model="ruleForm"
-        :rules="rules"
-        ref="ruleForm"
-        label-position="left"
-        label-width="0px"
-        class="demo-ruleForm login-container"
+        :model='ruleForm'
+        :rules='rules'
+        ref='ruleForm'
+        label-position='left'
+        label-width='0px'
+        class='demo-ruleForm login-container'
         status-icon
       >
-        <h3 class="title">注册</h3>
-        <el-form-item prop="account">
+        <h3 class='title'>注册</h3>
+        <el-form-item prop='account'>
           <el-input
-            type="text"
-            v-model="ruleForm.account"
-            auto-complete="off"
-            placeholder="账号"
-            id="loginEmail"
-            prefix-icon="el-icon-user-solid"
+            type='text'
+            v-model='ruleForm.account'
+            auto-complete='off'
+            placeholder='账号'
+            id='loginEmail'
+            prefix-icon='el-icon-user-solid'
           ></el-input>
         </el-form-item>
-        <el-form-item prop="password">
+        <el-form-item prop='password'>
           <el-input
-            type="password"
-            v-model="ruleForm.password"
-            auto-complete="off"
-            placeholder="密码"
-            id="loginPassword"
-            prefix-icon="el-icon-key"
+            type='password'
+            v-model='ruleForm.password'
+            auto-complete='off'
+            placeholder='密码'
+            id='loginPassword'
+            prefix-icon='el-icon-key'
           ></el-input>
         </el-form-item>
-        <el-form-item prop="checkPass">
+        <el-form-item prop='checkPass'>
           <el-input
-            type="password"
-            v-model="ruleForm.checkPass"
-            auto-complete="off"
-            placeholder="重复密码"
-            id="loginCheckPass"
-            prefix-icon="el-icon-key"
+            type='password'
+            v-model='ruleForm.checkPass'
+            auto-complete='off'
+            placeholder='重复密码'
+            id='loginCheckPass'
+            prefix-icon='el-icon-key'
           ></el-input>
         </el-form-item>
         <!-- email -->
         <el-form-item>
           <el-input
-            type="email"
-            v-model="ruleForm.email"
-            auto-complete="off"
-            placeholder="邮箱"
-            prefix-icon="el-icon-postcard"
+            type='email'
+            v-model='ruleForm.email'
+            auto-complete='off'
+            placeholder='邮箱'
+            prefix-icon='el-icon-postcard'
           ></el-input>
         </el-form-item>
 
-        <el-form-item style="width: 100%">
+        <el-form-item style='width: 100%'>
           <el-button
-            type="primary"
-            style="width: 100%"
-            @click.native.prevent="handleSubmit"
-            :loading="logining"
+            type='primary'
+            style='width: 100%'
+            @click.native.prevent='handleSubmit'
+            :loading='logining'
           >
             注册
           </el-button>
         </el-form-item>
-        <el-form-item style="width: 100%">
-          <router-link to="/login">
-            <el-button style="width: 100%"> 登录 </el-button>
+        <el-form-item style='width: 100%'>
+          <router-link to='/login'>
+            <el-button style='width: 100%'> 登录 </el-button>
           </router-link>
         </el-form-item>
       </el-form>
@@ -155,7 +155,7 @@ export default {
   width: 100%;
   height: 100%;
   font-size: 16px;
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
 }
@@ -174,7 +174,7 @@ export default {
   box-sizing: border-box;
   box-shadow: 10px 10px 5px #2a2a2a;
   border-radius: 0.5em;
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
 }
 
 .login-box .svgContainer {

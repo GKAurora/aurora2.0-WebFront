@@ -1,10 +1,10 @@
 <template>
-  <el-card class="message-card box-card">
-    <div slot="header" class="clearfix">
+  <el-card class='message-card box-card'>
+    <div slot='header' class='clearfix'>
       <span>设备信息</span>
     </div>
-    <div v-for="(value, index) in Message" :key="index" class="message-card-content text item">
-      <p><i class="el-icon-warning"></i><span>{{ index }}: </span>{{ value }}</p>
+    <div v-for='(value, index) in Message' :key='index' class='message-card-content text item'>
+      <p><i class='el-icon-warning'></i><span>{{ index }}: </span>{{ value }}</p>
     </div>
   </el-card>
 </template>
@@ -16,7 +16,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang='scss' scoped>
 .message-card {
     .message-card-content {
         p {

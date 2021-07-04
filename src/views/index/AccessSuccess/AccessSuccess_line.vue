@@ -4,23 +4,22 @@
 <script>
 import API from "../../../api";
 export default {
-  watch:{
-    Siteid:{
-      listen(NewSiteid,OldSite){
-        this.Siteid=NewSiteid=this.$store.state.SiteId
-        this.getData()
-      }
-    }
+  watch: {
+    Siteid: {
+      listen(NewSiteid, OldSite) {
+        this.Siteid = NewSiteid = this.$store.state.SiteId;
+        this.getData();
+      },
+    },
   },
   name: "page",
   data() {
     return {
       //所有日期、值
-      message: [],
-      data2: [],
-      dateList: [],
-      valueList: [],
-      Siteid: this.$store.state.SiteId,
+      message: [], //所有的数据
+      dateList: [], //x轴数据
+      valueList: [], //y轴数据
+      Siteid: this.$store.state.siteMsg.siteId, //当前站点id
     };
   },
   created() {
@@ -33,8 +32,8 @@ export default {
   methods: {
     async getData() {
       try {
-        const conf = API.sdn.qualityHealth(
-          Date.now() - 1000 * 60 * 60 * 24 * parseInt(7),
+        const conf = API.sdn.qualityHealth(       
+          Date.now()-1000*60*60*24*parseInt(8),
           Date.now(),
           1,
           this.Siteid
@@ -55,12 +54,13 @@ export default {
             this.dateList.push(timestamp);
             this.valueList.push(successCon);
           }
+
           this.dateList.sort();
           this.getAccessSuccess();
         }
       } catch (error) {
         this.$message({
-          message: "获取数据失败",
+          message: "获取接入成功率数据失败",
           type: "error",
         });
       }
@@ -117,7 +117,7 @@ export default {
                 type: "inside",
                 start: 0,
                 end: 10,
-                top:'50%'
+                top: "50%",
               },
               {
                 start: 50,

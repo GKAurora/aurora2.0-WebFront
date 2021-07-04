@@ -1,15 +1,15 @@
 <template>
-  <div class="index-content">
+  <div class='index-content'>
     <!-- site selector -->
     <Selector></Selector>
-    <div class="overview">
+    <div class='overview'>
       <!-- 状态总览 -->
       <GeneralState
-      :cardMessage="card">
+      :cardMessage='card'>
       </GeneralState>
       <!-- 信息卡片 -->
       <MessageCard
-      :Message="serverInfo"
+      :Message='serverInfo'
       ></MessageCard>
       <!-- 环形卡片 -->
       <AnnularCard></AnnularCard>

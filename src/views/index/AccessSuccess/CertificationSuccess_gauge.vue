@@ -35,7 +35,7 @@ export default {
               itemStyle: { // 边框
                 borderWidth: 1,
                 color: '#7DD652' // 进度条颜色
-                // borderColor: "#464646",
+                // borderColor: '#464646',
               }
             },
             axisLine: {

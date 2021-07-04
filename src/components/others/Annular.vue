@@ -1,5 +1,5 @@
 <template>
-  <div id="Annular" style='width: 100%; height: 250px'></div>
+  <div id='Annular' style='width: 100%; height: 250px'></div>
 </template>
 <script>
 export default {

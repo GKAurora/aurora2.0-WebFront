@@ -1,9 +1,9 @@
 <template>
   <el-color-picker
-    v-model="theme"
-    class="theme-picker"
-    :predefine="predefineColors"
-    popper-class="theme-picker-dropdown"/>
+    v-model='theme'
+    class='theme-picker'
+    :predefine='predefineColors'
+    popper-class='theme-picker-dropdown'/>
 </template>
 
 <script>

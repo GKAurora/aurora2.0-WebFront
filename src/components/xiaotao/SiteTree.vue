@@ -1,19 +1,19 @@
 <template>
     <div>
         <p>
-            <span style="font-size: 14px">当前：{{currentNode.name}} </span>
-            <el-button @click="show = true" size="mini">选择站点</el-button>
+            <span style='font-size: 14px'>当前：{{currentNode.name}} </span>
+            <el-button @click='show = true' size='mini'>选择站点</el-button>
         </p>
         <el-dialog
-            title="选择站点"
-            :visible.sync="show"
+            title='选择站点'
+            :visible.sync='show'
         >
-            <div style="text-align: left; padding: 0 10px">
-                <el-button @click="select" size="small" type="primary">选定</el-button>
+            <div style='text-align: left; padding: 0 10px'>
+                <el-button @click='select' size='small' type='primary'>选定</el-button>
                 <el-tree
                     lazy
-                    :load="loadNode"
-                    @node-click="handleNodeClick"
+                    :load='loadNode'
+                    @node-click='handleNodeClick'
                 ></el-tree>
             </div>
         </el-dialog>

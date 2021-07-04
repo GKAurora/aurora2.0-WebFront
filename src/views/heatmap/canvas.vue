@@ -1,20 +1,20 @@
 <template>
   <div id='main_1'>
-      <canvas id='myCanvas' style='width:100%; height:auto' @click="dialogVisible = true"></canvas>
+      <canvas id='myCanvas' style='width:100%; height:auto' @click='dialogVisible = true'></canvas>
       <img id='scream' src='../../assets/img/about/拓扑.png' alt='The Scream' style='display: none;'>
       <el-dialog
-  title="用户轨迹详情"
-  :visible.sync="dialogVisible"
-  width="30%"
-  :before-close="handleClose">
-  <el-table :data="areas">
-    <el-table-column width="150" property="startTime" label="到达时间"></el-table-column>
-    <el-table-column width="150" property="endTime" label="离开时间"></el-table-column>
-    <el-table-column width="100" property="accessAp" label="活动区域"></el-table-column>
+  title='用户轨迹详情'
+  :visible.sync='dialogVisible'
+  width='30%'
+  :before-close='handleClose'>
+  <el-table :data='areas'>
+    <el-table-column width='150' property='startTime' label='到达时间'></el-table-column>
+    <el-table-column width='150' property='endTime' label='离开时间'></el-table-column>
+    <el-table-column width='100' property='accessAp' label='活动区域'></el-table-column>
   </el-table>
-  <span slot="footer" class="dialog-footer">
-    <el-button @click="dialogVisible = false">取 消</el-button>
-    <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+  <span slot='footer' class='dialog-footer'>
+    <el-button @click='dialogVisible = false'>取 消</el-button>
+    <el-button type='primary' @click='dialogVisible = false'>确 定</el-button>
   </span>
 </el-dialog>
   </div>

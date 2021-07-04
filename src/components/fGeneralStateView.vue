@@ -1,14 +1,14 @@
 <template>
-    <el-card class="general-state-view-card">
-        <div slot="header" class="clearfix">
+    <el-card class='general-state-view-card'>
+        <div slot='header' class='clearfix'>
           <span>设备状态概览</span>
         </div>
-        <div class="general-state-view-content">
+        <div class='general-state-view-content'>
         <MessageCard
-          class="general-state-view-item"
-          v-for="(value, index) in cardMessage"
-          :key="index"
-          :cardData="value"
+          class='general-state-view-item'
+          v-for='(value, index) in cardMessage'
+          :key='index'
+          :cardData='value'
         ></MessageCard>
         </div>
     </el-card>
@@ -24,7 +24,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang='scss' scoped>
 .general-state-view-card{
   margin: 15px 0 0;
   display: flex;
