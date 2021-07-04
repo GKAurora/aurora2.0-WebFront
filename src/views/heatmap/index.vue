@@ -4,6 +4,13 @@
       <div class='hotPic' id='heatmap'>
         <img src='../../assets/img/about/拓扑.png' alt='' style='width:100%; height: auto'>
       </div>
+      <div class="mask">
+        <span>人流热力图</span>
+        <div class="box-1">
+          <span>区域设置</span>
+          <div class="lenght"></div>
+        </div>
+      </div>
   </div>
 </div>
 </template>
@@ -28,7 +35,7 @@ export default {
     },
     // 初始化获取数据
     async initValue () {
-      let R = 901 / 1900 // 宽高比例
+      let R = 900 / 1900 // 宽高比例
       try {
         const conf = API.sdn.heatmap()
         const data1 = await this.$axios(conf)
@@ -49,6 +56,7 @@ export default {
           }
           this.points.push(point)
         }
+        this.initHotPic()
       } catch (error) {
         console.log(error)
       }
@@ -140,5 +148,39 @@ export default {
     display:flex;
     align-items:center;
     justify-content:center;
+}
+.hotPic{
+  display: flex;
+  flex-grow: 1;
+}
+.mask{
+  position: absolute;
+  top:15%;
+  right: 0%;
+  opacity: 0.5;
+  font-size: 14px;
+  color: whitesmoke;
+  width: 30%;
+  height: 20%;
+  background-color: rgb(104, 136, 241);
+  transform: all 1s;
+}
+.maps:hover .mask{
+  opacity: 0.65;
+  transform: all 1s;
+}
+.box-1{
+  display: flex;
+  top: 10%;
+  left: 0%;
+  margin-top: 10%;
+  width: 100%;
+  height: 20%;
+}
+.lenght{
+  margin-left: 5%;
+  width: 70%;
+  height: 40%;
+  background-image: linear-gradient(to right,#82ff6d,#f3ff6d,#ff6d6d);
 }
 </style>
