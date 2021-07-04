@@ -3,6 +3,11 @@
 </template>
 <script>
 export default {
+  props: {
+    items: {
+      type: Array
+    }
+  },
   data() {
     return {
       annular: null
@@ -36,7 +41,7 @@ export default {
         },
         series: [
           {
-            name: '设备状态',
+            name: '失败信息',
             type: 'pie',
             radius: ['45%', '75%'],
             avoidLabelOverlap: false,
@@ -65,18 +70,7 @@ export default {
             labelLine: {
               show: false
             },
-            data: [
-              {
-                value: 40,
-                name: '接入成功数'
-              },
-              { value: 50, name: '关联成功数' },
-              { value: 28, name: '关联失败数' },
-              { value: 19, name: '认证成功数' },
-              { value: 30, name: '认证失败数' },
-              { value: 27, name: 'DHCP 成功数' },
-              { value: 42, name: 'DHCP 失败数' }
-            ]
+            data: this.items
           }
         ]
       })

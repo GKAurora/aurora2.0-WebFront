@@ -43,7 +43,6 @@ export default {
     },
     methods: {
         async loadNode(node, resolve) {
-            console.log('NODE', node)
             // this.$store.commit('setSiteId', node.data.id)
             if (node.level === 0) {
                 resolve([{

@@ -18,7 +18,7 @@ export default new Vuex.Store({
     },
     siteMsg: {
       siteTree: [],
-      siteId: null
+      siteId: '/'
     }
   },
   mutations: {

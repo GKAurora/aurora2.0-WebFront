@@ -15,6 +15,9 @@ import Dashboard from './others/Dashboard.vue'
 export default {
     components: {
         Dashboard
+    },
+    methods: {
+        
     }
 }
 </script>
