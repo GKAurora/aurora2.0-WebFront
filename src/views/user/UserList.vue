@@ -4,7 +4,7 @@
     <el-card>
       <!--搜索与添加区域-->
       <el-row>
-        <el-col :span="7">
+        <el-col :lg="7" :md="24" :sm="24" :xs="24">
           <div :data="SiteList">
             <el-radio-group
               v-model="radio"
@@ -20,7 +20,7 @@
             </el-radio-group>
           </div>
         </el-col>
-        <el-col :span="4">
+        <el-col :lg="4" :md="12" :sm="12" :xs="24">
           <div class="block">
             <el-date-picker
               v-model="value1"
@@ -35,7 +35,7 @@
             <!-- <span>时间戳:{{value1}}</span> -->
           </div>
         </el-col>
-        <el-col :span="7">
+        <el-col :lg="7" :md="12" :sm="12" :xs="24">
           <div>
             <el-time-picker
               is-range
@@ -50,7 +50,7 @@
             <!-- <span>时间戳：{{value}}</span> -->
           </div>
         </el-col>
-        <el-col :span="3">
+        <el-col :lg="3" :md="12" :sm="12" :xs="12">
           <el-dropdown>
             <el-button type="primary">
               用户类型<i class="el-icon-arrow-down el-icon--right"></i>
@@ -68,7 +68,7 @@
             </el-dropdown-menu>
           </el-dropdown>
         </el-col>
-        <el-col :span="3">
+        <el-col :lg="3" :md="12" :sm="12" :xs="12">
           <el-button type="primary" @click="editDialogVisible = true"
             >详细信息</el-button>
         </el-col>
