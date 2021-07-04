@@ -1,32 +1,55 @@
 <template>
-  <div id='AccessTime_line' style='width: 100%; height: 250px'></div>
+  <div id='AccessTime_line' style='width: 100%; height: 350px'></div>
 </template>
 <script>
-var data = [
-  ['00:00', 86],
-  ['01:00', 85],
-  ['02:00', 68],
-  ['03:00', 86],
-  ['04:00', 73],
-  ['05:00', 85],
-  ['06:00', 73],
-  ['07:00', 68]
-]
-
-var dateList = data.map(function (item) {
-  return item[0]
-})
-var valueList = data.map(function (item) {
-  return item[1]
-})
-
+import API from '../../../api';
 export default {
   name: 'page',
-  mounted () {
-    this.getAccessSuccess()
+  data() {
+    return {
+      message: [],
+      dataList: [],
+      valueList: [],
+      Siteid: this.$store.state.siteMsg.siteId,    //当前站点id
+    };
+  },
+  created() {
+    this.getData();
+  },
+  mounted() {
+    // this.getAccessSuccess()
   },
   methods: {
-    getAccessSuccess () {
+    async getData() {
+      try {
+        const conf = API.sdn.qualityHealth(
+          Date.now() - 1000 * 60 * 60 * 24 * parseInt(7),
+          Date.now(),
+          1,
+          this.Siteid
+        );
+        const sitedata = await this.$axios(conf);
+        this.message = sitedata.data.data.values;
+        if (sitedata.data.code === 200) {
+          for (let i = 0; i < this.message.length; i++) {
+            let timeCon = this.message[i].timeCon;
+            let timestamp = new Date(parseInt(this.message[i].timestamp))
+              .toLocaleString()
+              .replace(/:\d{1,2}$/, ' ');
+            this.dataList.push(timestamp);
+            this.valueList.push(timeCon);
+          }
+          this.dataList.sort();
+          this.getAccessSuccess();
+        }
+      } catch (error) {
+        this.$message({
+          message: '获取接入耗时失败',
+          type: 'error',
+        });
+      }
+    },
+    getAccessSuccess() {
       this.$echarts.init(document.getElementById('AccessTime_line')).setOption({
         // Make gradient line here
         visualMap: [
@@ -37,22 +60,21 @@ export default {
             min: 0, // 最小值
             max: 400, // 最大值
             range: [0, 400],
-            color: ['rgba(213,72,120,0.7)'] // 线颜色
+            color: ['rgba(213,72,120,0.7)'], // 线颜色
             // color: ['orangered','yellow','lightskyblue']  //线颜色渐变
-          }
+          },
         ],
         tooltip: {
-          trigger: 'axis'
-
+          trigger: 'axis',
         },
         title: [
           {
             left: '8%',
             text: '接入耗时',
             textStyle: {
-              color: '#fff'
-            }
-          }
+              color: '#fff',
+            },
+          },
         ],
         toolbox: {
           feature: {
@@ -60,33 +82,44 @@ export default {
             dataZoom: {}, // 区域缩放
             magicType: {
               // 多种图表切换
-              type: ['bar', 'line']
-            }
-          }
+              type: ['bar', 'line'],
+            },
+          },
         },
         xAxis: [
           {
-            data: dateList,
-            boundaryGap:false     //第一个值紧挨在Y轴，默认是与Y轴有距离的
-          }
-          
+            data: this.dataList,
+            boundaryGap: false, //第一个值紧挨在Y轴，默认是与Y轴有距离的
+          },
         ],
         yAxis: [{}],
+        dataZoom: [
+          {
+            type: 'inside',
+            start: 0,
+            end: 10,
+            top: '50%',
+          },
+          {
+            start: 50,
+            end: 10,
+          },
+        ],
         grid: [
           {
             show: true,
             bottom: '20%', // 大小
             height: 'auto',
             width: 'auto',
-            // backgroundColor: "#AFC5F7",
-            borderColor: '#ccc'
-          }
+            // backgroundColor: '#AFC5F7',
+            borderColor: '#ccc',
+          },
         ],
         series: [
           {
             type: 'line',
             showSymbol: false, // 是否显示节点
-            data: valueList,
+            data: this.valueList,
             smooth: true, // 是否平滑
             areaStyle: {
               color: {
@@ -98,20 +131,20 @@ export default {
                 colorStops: [
                   {
                     offset: 0,
-                    color: 'rgba(221,96,115,0.8)' // 0% 处的颜色
+                    color: 'rgba(221,96,115,0.8)', // 0% 处的颜色
                   },
                   {
                     offset: 1,
-                    color: 'rgba(221,96,115,0.2)' // 100% 处的颜色
-                  }
+                    color: 'rgba(221,96,115,0.2)', // 100% 处的颜色
+                  },
                 ],
-                global: false // 缺省为 false
-              }
-            } // 区域颜色
-          }
-        ]
-      })
-    }
-  }
-}
+                global: false, // 缺省为 false
+              },
+            }, // 区域颜色
+          },
+        ],
+      });
+    },
+  },
+};
 </script>

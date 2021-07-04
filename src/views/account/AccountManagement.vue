@@ -83,7 +83,7 @@
         </el-table-column>
       </el-table>
       <!--分页区域-->
-      <el-pagination
+      <!-- <el-pagination
         @size-change="handleSizeChange"
         @current-change="handleCurrentChange"
         :page-sizes="[2, 5, 8, 10]"
@@ -92,7 +92,7 @@
         layout="total, sizes, prev, pager, next, jumper"
         :total="total"
       >
-      </el-pagination>
+      </el-pagination> -->
       <!--添加用户的对话框-->
       <el-dialog
         title="添加用户"

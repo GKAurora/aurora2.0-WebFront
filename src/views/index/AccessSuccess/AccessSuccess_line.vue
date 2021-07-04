@@ -20,7 +20,7 @@ export default {
       data2: [],
       dateList: [],
       valueList: [],
-      Siteid: this.$store.state.SiteId,
+      Siteid: this.$store.state.siteMsg.siteId,    //当前站点id
     };
   },
   created() {
@@ -60,7 +60,7 @@ export default {
         }
       } catch (error) {
         this.$message({
-          message: "获取数据失败",
+          message: "获取接入成功率数据失败",
           type: "error",
         });
       }
