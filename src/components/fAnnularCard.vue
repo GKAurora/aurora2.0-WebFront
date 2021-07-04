@@ -4,10 +4,12 @@
   </div> -->
   <el-card class="annular-card">
         <div slot="header" class="clearfix">
-          <span>设备状态概览</span>
+          <span>接入失败信息</span>
         </div>
         <div class="annular-card-content">
-            <Annular></Annular>
+            <Annular
+            :items="annularData"
+            ></Annular>
         </div>
     </el-card>
 </template>
@@ -17,6 +19,11 @@ import Annular from './others/Annular.vue'
 export default {
     components: {
         Annular
+    },
+    props: {
+        annularData: {
+            type: Array
+        }
     }
 }
 </script>

@@ -14,7 +14,10 @@
       :Message="serverInfo"
       ></MessageCard>
       <!-- 环形卡片 -->
-      <AnnularCard></AnnularCard>
+      <AnnularCard
+        v-if="annular.isShow != null"
+        :annularData="annularData"
+      ></AnnularCard>
       <!-- 仪表盘 -->
       <Dashboard></Dashboard>
       <Radarmap></Radarmap>
@@ -74,10 +77,48 @@ export default {
         email: 'admin@c4.com',
         ip: '127.0.0.1',
         last_login: 'xxxxxxxx'
+      },
+      annular: {
+        isShow: null,
+        items: [],
+        template: [{
+            value: null,
+            name: '关联失败数',
+            nickName: 'associateFailNum',
+          },{
+            value: 0,
+            name: '关联成功数',
+            nickName: 'associateSuccNum',
+          },{
+            value: 0,
+            name: '认证失败数',
+            nickName: 'authFailNum'
+          },{
+            value: 0,
+            name: '认证成功数',
+            nickName: 'authSuccNum'
+          },{
+            value: 0,
+            name: 'Dhcp失败数',
+            nickName: 'dhcpFailNum'
+          },{
+            value: 0,
+            name: 'Dhcp成功数',
+            nickName: 'dhcpSuccNum'
+          }]
       }
     }
   },
   methods: {
+    /**
+     * 站点选择器
+     */
+    handleSiteSelect(e) {
+      this.$store.commit('setSiteId', e.id)
+    },
+    /**
+     * 登录信息、用户信息、信息框
+     */
     async getLoginUserMessage() {
       const conf = API.auth.getLoginUserMsg()
       const data = await this.$axios(conf)
@@ -86,6 +127,9 @@ export default {
         this.serverInfo = {...this.serverInfo, ...data.data.data}
       }
     },
+    /**
+     * 获取状态框信息
+     */
     getGeneralStateMsg() {
       this.totalUserDevice()
       this.totalFloorDevice()
@@ -120,13 +164,40 @@ export default {
       this.card.totalDevice.total = users.data.data.totalSize
       return users.data.data.totalSize
     },
-    handleSiteSelect(e) {
-      this.$store.commit('setSiteId', e.id)
+    /**
+     * 获取组件数据
+     */
+    async getAnnularData() {
+      const conf = API.sdn.getErr(0, 1597826900000, 1597766400000,
+                                              this.$store.state.siteMsg.siteId, 0)
+      const data = (await this.$axios(conf)).data.data
+      if (data == null){
+        return 
+      }
+      const t = {
+      "accessSuccNum": 0,
+      "associateFailNum": 0,
+      "associateSuccNum": 0,
+      "authFailNum": 0,
+      "authSuccNum": 0,
+      "dhcpFailNum": 0,
+      "dhcpSuccNum": 0
+    }
+      data.forEach(element => {
+        t.accessSuccNum += element.accessSuccNum,
+        t.associateFailNum += element.associateFailNum
+      });
+      // let annularItems = Object.values(data)
+      // let annularItems = data.forEach(element => {
+        
+      // });
+      // console.log(annularItems, typeof annularItems)
     }
   },
   mounted() {
     this.getGeneralStateMsg()
     this.getLoginUserMessage()
+    this.getAnnularData()
   }
 }
 </script>

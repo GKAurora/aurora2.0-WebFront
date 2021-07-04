@@ -38,12 +38,25 @@ const buildSeries = function (data) {
 }
 export default {
   name: 'page',
+  data() {
+    return {
+      readarmap: null
+    }
+  },
   mounted () {
     this.getRadarmap()
   },
+  created() {
+    this.$nextTick(() => {
+      window.addEventListener('resize', () => {
+        this.readarmap.resize()
+      })
+    })
+  },
   methods: {
     getRadarmap () {
-      this.$echarts.init(document.getElementById('Radarmap')).setOption({
+      this.readarmap = this.$echarts.init(document.getElementById('Radarmap'))
+      this.readarmap.setOption({
         color: ['#FFE434'],
         title: {
           text: '设备健康度',

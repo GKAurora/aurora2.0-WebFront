@@ -18,9 +18,9 @@ export default new Vuex.Store({
     },
     siteMsg: {
       siteTree: [],
-      siteId: null
+      siteId: '/'
     },
-    timeFrame: []   //时间范围
+    timeFrame:[]
   },
   mutations: {
     setSiteId(state, id){

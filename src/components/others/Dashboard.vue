@@ -4,12 +4,25 @@
 <script>
 export default {
   name: 'page',
+  data() {
+    return {
+      dashboard: null
+    }
+  },
   mounted () {
     this.getDash()
   },
+  created() {
+    this.$nextTick(() => {
+      window.addEventListener('resize', () => {
+        this.dashboard.resize()
+      })
+    })
+  },
   methods: {
     getDash () {
-      this.$echarts.init(document.getElementById('Dashboard')).setOption({
+      this.dashboard = this.$echarts.init(document.getElementById('Dashboard'))
+      this.dashboard.setOption({
         title: {
           text: 'CPU利用率',
           textStyle: {
