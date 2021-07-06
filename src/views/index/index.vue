@@ -1,18 +1,16 @@
 <template>
   <div class="index-content">
-    <!-- site selector -->
-    <Selector
-    @select="handleSiteSelect"
-    ></Selector>
+    <div class="index-selector">
+      <!-- site selector -->
+      <Selector @select="handleSiteSelect"></Selector>
+      <TimeSelector @dateStamp="handleTimeStamp"></TimeSelector>
+    </div>
+
     <div class="overview">
       <!-- 状态总览 -->
-      <GeneralState
-      :cardMessage="card">
-      </GeneralState>
+      <GeneralState :cardMessage="card"> </GeneralState>
       <!-- 信息卡片 -->
-      <MessageCard
-      :Message="serverInfo"
-      ></MessageCard>
+      <MessageCard :Message="serverInfo"></MessageCard>
       <!-- 环形卡片 -->
       <AnnularCard
         v-if="annular.isShow != null"
@@ -28,6 +26,8 @@
 // site selector
 // import Selector from '../../components/fSiteSelector.vue'
 import Selector from '../../components/xiaotao/SiteTree.vue'
+// time selector
+import TimeSelector from '../../components/timeSelector.vue'
 // overview
 import GeneralState from '../../components/fGeneralStateView.vue'
 import AnnularCard from '../../components/fAnnularCard.vue'
@@ -40,6 +40,7 @@ import API from '../../api'
 export default {
   components: {
     Selector,
+    TimeSelector,
     GeneralState,
     AnnularCard,
     MessageCard,
@@ -117,6 +118,9 @@ export default {
       this.$store.commit('setSiteNode', e)
       this.$store.commit('setSiteId', e.id)
     },
+    handleTimeStamp(e){
+      this.$store.commit('setTime', e)
+    },
     /**
      * 登录信息、用户信息、信息框
      */
@@ -175,7 +179,17 @@ export default {
       if (data == null){
         return 
       }
-      const t = {
+      console.log('annul-raw', data)
+      let t2 = data.reduce((total, n) => {
+        total.accessSuccNum += n.accessSuccNum
+        total.associateFailNum += n.associateFailNum
+        total.associateSuccNum += n.associateSuccNum
+        total.authFailNum += n.authFailNum
+        total.authSuccNum += n.authSuccNum
+        total.dhcpFailNum += n.dhcpFailNum
+        total.dhcpSuccNum += n.dhcpSuccNum
+        return total
+      }, {
       "accessSuccNum": 0,
       "associateFailNum": 0,
       "associateSuccNum": 0,
@@ -183,11 +197,11 @@ export default {
       "authSuccNum": 0,
       "dhcpFailNum": 0,
       "dhcpSuccNum": 0
-    }
-      data.forEach(element => {
-        t.accessSuccNum += element.accessSuccNum,
-        t.associateFailNum += element.associateFailNum
-      });
+    })
+      console.log('annul', t2)
+      this.annular.template.forEach((item, index) => {
+        
+      })
       // let annularItems = Object.values(data)
       // let annularItems = data.forEach(element => {
         
@@ -207,12 +221,24 @@ export default {
   display: flex;
   flex-direction: column;
 }
+.index-selector {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-content: space-around;
+}
+.index-selector div {
+  padding: 5px 10px;
+}
+
 .overview {
   display: flex;
   align-content: stretch;
   flex-wrap: wrap;
 }
-.overview div{
+.overview div {
   margin: 10px 15px;
   min-width: 400px;
   flex-grow: 1;
