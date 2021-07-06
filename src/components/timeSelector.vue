@@ -38,6 +38,7 @@ export default {
   mounted() {
     // this.getNowTime()
     this.value = this.getDefaultTime();
+    this.$emit('dateStamp', this.getDefaultTime())
   },
 };
 </script>
