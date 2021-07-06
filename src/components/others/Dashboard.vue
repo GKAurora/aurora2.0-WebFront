@@ -4,6 +4,12 @@
 <script>
 export default {
   name: 'page',
+  props: {
+    value: {
+      type: Number,
+      default: 0
+    }
+  },
   data() {
     return {
       dashboard: null
@@ -18,6 +24,14 @@ export default {
         this.dashboard.resize()
       })
     })
+  },
+  watch: {
+    value: {
+      handler(newValue, oldValue) {
+        console.log(newValue, '-', oldValue)
+        this.getDash()
+      }
+    }
   },
   methods: {
     getDash () {
@@ -81,7 +95,7 @@ export default {
             },
             data: [
               {
-                value: 40
+                value: this.value || 0
               }
             ]
           }

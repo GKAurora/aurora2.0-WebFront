@@ -4,7 +4,9 @@
           <span>设备状态概览</span>
         </div>
         <div class="dashboard-card-content">
-            <Dashboard></Dashboard>
+            <Dashboard
+            :value="dashboardValue"
+            ></Dashboard>
         </div>
     </el-card>
 </template>
@@ -16,8 +18,10 @@ export default {
     components: {
         Dashboard
     },
-    methods: {
-        
+    props: {
+        dashboardValue: {
+            type: Number
+        }
     }
 }
 </script>

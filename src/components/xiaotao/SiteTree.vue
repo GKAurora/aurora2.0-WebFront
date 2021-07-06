@@ -71,7 +71,7 @@ export default {
         handleNodeClick(e) {
             this.selectingNode = e
             this.currentNode = this.selectingNode
-            this.$emit('select', this.currentNode)
+            // this.$emit('select', this.currentNode)
         },
         select() {
             this.currentNode = this.selectingNode

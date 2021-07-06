@@ -17,7 +17,9 @@
         :annularData="annular.items"
       ></AnnularCard>
       <!-- 仪表盘 -->
-      <Dashboard></Dashboard>
+      <Dashboard
+      :dashboardValue="dashboardValue.value"
+      ></Dashboard>
       <Radarmap></Radarmap>
     </div>
   </div>
@@ -106,6 +108,10 @@ export default {
             name: 'Dhcp成功数',
             nickName: 'dhcpSuccNum'
           }]
+      },
+      dashboardValue: {
+        isShow: false,
+        value: 0
       }
     }
   },
@@ -116,6 +122,9 @@ export default {
     handleSiteSelect(e) {
       this.$store.commit('setSiteNode', e)
       this.$store.commit('setSiteId', e.id)
+      setTimeout(() => {
+        this.getDashboardData()
+      }, 1000)
     },
     handleTimeStamp(e){
       this.$store.commit('setTime', e)
@@ -169,7 +178,7 @@ export default {
       return users.data.data.totalSize
     },
     /**
-     * 获取组件数据
+     * 获取Annular组件数据
      */
     async getAnnularData() {
       const conf = API.sdn.getErr(0, 1597826900000, 1597766400000,
@@ -190,12 +199,30 @@ export default {
         item.value = t2[item.nickName]
       })
       this.annular.isShow = true
+    },
+    async getDashboardData() {
+      const conf = API.sdn.getDeviceTotalMsg(this.$store.state.timeFrame[0], this.$store.state.timeFrame[1],
+                  0, this.$store.state.siteMsg.siteId)
+      const total = (await this.$axios(conf)).data
+      console.log(total)
+      const totalRate = total.data.totalRate
+      if((typeof totalRate) === 'undefined'){
+        this.dashboardValue.value = 0
+        this.dashboardValue.isShow = false
+      }
+      this.dashboardValue.value = totalRate
+      // console.log(totalRate, typeof totalRate)
+      // const totalDevice = this.card.device.total
+      // let r = totalRate / totalDevice
+      // this.dashboard.value = totalRate
     }
   },
   mounted() {
     this.getGeneralStateMsg()
     this.getLoginUserMessage()
     this.getAnnularData()
+    this.getDashboardData()
+    // this.getDashboardData()
   }
 }
 </script>
