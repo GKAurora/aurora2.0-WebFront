@@ -332,8 +332,7 @@ export default {
         page: 1, //页数
         page_size: 10, //每一页的数据总数
         site_id:
-          this.$store.state.siteMsg.siteId ||
-          "857b706e-67d9-49c0-b3cd-4bd1e6963c07", //站点id
+          this.$store.state.siteMsg.siteId=='/'?"857b706e-67d9-49c0-b3cd-4bd1e6963c07" : this.$store.state.siteMsg.siteId, //当前站点id
       },
       //存储站点信息
       // SiteList: [],
