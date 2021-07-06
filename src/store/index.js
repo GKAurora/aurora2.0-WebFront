@@ -18,6 +18,7 @@ export default new Vuex.Store({
     },
     siteMsg: {
       siteTree: [],
+      currentSiteNode: null,
       siteId: '/'
     },
     timeFrame:[]
@@ -26,8 +27,8 @@ export default new Vuex.Store({
     setSiteId(state, id){
       state.siteMsg.siteId = id
     },
-    setSiteTree(state, siteTree){
-      state.siteMsg.siteTree = siteTree
+    setSiteNode(state, currentSiteNode){
+      state.siteMsg.currentSiteNode = currentSiteNode
     },
     setTime(state,time){
       state.timeFrame=time

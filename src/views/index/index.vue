@@ -114,6 +114,7 @@ export default {
      * 站点选择器
      */
     handleSiteSelect(e) {
+      this.$store.commit('setSiteNode', e)
       this.$store.commit('setSiteId', e.id)
     },
     /**

@@ -39,6 +39,9 @@ export default {
         }
     },
     mounted() {
+        const node = this.$store.state.siteMsg.currentSiteNode
+        if(node == null) return
+        this.currentNode = node
         this.selectingNode = this.currentNode
     },
     methods: {
