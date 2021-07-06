@@ -14,7 +14,7 @@
       <!-- 环形卡片 -->
       <AnnularCard
         v-if="annular.isShow != null"
-        :annularData="annularData"
+        :annularData="annular.items"
       ></AnnularCard>
       <!-- 仪表盘 -->
       <Dashboard></Dashboard>
@@ -81,8 +81,7 @@ export default {
       },
       annular: {
         isShow: null,
-        items: [],
-        template: [{
+        items: [{
             value: null,
             name: '关联失败数',
             nickName: 'associateFailNum',
@@ -177,36 +176,20 @@ export default {
                                               this.$store.state.siteMsg.siteId, 0)
       const data = (await this.$axios(conf)).data.data
       if (data == null){
+        this.annular.isShow = false
         return 
       }
-      console.log('annul-raw', data)
       let t2 = data.reduce((total, n) => {
-        total.accessSuccNum += n.accessSuccNum
-        total.associateFailNum += n.associateFailNum
-        total.associateSuccNum += n.associateSuccNum
-        total.authFailNum += n.authFailNum
-        total.authSuccNum += n.authSuccNum
-        total.dhcpFailNum += n.dhcpFailNum
-        total.dhcpSuccNum += n.dhcpSuccNum
+        Object.keys(n).forEach(k => {
+          total[k] += n[k]
+        })
         return total
-      }, {
-      "accessSuccNum": 0,
-      "associateFailNum": 0,
-      "associateSuccNum": 0,
-      "authFailNum": 0,
-      "authSuccNum": 0,
-      "dhcpFailNum": 0,
-      "dhcpSuccNum": 0
-    })
-      console.log('annul', t2)
-      this.annular.template.forEach((item, index) => {
-        
       })
-      // let annularItems = Object.values(data)
-      // let annularItems = data.forEach(element => {
-        
-      // });
-      // console.log(annularItems, typeof annularItems)
+
+      this.annular.items.forEach((item) => {
+        item.value = t2[item.nickName]
+      })
+      this.annular.isShow = true
     }
   },
   mounted() {
