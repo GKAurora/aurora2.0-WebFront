@@ -1,7 +1,7 @@
 <template>
   <el-card class="dashboard-card">
         <div slot="header" class="clearfix">
-          <span>设备状态概览</span>
+          <span>设备总速率</span>
         </div>
         <div class="dashboard-card-content">
             <Dashboard

@@ -5,12 +5,23 @@
 export default {
   props: {
     items: {
-      type: Array
+      type: Array,
+      default: []
     }
   },
   data() {
     return {
       annular: null
+    } 
+  },
+  watch: {
+    items: {
+      handler (newValue, oldValue){
+        console.log(this)
+        console.log(newValue, '-', oldValue)
+        this.getAnnular()
+      },
+      deep: true
     }
   },
   mounted () {

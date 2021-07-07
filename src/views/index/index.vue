@@ -82,7 +82,7 @@ export default {
         last_login: 'xxxxxxxx'
       },
       annular: {
-        isShow: null,
+        isShow: false,
         items: [{
             value: null,
             name: '关联失败数',
@@ -122,12 +122,18 @@ export default {
     handleSiteSelect(e) {
       this.$store.commit('setSiteNode', e)
       this.$store.commit('setSiteId', e.id)
-      setTimeout(() => {
-        this.getDashboardData()
-      }, 1000)
+      this.handleChange()
     },
     handleTimeStamp(e){
       this.$store.commit('setTime', e)
+    },
+    handleChange(){
+      // state message
+      this.getGeneralStateMsg()
+      // 接入失败信息
+      this.getAnnularData()
+      // 改仪表盘数据
+      this.getDashboardData()
     },
     /**
      * 登录信息、用户信息、信息框
@@ -159,7 +165,8 @@ export default {
       return arr.length
     },
     async totalFloorDevice() {
-      const conf = API.sdn.getFloorDevice('857b706e-67d9-49c0-b3cd-4bd1e6963c07', 1)
+      const conf = API.sdn.getFloorDevice(this.$store.state.siteMsg.siteId, 
+                                        this.$store.state.siteMsg.currentSiteNode.tree_level || 1)
       const apis = await this.$axios(conf)
       if (apis.status !== 200){
         return 
@@ -181,8 +188,8 @@ export default {
      * 获取Annular组件数据
      */
     async getAnnularData() {
-      const conf = API.sdn.getErr(0, 1597826900000, 1597766400000,
-                                              this.$store.state.siteMsg.siteId, 0)
+      const conf = API.sdn.getErr(0, this.$store.state.timeFrame[1], this.$store.state.timeFrame[0],
+                                              this.$store.state.siteMsg.siteId, this.$store.state.siteMsg.currentSiteNode.tree_level)
       const data = (await this.$axios(conf)).data.data
       if (data == null){
         this.annular.isShow = false
@@ -194,23 +201,27 @@ export default {
         })
         return total
       })
-
       this.annular.items.forEach((item) => {
         item.value = t2[item.nickName]
       })
+      console.log('items', this.annular.items)
+      // this.annular.items = items
       this.annular.isShow = true
     },
     async getDashboardData() {
       const conf = API.sdn.getDeviceTotalMsg(this.$store.state.timeFrame[0], this.$store.state.timeFrame[1],
                   0, this.$store.state.siteMsg.siteId)
       const total = (await this.$axios(conf)).data
-      console.log(total)
+      if(total.data == null){
+        return 
+      }
       const totalRate = total.data.totalRate
       if((typeof totalRate) === 'undefined'){
         this.dashboardValue.value = 0
         this.dashboardValue.isShow = false
       }
       this.dashboardValue.value = totalRate
+      this.dashboardValue.isShow = true
       // console.log(totalRate, typeof totalRate)
       // const totalDevice = this.card.device.total
       // let r = totalRate / totalDevice
@@ -222,7 +233,6 @@ export default {
     this.getLoginUserMessage()
     this.getAnnularData()
     this.getDashboardData()
-    // this.getDashboardData()
   }
 }
 </script>

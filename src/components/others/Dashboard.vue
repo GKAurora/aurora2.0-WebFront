@@ -28,7 +28,7 @@ export default {
   watch: {
     value: {
       handler(newValue, oldValue) {
-        console.log(newValue, '-', oldValue)
+        // console.log(newValue, '-', oldValue)
         this.getDash()
       }
     }

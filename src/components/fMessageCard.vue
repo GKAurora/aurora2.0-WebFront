@@ -1,7 +1,7 @@
 <template>
   <el-card class="message-card box-card">
     <div slot="header" class="clearfix">
-      <span>设备信息</span>
+      <span>账号信息</span>
     </div>
     <div v-for="(value, index) in Message" :key="index" class="message-card-content text item">
       <p><i class="el-icon-warning"></i><span>{{ index }}: </span>{{ value }}</p>
