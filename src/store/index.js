@@ -18,7 +18,9 @@ export default new Vuex.Store({
     },
     siteMsg: {
       siteTree: [],
-      currentSiteNode: null,
+      currentSiteNode: {
+        tree_level: 0
+      },
       siteId: '/'
     },
     //时间范围

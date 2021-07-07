@@ -1,6 +1,6 @@
 const sdn = {
   prefix: '/sdn',
-  getErr (acc_type = 0, end_time = null, start_time = null, site_id = null, level = 0) {
+  getErr (acc_type = 0, end_time = null, start_time = null, site_id = null, level = 1) {
     return {
       url: `${this.prefix}/get_err`,
       method: 'post',
