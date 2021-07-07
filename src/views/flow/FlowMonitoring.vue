@@ -67,14 +67,14 @@ export default {
   name: "page",
   data() {
     return {
-      Siteid:
-        this.$store.state.siteMsg.siteId == "/"
-          ? "857b706e-67d9-49c0-b3cd-4bd1e6963c07"
-          : this.$store.state.siteMsg.siteId, //当前站点id
-      startime:
-        this.$store.state.timeFrame[0] ||
-        Date.now() - 1000 * 60 * 60 * 24 * parseInt(7),
-      endtime: this.$store.state.timeFrame[1] || Date.now(),
+      // Siteid:
+      //   this.$store.state.siteMsg.siteId == "/"
+      //     ? "857b706e-67d9-49c0-b3cd-4bd1e6963c07"
+      //     : this.$store.state.siteMsg.siteId, //当前站点id
+      // startime:
+      //   this.$store.state.timeFrame[0] ||
+      //   Date.now() - 1000 * 60 * 60 * 24 * parseInt(7),
+      // endtime: this.$store.state.timeFrame[1] || Date.now(),
     };
   },
   created() {

@@ -37,7 +37,7 @@ export default {
   },
   created() {
     // this.getSite();
-    // this.getData();
+    this.getData();
     //自适应
     window.addEventListener("resize", () => {
       this.$echarts.init(document.getElementById("AccessTime_line")).resize();
@@ -47,14 +47,6 @@ export default {
   methods: {
     async getData() {
       try {
-        // console.log(this.$store.state.flowMsg);
-        // if (this.$store.state.flowMsg.length == 0) {
-        //   this.$message({
-        //     message: "请先选择站点",
-        //     type: "info",
-        //   });
-        //   return;
-        // }
         const conf = API.sdn.qualityHealth(
           this.startime,
           this.endtime,

@@ -1,10 +1,7 @@
 <template>
-<div>
-  <div
-    id="AccessSuccess_line"
-    style="width: 100%; height: 350px"
-  ></div>
-</div>
+  <div>
+    <div id="AccessSuccess_line" style="width: 100%; height: 350px"></div>
+  </div>
 </template>
 <script>
 import { mapState } from "vuex";
@@ -43,14 +40,14 @@ export default {
     };
   },
   created() {
-    
-  },
-  mounted() {
-    // this.getData();
+    this.getData();
     window.addEventListener("resize", () => {
-      this.$echarts.init(document.getElementById("AccessSuccess_line")).resize();
+      this.$echarts
+        .init(document.getElementById("AccessSuccess_line"))
+        .resize();
     });
   },
+  mounted() {},
   methods: {
     async getData() {
       try {
@@ -61,14 +58,6 @@ export default {
           this.Siteid
         );
         const sitedata = await this.$axios(conf);
-        if (sitedata.data.data == null) {
-          this.$message({
-            message: "暂无数据",
-            type: "info",
-          });
-          return;
-        }
-        // this.message = this.$store.state.flowMsg
         this.message = sitedata.data.data.values;
         if (sitedata.data.code === 200) {
           this.$message({
@@ -88,10 +77,7 @@ export default {
           this.getAccessSuccess();
         }
       } catch (error) {
-        this.$message({
-          message: "获取接入成功率数据失败",
-          type: "error",
-        });
+       
       }
     },
     getAccessSuccess() {
