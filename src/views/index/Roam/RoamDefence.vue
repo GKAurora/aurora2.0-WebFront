@@ -2,20 +2,20 @@
   <div id="RoamDefence" style="width: 100%; height: 350px"></div>
 </template>
 <script>
-import { mapState } from 'vuex';
+import { mapState } from "vuex";
 import API from "../../../api";
 export default {
-  computed:{
-    ...mapState(['timeFrame'])
+  computed: {
+    ...mapState(["timeFrame"]),
   },
   //监听父组件修改了时间，得到新的时间戳，更新到子组件的时间戳，重新发起请求
   watch: {
     timeFrame: {
       handler(newtime, oldtime) {
-        this.startime=newtime[0]
-        this.endtime=newtime[1]
-        this.dataList=[]
-        this.valueList=[]
+        this.startime = newtime[0];
+        this.endtime = newtime[1];
+        this.dataList = [];
+        this.valueList = [];
         this.getData();
       },
     },
@@ -26,17 +26,24 @@ export default {
       message: [],
       dataList: [],
       valueList: [],
-      Siteid: this.$store.state.siteMsg.siteId=='/'?"857b706e-67d9-49c0-b3cd-4bd1e6963c07" : this.$store.state.siteMsg.siteId, //当前站点id
-      startime:this.$store.state.timeFrame[0] || Date.now() - 1000 * 60 * 60 * 24 * parseInt(7),
-      endtime:this.$store.state.timeFrame[1] || Date.now()
+      Siteid:
+        this.$store.state.siteMsg.siteId == "/"
+          ? "857b706e-67d9-49c0-b3cd-4bd1e6963c07"
+          : this.$store.state.siteMsg.siteId, //当前站点id
+      startime:
+        this.$store.state.timeFrame[0] ||
+        Date.now() - 1000 * 60 * 60 * 24 * parseInt(7),
+      endtime: this.$store.state.timeFrame[1] || Date.now(),
     };
   },
   created() {
-    this.getData();
+    // this.getData();
+    //自适应
+    window.addEventListener("resize", () => {
+      this.$echarts.init(document.getElementById("RoamDefence")).resize();
+    });
   },
-  mounted() {
-    // this.getAccessSuccess()
-  },
+  mounted() {},
   methods: {
     async getData() {
       try {

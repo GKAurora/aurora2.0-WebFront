@@ -26,7 +26,10 @@ export default {
       message: [],
       dataList: [],
       valueList: [],
-      Siteid: this.$store.state.siteMsg.siteId=='/'?"857b706e-67d9-49c0-b3cd-4bd1e6963c07" : this.$store.state.siteMsg.siteId, //当前站点id
+      Siteid:
+        this.$store.state.siteMsg.siteId == "/"
+          ? "857b706e-67d9-49c0-b3cd-4bd1e6963c07"
+          : this.$store.state.siteMsg.siteId, //当前站点id
       startime:
         this.$store.state.timeFrame[0] ||
         Date.now() - 1000 * 60 * 60 * 24 * parseInt(7),
@@ -34,11 +37,15 @@ export default {
     };
   },
   created() {
-    this.getData();
+    // this.getData();
+    //自适应
+    window.addEventListener("resize", () => {
+      this.$echarts
+        .init(document.getElementById("SignaInterference_line"))
+        .resize();
+    });
   },
-  mounted() {
-    // this.getAccessSuccess()
-  },
+  mounted() {},
   methods: {
     async getData() {
       try {

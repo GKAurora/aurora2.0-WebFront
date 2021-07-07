@@ -21,7 +21,10 @@ export default new Vuex.Store({
       currentSiteNode: null,
       siteId: '/'
     },
-    timeFrame:[]
+    //时间范围
+    timeFrame:[],
+    //流量信息
+    flowMsg:[]
   },
   mutations: {
     setSiteId(state, id){
@@ -32,6 +35,9 @@ export default new Vuex.Store({
     },
     setTime(state,time){
       state.timeFrame=time
+    },
+    setFlowMsg(state,flow){
+      state.flowMsg=flow
     },
     setUser(state, { user }) {
       state.user.name = user.name

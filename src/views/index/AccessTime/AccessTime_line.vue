@@ -26,22 +26,35 @@ export default {
       message: [],
       dataList: [],
       valueList: [],
-      Siteid: this.$store.state.siteMsg.siteId=='/'?"857b706e-67d9-49c0-b3cd-4bd1e6963c07" : this.$store.state.siteMsg.siteId, //当前站点id
+      Siteid:
+        this.$store.state.siteMsg.siteId == "/"
+          ? "857b706e-67d9-49c0-b3cd-4bd1e6963c07"
+          : this.$store.state.siteMsg.siteId, //当前站点id
       startime:
-        this.$store.state.timeFrame[0] ||
-        Date.now() - 1000 * 60 * 60 * 24 * parseInt(7),
+        this.$store.state.timeFrame[0] || Date.now() - 1000 * 60 * 60 * 24 * 7,
       endtime: this.$store.state.timeFrame[1] || Date.now(),
     };
   },
   created() {
-    this.getData();
+    // this.getSite();
+    // this.getData();
+    //自适应
+    window.addEventListener("resize", () => {
+      this.$echarts.init(document.getElementById("AccessTime_line")).resize();
+    });
   },
-  mounted() {
-    // this.getAccessSuccess()
-  },
+  mounted() {},
   methods: {
     async getData() {
       try {
+        // console.log(this.$store.state.flowMsg);
+        // if (this.$store.state.flowMsg.length == 0) {
+        //   this.$message({
+        //     message: "请先选择站点",
+        //     type: "info",
+        //   });
+        //   return;
+        // }
         const conf = API.sdn.qualityHealth(
           this.startime,
           this.endtime,
@@ -53,18 +66,17 @@ export default {
           return;
         }
         this.message = sitedata.data.data.values;
-        if (sitedata.data.code === 200) {
-          for (let i = 0; i < this.message.length; i++) {
-            let timeCon = this.message[i].timeCon;
-            let timestamp = new Date(parseInt(this.message[i].timestamp))
-              .toLocaleString()
-              .replace(/:\d{1,2}$/, " ");
-            this.dataList.push(timestamp);
-            this.valueList.push(timeCon);
-          }
-          this.dataList.sort();
-          this.getAccessSuccess();
+        console.log(this.message);
+        for (let i = 0; i < this.message.length; i++) {
+          let timeCon = this.message[i].timeCon;
+          let timestamp = new Date(parseInt(this.message[i].timestamp))
+            .toLocaleString()
+            .replace(/:\d{1,2}$/, " ");
+          this.dataList.push(timestamp);
+          this.valueList.push(timeCon);
         }
+        this.dataList.sort();
+        this.getAccessSuccess();
       } catch (error) {
         this.$message({
           message: "获取接入耗时失败",

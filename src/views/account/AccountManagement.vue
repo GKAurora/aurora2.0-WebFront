@@ -1,5 +1,3 @@
-
-
 <template>
   <div>
     <!--卡片视图区域-->
@@ -50,13 +48,13 @@
         </el-table-column>
         <el-table-column label="操作" align="center">
           <!--slot-scope='scope'：拿到点击修改行的数据-->
-          <template slot-scope="scope">
+          <template >
             <!--修改  scope.row.id：是拿到修改行的id，通过查询，把原始数据渲染到表单中-->
             <el-button
               type="primary"
               icon="el-icon-edit"
               size="mini"
-              @click="showEditDialog(scope.row.username)"
+              @click="editDialogVisible = true"
             ></el-button>
             <!-- 
               删除
@@ -98,7 +96,6 @@
         title="添加用户"
         :visible.sync="addDialogVisible"
         width="50%"
-        @close="addDialogClosed"
       >
         <!--内容主题区域-->
         <div id="app" style="height: 100%">
@@ -186,14 +183,8 @@
         title="修改用户"
         :visible.sync="editDialogVisible"
         width="50%"
-        @close="editDialogClosed"
       >
-        <el-form
-          :model="editForm"
-          :rules="addFromRules"
-          ref="editFormRef"
-          label-width="70px"
-        >
+        <el-form :model="editForm" label-width="70px">
           <el-form-item label="密码" prop="password">
             <el-input v-model="editForm.password"></el-input>
           </el-form-item>
@@ -214,7 +205,6 @@
     <!-- import JavaScript -->
     <script src='https://unpkg.com/element-ui/lib/index.js'></script>
 <script>
-import { graphic } from "echarts";
 import API from "../../api";
 var generateId = {
   _count: 1,
@@ -224,65 +214,22 @@ var generateId = {
 };
 export default {
   data() {
-    //自定义邮箱校验规则
-    var checkEmail = (rule, value, cb) => {
-      //验证邮箱正则表达式
-      const regEmail = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-])+/;
-      if (regEmail.test(value)) {
-        return cb();
-      }
-      cb(new Error("请输入合法的邮箱"));
-    };
     return {
       state: true,
       //获取用户参数列表的对象时携带的参数
-      queryInfo: {
-        query: "", //搜索时传递的参数
-        pagenum: 1, //页数
-        pagesize: 2, //每一页的数据总数
-      },
-      //数据总条数
-      total: 0,
+      // queryInfo: {
+      //   query: "", //搜索时传递的参数
+      //   pagenum: 1, //页数
+      //   pagesize: 2, //每一页的数据总数
+      // },
+      // 数据总条数
+      // total: 0,
       //控制添加用户对话框的显示与隐藏
       addDialogVisible: false,
       //控制修改用户对话框的显示与隐藏
       editDialogVisible: false,
-      //添加用户的表单数据
-      addForm: {
-        username: "",
-        password: "",
-        email: "",
-        mobile: "",
-      },
-      //表单的验证规则
-      addFromRules: {
-        username: [
-          { required: true, message: "请输入用户名", trigger: "blur" },
-          { min: 3, max: 10, message: "用户名长度在3-10个字符之间" },
-        ],
-        password: [
-          { required: true, message: "请输入密码", trigger: "blur" },
-          { min: 5, max: 10, message: "用户名长度在5-10个字符之间" },
-        ],
-        email: [
-          { required: true, message: "请输入邮箱", trigger: "blur" },
-          { validator: checkEmail, trigger: "blur" },
-        ],
-      },
-      //根据id查询到的用户信息
-      editForm: {},
-      //添加用户表单数据
-      // tableData: [
-      // {
-      //   index: '1',
-      //   username: '小屋',
-      //   password: '123456',
-      //   phone:'15766329736',
-      //   email: '2420674058@qq.com',
-      //   role: '超级管理员',
-      //   state: 'true',
-      // },
-      // ],
+      //修改的用户信息
+      editForm: [],
       master_user: {
         sel: null, //选中行
         columns: [
@@ -334,7 +281,8 @@ export default {
     //添加账号
     addMasterUser() {
       for (let i of this.master_user.data) {
-        if (i.isSet) return this.$message({
+        if (i.isSet)
+          return this.$message({
             type: "warning",
             message: "请先保存当前编辑项",
           });
@@ -391,7 +339,7 @@ export default {
         const data = await this.$axios(conf);
         if (data.status === 200) {
           this.editForm = data.data;
-          this.total = data.data.length;
+          // this.total = data.data.length;
         }
       } catch (error) {
         this.$message({
@@ -428,9 +376,9 @@ export default {
       });
     },
     //监听添加用户输入框的关闭
-    addDialogClosed() {
-      this.$refs.addFormRef.resetFields();
-    },
+    // addDialogClosed() {
+    //   this.$refs.addFormRef.resetFields();
+    // },
     //点击确定，添加新用户
     async addUser() {
       if (this.master_user.data.length == 0) {
@@ -447,47 +395,42 @@ export default {
         parseInt(this.master_user.data[0].group)
       );
       const data = await this.$axios(conf);
-      console.log(data);
       //隐藏添加用户对话框
       this.addDialogVisible = false;
       //刷新用户列表
       this.getUserList();
     },
     //修改用户信息
-    async showEditDialog(username) {
-      this.editDialogVisible = true;
-    },
+    // async showEditDialog() {
+    //   this.editDialogVisible = true;
+    // },
     //监听修改用户对话框的显示()
-    editDialogClosed() {
-      this.$refs.editFormRef.resetFields();
-    },
+    // editDialogClosed() {
+    //   this.$refs.editFormRef.resetFields();
+    // },
     //修改用户信息提交
-    editUserInfo() {
-      //验证邮箱
-      this.$refs.editFormRef.validate(async (valid) => {
-        if (!valid) return;
-        //发起修改请求
-        const conf = API.auth.modify(
-          this.editForm.email,
-          this.editForm.password,
-          true
-        );
-        const data = await this.$axios(conf);
-        if (data.status !== 200) {
-          return this.$message({
-            type: "error",
-            message: "更新用户信息失败!",
-          });
-        }
-        //关闭对话框
-        this.editDialogVisible = false;
-        //刷新数据列表
-        this.getUserList();
-        //提示修改成功
-        this.$message({
-            type: "success",
-            message: "更新用户数据成功！",
-          });
+    async editUserInfo() {
+      //发起修改请求
+      const conf = API.auth.modify(
+        this.editForm.email,
+        this.editForm.password,
+        true
+      );
+      const data = await this.$axios(conf);
+      if (data.status !== 200) {
+        return this.$message({
+          type: "error",
+          message: "更新用户信息失败!",
+        });
+      }
+      //关闭对话框
+      this.editDialogVisible = false;
+      //刷新数据列表
+      this.getUserList();
+      //提示修改成功
+      this.$message({
+        type: "success",
+        message: "更新用户数据成功！",
       });
     },
   },
