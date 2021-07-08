@@ -1,11 +1,11 @@
 <template>
   <div id='canvas'>
-      <canvas id='myCanvas' style='width:100%; height:auto' @click="dialogVisible = true"></canvas>
-      <div  class="search">
+    <div  class="search">
         <el-input placeholder="请输入用户手机号mac" v-model="mac" prefix-icon="el-icon-search">
         <el-button type="primary" slot="suffix" @click="getsearch()">查询</el-button>
         </el-input>
-      </div>
+    </div>
+      <canvas id='myCanvas' style='width:100%; height:auto' @click="dialogVisible = true"></canvas>
       <!-- <img id='scream' src='../../assets/img/about/拓扑.png' alt='The Scream' style='display: none;'> -->
       <el-dialog
   title="用户轨迹详情"
@@ -278,9 +278,8 @@ export default {
 
 <style>
 #canvas{
-    display: flex;
-    justify-content: center;
-    align-content: center;
+  display: flex;
+  flex-direction: column;
 }
 #myCanvas{
     /* border: 1px salmon solid; */
@@ -288,10 +287,11 @@ export default {
     background-size: 100% auto;
 }
 .search{
-  position: absolute;
-  top:14%;
-  right: 0%;
-  width: 30%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: space-around;
+  width: 40%;
   height: auto;
   opacity: 0.5;
   transform: all 1s;
