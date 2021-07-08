@@ -1,6 +1,6 @@
 <template>
   <div class="page">
-    <div class="login-box">
+    <el-card class="box-card">
       <el-form
         :model="ruleForm"
         :rules="rules"
@@ -52,7 +52,7 @@
           </router-link>
         </el-form-item>
       </el-form>
-    </div>
+    </el-card>
   </div>
 </template>
 
@@ -122,14 +122,31 @@ export default {
 </script>
 
 <style scoped>
-.title {
+.page{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.page .box-card{
+  width: 30%;
+  height: auto;
+  padding: 10px 15px;
+}
+.page .box-card h3{
+  padding: 15px 0;
+}
+.page .box-card div{
+  width: 100%;
+}
+/* .title {
   text-align: center;
   margin-bottom: 15px;
   color: rgba(132, 213, 245, 0.719);
 }
 
 .page {
-  /* background: url("../../assets/img/about/bg.gif") no-repeat; */
+  background: url("../../assets/img/about/bg.gif") no-repeat;
   background-size: 100% 100%;
   position: absolute;
   width: 100%;
@@ -138,6 +155,7 @@ export default {
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
+  background-color: #333;
 }
 
 .login-box {
@@ -155,5 +173,5 @@ export default {
   box-shadow: 10px 10px 5px #2a2a2a;
   border-radius: 0.5em;
   font-family: "Source Sans Pro", sans-serif;
-}
+} */
 </style>

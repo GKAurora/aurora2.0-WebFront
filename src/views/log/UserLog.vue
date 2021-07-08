@@ -141,6 +141,9 @@ export default {
   },
   mounted () {
     this.getErr()
+    if(this.$store.state.siteMsg.siteId != '/'){
+      this.hid_show()
+    }
   },
   activated () {
     this.getErr()

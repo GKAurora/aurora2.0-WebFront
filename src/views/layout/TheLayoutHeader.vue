@@ -3,7 +3,7 @@
     <router-link to='/index'>
       <div class='logo' :class='{"logo-hide": !openNav}'>
         <img src='../../assets/img/about/网络安全.png' class='image'/>
-        <span class='text'>SDN安全</span>
+        <span class='text'>Aurora-SDN</span>
       </div>
     </router-link>
     <div class='content'>

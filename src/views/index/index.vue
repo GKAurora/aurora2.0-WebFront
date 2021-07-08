@@ -78,7 +78,7 @@ export default {
           style: {
             backgroundColor: "cornflowerblue",
           },
-          route: '/index'
+          route: '/log'
         },
         totalDevice: {
           total: -1,
@@ -156,6 +156,7 @@ export default {
           {value: 0, name: '空闲', nickName: 'free'}
         ],
         memoryIsloading: false,
+        interval: null,
         swapMemory: {
           "free": 0,
           "percent": 0,
@@ -339,14 +340,21 @@ export default {
     this.getLoginUserMessage();
     this.$nextTick(()=> {
       // this.handleChange()
-      // setInterval(() => {
-      //   this.getServiceCpuInfo()
-      //   this.getServiceMemoryInfo()
-      // }, 2000);
+      this.apiServiceState.interval = setInterval(() => {
+        this.getServiceCpuInfo()
+        this.getServiceMemoryInfo()
+      }, 2000);
     })
 
     console.log('mount')
   },
+  beforeRouteLeave (to, from, next) {
+    clearInterval(this.apiServiceState.interval)
+    next()
+  },
+  beforeDestroy() {
+    clearInterval(this.apiServiceState.interval)
+  }
 };
 </script>
 <style scoped>
