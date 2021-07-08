@@ -37,7 +37,7 @@ export default {
     };
   },
   created() {
-    // this.getData();
+    this.getData();
     //自适应
     window.addEventListener("resize", () => {
       this.$echarts
