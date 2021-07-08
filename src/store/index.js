@@ -26,7 +26,9 @@ export default new Vuex.Store({
     //时间范围
     timeFrame:[],
     //流量信息
-    flowMsg:[]
+    flowMsg:[],
+    // 用户mac
+    userMac: ''
   },
   mutations: {
     setSiteId(state, id){
@@ -40,6 +42,9 @@ export default new Vuex.Store({
     },
     setFlowMsg(state,flow){
       state.flowMsg=flow
+    },
+    setUserMac(state, usermac){
+      state.userMac = usermac
     },
     setUser(state, { user }) {
       state.user.name = user.name
