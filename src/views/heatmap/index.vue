@@ -4,13 +4,13 @@
       <div class='hotPic' id='heatmap'>
         <img src='../../assets/img/about/拓扑.png' alt='' style='width:100%; height: auto'>
       </div>
-      <div class="mask">
+      <!-- <div class="mask">
         <span>人流热力图</span>
         <div class="box-1">
           <span>区域设置</span>
           <div class="lenght"></div>
         </div>
-      </div>
+      </div> -->
   </div>
 </div>
 </template>
@@ -145,15 +145,19 @@ export default {
 
 <style>
 .maps{
-    display:flex;
-    align-items:center;
-    justify-content:center;
+  display: flex;
+  flex-direction: column;
 }
 .hotPic{
+  width: 100%;
+  height: auto;
   display: flex;
-  flex-grow: 1;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-content: space-around;
 }
-.mask{
+/* .mask{
   position: absolute;
   top:15%;
   right: 0%;
@@ -168,19 +172,19 @@ export default {
 .maps:hover .mask{
   opacity: 0.65;
   transform: all 1s;
-}
-.box-1{
+} */
+/* .box-1{
   display: flex;
   top: 10%;
   left: 0%;
   margin-top: 10%;
   width: 100%;
   height: 20%;
-}
-.lenght{
+} */
+/* .lenght{
   margin-left: 5%;
   width: 70%;
   height: 40%;
   background-image: linear-gradient(to right,#82ff6d,#f3ff6d,#ff6d6d);
-}
+} */
 </style>
