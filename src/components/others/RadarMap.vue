@@ -38,9 +38,18 @@ const buildSeries = function (data) {
 }
 export default {
   name: 'page',
+  props: ['value'],
   data() {
     return {
       readarmap: null
+    }
+  },
+  watch: {
+    value: {
+      handler (){
+        this.getRadarmap()
+      },
+      deep: true
     }
   },
   mounted () {
@@ -74,12 +83,12 @@ export default {
         radar: [
           {
             indicator: [
-              { text: '接入成功率', max: 100 },
-              { text: '吞吐达标率', max: 100 },
-              { text: '容量健康度', max: 100 },
-              { text: '信号和干扰', max: 100 },
-              { text: '漫游达标率', max: 100 },
-              { text: '接入耗时', max: 100 }
+              { text: '接入成功率', max: 100 }, // successCon
+              { text: '吞吐达标率', max: 100 }, // throughput
+              { text: '容量健康度', max: 100 }, //capacity
+              { text: '信号和干扰', max: 100 }, //coverage
+              { text: '漫游达标率', max: 100 } //roaming
+              // { text: '接入耗时', max: 100 } //timeCon
             ],
             center: ['40%', '45%'], // 位置
             radius: 100, // 大小
@@ -129,7 +138,7 @@ export default {
             },
             data: [
               {
-                value: [90, 88, 50, 50, 40, 70],
+                value: this.value,
                 itemStyle: {
                   normal: {
                     color: 'rgba(255,255,255,.6)',
@@ -163,7 +172,7 @@ export default {
 </script>
 <style lang='css' scoped>
 #Radarmap {
-  width: 400px;
-  height: 400px;
+  min-width: 450px;
+  height: 450px;
 }
 </style>

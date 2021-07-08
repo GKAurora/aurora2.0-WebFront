@@ -17,8 +17,6 @@ export default {
   watch: {
     items: {
       handler (newValue, oldValue){
-        console.log(this)
-        console.log(newValue, '-', oldValue)
         this.getAnnular()
       },
       deep: true
