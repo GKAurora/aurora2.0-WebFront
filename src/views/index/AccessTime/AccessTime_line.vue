@@ -37,7 +37,7 @@ export default {
   },
   created() {
     // this.getSite();
-    this.getData();
+    // this.getData();
     //自适应
     window.addEventListener("resize", () => {
       this.$echarts.init(document.getElementById("AccessTime_line")).resize();

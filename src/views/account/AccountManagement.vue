@@ -387,7 +387,6 @@ export default {
           type: "error",
         });
       }
-      console.log(parseInt(this.master_user.data[0].group));
       const conf = API.auth.reg(
         this.master_user.data[0].email,
         this.master_user.data[0].username,

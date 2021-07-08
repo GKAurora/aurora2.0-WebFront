@@ -40,7 +40,7 @@ export default {
     };
   },
   created() {
-    this.getData();
+    // this.getData();
     window.addEventListener("resize", () => {
       this.$echarts
         .init(document.getElementById("AccessSuccess_line"))
