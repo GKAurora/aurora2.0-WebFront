@@ -52,14 +52,27 @@ export default {
       cavWidth: 1118, // 画布默认宽度
       cavHeight: 559, // 画布默认高度
       dialogVisible: false, // 弹窗
-      mac: '', // 搜索框的值
+      mac: this.$store.state.userMac, // 搜索框的值
       areas: [], // 存储后端返回的值
       level: 1,
       site_id: this.$store.state.siteMsg.siteId || '857b706e-67d9-49c0-b3cd-4bd1e6963c07' // 站点id
     }
   },
+  watch: {
+    getsearch: {
+      handler (newMac, oldMac) {
+        this.getsearch()
+        // setTimeout(() => {
+        //   this.initCanvas()
+        // }, 500)
+        // this.initarea()
+      },
+      immediate: true
+    }
+  },
   methods: {
     getsearch () {
+      this.$store.commit('setUserMac', this.mac)
       setTimeout(() => {
         this.initCanvas()
       }, 500)
@@ -84,12 +97,13 @@ export default {
             let endtime = new Date(parseInt(this.areas[i].endTime)).toLocaleString().replace(/:\d{1,2}$/, ' ')
             this.areas[i].endTime = endtime
           }
-        } else {
-          this.$message({
-            message: '请输入正确的用户手机mac',
-            type: 'warning'
-          })
         }
+        //  else {
+        //   this.$message({
+        //     message: '请输入正确的用户手机mac',
+        //     type: 'warning'
+        //   })
+        // }
       } catch (error) {
         this.$message({
           message: '请在首页选择站点',
