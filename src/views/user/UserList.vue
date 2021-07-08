@@ -111,6 +111,12 @@
             <span v-else>有线用户</span>
           </template>
         </el-table-column>
+
+        <el-table-column label="查看用户路径" align="center">
+          <template slot-scope="scope">
+            <el-button @click="jumpCanvas(scope.row)" type="primary">查看路径</el-button>
+          </template>
+        </el-table-column>
       </el-table>
 
       <!--分页区域-->
@@ -402,6 +408,12 @@ export default {
           type: "error",
         });
       }
+    },
+    // 跳转到轨迹图
+    jumpCanvas (row) {
+      this.$router.push('/canvas')
+      // console.log(row.userMac);
+      this.$store.commit('setUserMac', row.userMac)
     },
     //全部用户、无线用户()
     // getUser() {
