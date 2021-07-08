@@ -100,7 +100,7 @@ export default {
   },
   mounted () {
     this.getRectValue()
-    this.initValue()
+    // this.initValue()
     this.initHotPic()
     // this.progressDom = document.getElementsByClassName('progress_list')
     var _this = this
