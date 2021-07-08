@@ -11,7 +11,7 @@
         <p class="device-title">{{ cardData.title }}</p>
         <a
         class="device-message"
-        @click="handlerClick"
+        @click="handlerClick(cardData.route)"
         >
           <span>详细信息</span>
           <i class="el-icon-video-play"></i>
@@ -25,8 +25,9 @@
 export default {
     props: ['cardData'],
     methods: {
-        handlerClick(){
-            console.log('click')
+        handlerClick(route){
+            // console.log('click', route)
+            this.$router.push(route)
         }
     }
 }

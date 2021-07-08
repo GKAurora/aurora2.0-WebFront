@@ -19,6 +19,13 @@
       <!-- 仪表盘 -->
       <Dashboard :dashboardValue="dashboardValue.value"></Dashboard>
       <Radarmap :radarMapValue="radarMapValue.values"></Radarmap>
+      <!-- Api service state -->
+      <CpuRate
+      :CpuRateValue="apiServiceState.cpu.value"
+      ></CpuRate>
+      <MemoryInfo
+      :MemoryInfoValue="apiServiceState.memory"
+      ></MemoryInfo>
     </div>
   </div>
 </template>
@@ -34,15 +41,13 @@ import AnnularCard from "../../components/fAnnularCard.vue";
 import MessageCard from "../../components/fMessageCard.vue";
 import Dashboard from "../../components/fDashboard.vue";
 import Radarmap from "../../components/fRadarmap.vue";
+import CpuRate from '../../components/fCpuRate.vue'
+import MemoryInfo from '../../components/fMemory.vue'
 // api config
 import API from "../../api";
+// util
+import converter from '../../utils/converter'
 
-// { text: '接入成功率', max: 100 }, // successCon
-// { text: '吞吐达标率', max: 100 }, // throughput
-// { text: '容量健康度', max: 100 }, //capacity
-// { text: '信号和干扰', max: 100 }, //coverage
-// { text: '漫游达标率', max: 100 }, //roaming
-// { text: '接入耗时', max: 100 } //timeCon
 export default {
   components: {
     Selector,
@@ -52,6 +57,8 @@ export default {
     MessageCard,
     Dashboard,
     Radarmap,
+    CpuRate,
+    MemoryInfo
   },
   name: "page",
   data() {
@@ -63,6 +70,7 @@ export default {
           style: {
             backgroundColor: "rgb(241, 179, 63)",
           },
+          route: '/index'
         },
         apMessage: {
           total: -1,
@@ -70,6 +78,7 @@ export default {
           style: {
             backgroundColor: "cornflowerblue",
           },
+          route: '/index'
         },
         totalDevice: {
           total: -1,
@@ -77,6 +86,7 @@ export default {
           style: {
             backgroundColor: "rgb(241, 179, 63)",
           },
+          route: '/user'
         },
       },
       serverInfo: {
@@ -136,6 +146,23 @@ export default {
         ],
         values: [],
       },
+      apiServiceState: {
+        cpu: {
+          isloading: false,
+          value: 0
+        },
+        memory:[
+          {value: 0, name: '已经使用', nickName: 'used'},
+          {value: 0, name: '空闲', nickName: 'free'}
+        ],
+        memoryIsloading: false,
+        swapMemory: {
+          "free": 0,
+          "percent": 0,
+          "total": 0,
+          "used": 0
+        }
+      }
     };
   },
   methods: {
@@ -145,10 +172,12 @@ export default {
     handleSiteSelect(e) {
       this.$store.commit("setSiteNode", e);
       this.$store.commit("setSiteId", e.id);
-      this.handleChange();
+      this.handleChange()
     },
     handleTimeStamp(e) {
+      console.log('timeStamp')
       this.$store.commit("setTime", e);
+      this.handleChange()
     },
     handleChange() {
       // state message
@@ -245,14 +274,14 @@ export default {
       const conf = API.sdn.getDeviceTotalMsg(
         this.$store.state.timeFrame[0],
         this.$store.state.timeFrame[1],
-        0,
+        1,
         this.$store.state.siteMsg.siteId
       );
       const total = (await this.$axios(conf)).data;
+      console.log('total->', total)
       if (total.data == null) {
         return;
       }
-      console.log(total);
       return total;
     },
     async getDashboardData() {
@@ -262,8 +291,9 @@ export default {
       }
       const totalRate = total.data.totalRate;
       if (typeof totalRate === "undefined") {
-        this.dashboardValue.value = 0;
+        // this.dashboardValue.value = 0;
         this.dashboardValue.isShow = false;
+        return 
       }
       this.dashboardValue.value = totalRate;
       this.dashboardValue.isShow = true;
@@ -271,6 +301,7 @@ export default {
     /** 获取RadarMap组件数据 */
     async getRadarMapData() {
       const total = await this.getTotalData();
+      console.log('map', total)
       if (total == null) {
         return;
       }
@@ -283,12 +314,38 @@ export default {
         })
       })
     },
+    /** 获取api service数据 */
+    async getServiceCpuInfo() {
+      if(this.apiServiceState.cpu.isloading) return ;
+      this.apiServiceState.cpu.isloading = true
+      const conf = API.sys.getCpuMsg(false)
+      const cpuData = (await this.$axios(conf)).data
+      this.apiServiceState.cpu.value = cpuData.data
+      this.apiServiceState.cpu.isloading = false
+    },
+    async getServiceMemoryInfo() {
+      if(this.apiServiceState.memoryIsloading) return;
+      this.apiServiceState.memoryIsloading = true
+      const conf = API.sys.getRamMsg(false)
+      const memoryData = (await this.$axios(conf)).data
+      this.apiServiceState.memory.forEach(item => {
+          item.value = converter(memoryData.data[item.nickName])
+      })
+      this.apiServiceState.memoryIsloading = false
+    }
   },
   mounted() {
-    this.getGeneralStateMsg();
+    // this.getGeneralStateMsg();
     this.getLoginUserMessage();
-    this.getAnnularData();
-    this.getDashboardData();
+    this.$nextTick(()=> {
+      // this.handleChange()
+      // setInterval(() => {
+      //   this.getServiceCpuInfo()
+      //   this.getServiceMemoryInfo()
+      // }, 2000);
+    })
+
+    console.log('mount')
   },
 };
 </script>
