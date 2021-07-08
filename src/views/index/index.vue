@@ -17,28 +17,32 @@
         :annularData="annular.items"
       ></AnnularCard>
       <!-- 仪表盘 -->
-      <Dashboard
-      :dashboardValue="dashboardValue.value"
-      ></Dashboard>
-      <Radarmap></Radarmap>
+      <Dashboard :dashboardValue="dashboardValue.value"></Dashboard>
+      <Radarmap :radarMapValue="radarMapValue.values"></Radarmap>
     </div>
   </div>
 </template>
 <script>
 // site selector
 // import Selector from '../../components/fSiteSelector.vue'
-import Selector from '../../components/xiaotao/SiteTree.vue'
+import Selector from "../../components/xiaotao/SiteTree.vue";
 // time selector
-import TimeSelector from '../../components/timeSelector.vue'
+import TimeSelector from "../../components/timeSelector.vue";
 // overview
-import GeneralState from '../../components/fGeneralStateView.vue'
-import AnnularCard from '../../components/fAnnularCard.vue'
-import MessageCard from '../../components/fMessageCard.vue'
-import Dashboard from '../../components/fDashboard.vue'
-import Radarmap from '../../components/fRadarmap.vue'
+import GeneralState from "../../components/fGeneralStateView.vue";
+import AnnularCard from "../../components/fAnnularCard.vue";
+import MessageCard from "../../components/fMessageCard.vue";
+import Dashboard from "../../components/fDashboard.vue";
+import Radarmap from "../../components/fRadarmap.vue";
 // api config
-import API from '../../api'
+import API from "../../api";
 
+// { text: '接入成功率', max: 100 }, // successCon
+// { text: '吞吐达标率', max: 100 }, // throughput
+// { text: '容量健康度', max: 100 }, //capacity
+// { text: '信号和干扰', max: 100 }, //coverage
+// { text: '漫游达标率', max: 100 }, //roaming
+// { text: '接入耗时', max: 100 } //timeCon
 export default {
   components: {
     Selector,
@@ -47,194 +51,246 @@ export default {
     AnnularCard,
     MessageCard,
     Dashboard,
-    Radarmap
+    Radarmap,
   },
-  name: 'page',
-  data () {
+  name: "page",
+  data() {
     return {
       card: {
         device: {
           total: -1,
-          title: '设备数量',
+          title: "设备数量",
           style: {
-            backgroundColor: 'rgb(241, 179, 63)'
-          }
+            backgroundColor: "rgb(241, 179, 63)",
+          },
         },
         apMessage: {
           total: -1,
-          title: 'AP数量',
+          title: "AP数量",
           style: {
-            backgroundColor: 'cornflowerblue'
-          }
+            backgroundColor: "cornflowerblue",
+          },
         },
         totalDevice: {
           total: -1,
-          title: '历史接入数量',
+          title: "历史接入数量",
           style: {
-            backgroundColor: 'rgb(241, 179, 63)'
-          }
-        }
+            backgroundColor: "rgb(241, 179, 63)",
+          },
+        },
       },
       serverInfo: {
-        username: 'admin',
-        email: 'admin@c4.com',
-        ip: '127.0.0.1',
-        last_login: 'xxxxxxxx'
+        username: "admin",
+        email: "admin@c4.com",
+        ip: "127.0.0.1",
+        last_login: "xxxxxxxx",
       },
       annular: {
         isShow: false,
-        items: [{
+        items: [
+          {
             value: null,
-            name: '关联失败数',
-            nickName: 'associateFailNum',
-          },{
+            name: "关联失败数",
+            nickName: "associateFailNum",
+          },
+          {
             value: 0,
-            name: '关联成功数',
-            nickName: 'associateSuccNum',
-          },{
+            name: "关联成功数",
+            nickName: "associateSuccNum",
+          },
+          {
             value: 0,
-            name: '认证失败数',
-            nickName: 'authFailNum'
-          },{
+            name: "认证失败数",
+            nickName: "authFailNum",
+          },
+          {
             value: 0,
-            name: '认证成功数',
-            nickName: 'authSuccNum'
-          },{
+            name: "认证成功数",
+            nickName: "authSuccNum",
+          },
+          {
             value: 0,
-            name: 'Dhcp失败数',
-            nickName: 'dhcpFailNum'
-          },{
+            name: "Dhcp失败数",
+            nickName: "dhcpFailNum",
+          },
+          {
             value: 0,
-            name: 'Dhcp成功数',
-            nickName: 'dhcpSuccNum'
-          }]
+            name: "Dhcp成功数",
+            nickName: "dhcpSuccNum",
+          },
+        ],
       },
       dashboardValue: {
         isShow: false,
-        value: 0
-      }
-    }
+        value: 0,
+      },
+      /** 接入成功率, 吞吐达标率, 容量健康度, 信号和干扰, 漫游达标率, 接入耗时 */
+      radarMapValue: {
+        template: [
+          { text: "接入成功率", nickName: 'successCon'}, // 
+          { text: "吞吐达标率", nickName: 'throughput'}, // 
+          { text: "容量健康度", nickName: 'capacity'}, //
+          { text: "信号和干扰", nickName: 'coverage'}, //
+          { text: "漫游达标率", nickName: 'roaming'}, //
+          { text: "接入耗时", nickName: 'timeCon'}, //
+        ],
+        values: [],
+      },
+    };
   },
   methods: {
     /**
      * 站点选择器
      */
     handleSiteSelect(e) {
-      this.$store.commit('setSiteNode', e)
-      this.$store.commit('setSiteId', e.id)
-      this.handleChange()
+      this.$store.commit("setSiteNode", e);
+      this.$store.commit("setSiteId", e.id);
+      this.handleChange();
     },
-    handleTimeStamp(e){
-      this.$store.commit('setTime', e)
+    handleTimeStamp(e) {
+      this.$store.commit("setTime", e);
     },
-    handleChange(){
+    handleChange() {
       // state message
-      this.getGeneralStateMsg()
+      this.getGeneralStateMsg();
       // 接入失败信息
-      this.getAnnularData()
+      this.getAnnularData();
       // 改仪表盘数据
-      this.getDashboardData()
+      this.getDashboardData();
+      // 改变六角形数据
+      this.getRadarMapData();
     },
     /**
      * 登录信息、用户信息、信息框
      */
     async getLoginUserMessage() {
-      const conf = API.auth.getLoginUserMsg()
-      const data = await this.$axios(conf)
+      const conf = API.auth.getLoginUserMsg();
+      const data = await this.$axios(conf);
       if (data.status === 200) {
-        delete data.data.data.type
-        this.serverInfo = {...this.serverInfo, ...data.data.data}
+        delete data.data.data.type;
+        this.serverInfo = { ...this.serverInfo, ...data.data.data };
       }
     },
     /**
      * 获取状态框信息
      */
     getGeneralStateMsg() {
-      this.totalUserDevice()
-      this.totalFloorDevice()
-      this.totalSDNDevice()
+      this.totalUserDevice();
+      this.totalFloorDevice();
+      this.totalSDNDevice();
     },
     async totalUserDevice() {
-      const conf = API.sdn.getUserLocation()
-      const users = await this.$axios(conf)
-      if (users.status !== 200){
-        return 
+      const conf = API.sdn.getUserLocation();
+      const users = await this.$axios(conf);
+      if (users.status !== 200) {
+        return;
       }
-      const arr = Object.keys(users.data.data)
-      this.card.device.total = arr.length
-      return arr.length
+      const arr = Object.keys(users.data.data);
+      this.card.device.total = arr.length;
+      return arr.length;
     },
     async totalFloorDevice() {
-      const conf = API.sdn.getFloorDevice(this.$store.state.siteMsg.siteId, 
-                                        this.$store.state.siteMsg.currentSiteNode.tree_level || 1)
-      const apis = await this.$axios(conf)
-      if (apis.status !== 200){
-        return 
+      const conf = API.sdn.getFloorDevice(
+        this.$store.state.siteMsg.siteId,
+        this.$store.state.siteMsg.currentSiteNode.tree_level || 1
+      );
+      const apis = await this.$axios(conf);
+      if (apis.status !== 200) {
+        return;
       }
-      const total = apis.data.data.apList.AP.length
-      this.card.apMessage.total = total
-      return total
+      const total = apis.data.data.apList.AP.length;
+      this.card.apMessage.total = total;
+      return total;
     },
     async totalSDNDevice() {
-      const conf = API.sdn.getUserList()
-      const users = await this.$axios(conf)
-      if (users.status !== 200){
-        return 
+      const conf = API.sdn.getUserList();
+      const users = await this.$axios(conf);
+      if (users.status !== 200) {
+        return;
       }
-      this.card.totalDevice.total = users.data.data.totalSize
-      return users.data.data.totalSize
+      this.card.totalDevice.total = users.data.data.totalSize;
+      return users.data.data.totalSize;
     },
     /**
      * 获取Annular组件数据
      */
     async getAnnularData() {
-      const conf = API.sdn.getErr(0, this.$store.state.timeFrame[1], this.$store.state.timeFrame[0],
-                                              this.$store.state.siteMsg.siteId, this.$store.state.siteMsg.currentSiteNode.tree_level)
-      const data = (await this.$axios(conf)).data.data
-      if (data == null){
-        this.annular.isShow = false
-        return 
+      const conf = API.sdn.getErr(
+        0,
+        this.$store.state.timeFrame[1],
+        this.$store.state.timeFrame[0],
+        this.$store.state.siteMsg.siteId,
+        this.$store.state.siteMsg.currentSiteNode.tree_level
+      );
+      const data = (await this.$axios(conf)).data.data;
+      if (data == null) {
+        this.annular.isShow = false;
+        return;
       }
       let t2 = data.reduce((total, n) => {
-        Object.keys(n).forEach(k => {
-          total[k] += n[k]
-        })
-        return total
-      })
+        Object.keys(n).forEach((k) => {
+          total[k] += n[k];
+        });
+        return total;
+      });
       this.annular.items.forEach((item) => {
-        item.value = t2[item.nickName]
-      })
-      console.log('items', this.annular.items)
+        item.value = t2[item.nickName];
+      });
+      // console.log('items', this.annular.items)
       // this.annular.items = items
-      this.annular.isShow = true
+      this.annular.isShow = true;
+    },
+    /** 获取两个组件公共数据 */
+    async getTotalData() {
+      const conf = API.sdn.getDeviceTotalMsg(
+        this.$store.state.timeFrame[0],
+        this.$store.state.timeFrame[1],
+        0,
+        this.$store.state.siteMsg.siteId
+      );
+      const total = (await this.$axios(conf)).data;
+      if (total.data == null) {
+        return;
+      }
+      console.log(total);
+      return total;
     },
     async getDashboardData() {
-      const conf = API.sdn.getDeviceTotalMsg(this.$store.state.timeFrame[0], this.$store.state.timeFrame[1],
-                  0, this.$store.state.siteMsg.siteId)
-      const total = (await this.$axios(conf)).data
-      if(total.data == null){
-        return 
+      const total = await this.getTotalData();
+      if (total == null) {
+        return;
       }
-      const totalRate = total.data.totalRate
-      if((typeof totalRate) === 'undefined'){
-        this.dashboardValue.value = 0
-        this.dashboardValue.isShow = false
+      const totalRate = total.data.totalRate;
+      if (typeof totalRate === "undefined") {
+        this.dashboardValue.value = 0;
+        this.dashboardValue.isShow = false;
       }
-      this.dashboardValue.value = totalRate
-      this.dashboardValue.isShow = true
-      // console.log(totalRate, typeof totalRate)
-      // const totalDevice = this.card.device.total
-      // let r = totalRate / totalDevice
-      // this.dashboard.value = totalRate
-    }
+      this.dashboardValue.value = totalRate;
+      this.dashboardValue.isShow = true;
+    },
+    /** 获取RadarMap组件数据 */
+    async getRadarMapData() {
+      const total = await this.getTotalData();
+      if (total == null) {
+        return;
+      }
+      const values = total.data.values;
+      this.radarMapValue.template.forEach(e=> {
+        Object.keys(values).forEach(item => {
+          if(e.nickName == item){
+            this.radarMapValue.values.push(values[item])
+          }
+        })
+      })
+    },
   },
   mounted() {
-    this.getGeneralStateMsg()
-    this.getLoginUserMessage()
-    this.getAnnularData()
-    this.getDashboardData()
-  }
-}
+    this.getGeneralStateMsg();
+    this.getLoginUserMessage();
+    this.getAnnularData();
+    this.getDashboardData();
+  },
+};
 </script>
 <style scoped>
 .index-content {

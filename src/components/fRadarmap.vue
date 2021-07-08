@@ -4,7 +4,9 @@
           <span>设备状态概览</span>
         </div>
         <div class="dashboard-card-content">
-            <Radarmap></Radarmap>
+            <Radarmap
+            :value="radarMapValue"
+            ></Radarmap>
         </div>
     </el-card>
 </template>
@@ -13,6 +15,7 @@
 import Radarmap from './others/RadarMap.vue'
 
 export default {
+    props: ['radarMapValue'],
     components: {
         Radarmap
     }
