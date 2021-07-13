@@ -388,9 +388,9 @@ export default {
         });
       }
       const conf = API.auth.reg(
-        this.master_user.data[0].email,
         this.master_user.data[0].username,
         this.master_user.data[0].password,
+        this.master_user.data[0].email,
         parseInt(this.master_user.data[0].group)
       );
       const data = await this.$axios(conf);
